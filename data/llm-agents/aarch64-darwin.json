@@ -36,11 +36,11 @@
     "system": "aarch64-darwin"
   },
   "amp": {
-    "drvPath": "/nix/store/48ys23dvipwb3d1z6mzgs6kk3jc4cadc-amp-0.0.1788566489-g17fce3.drv",
+    "drvPath": "/nix/store/rxwd3kn682w26ixqn5nry9ckaa03vnax-amp-0.0.1788580839-ga71d30.drv",
     "isCached": true,
-    "name": "amp-0.0.1788566489-g17fce3",
+    "name": "amp-0.0.1788580839-ga71d30",
     "outputs": {
-      "out": "/nix/store/mf0gfrcq7x9zwxr73ph536s87m4w2x6f-amp-0.0.1788566489-g17fce3"
+      "out": "/nix/store/1nwva400i55salb0i66jlad35h50s2cv-amp-0.0.1788580839-ga71d30"
     },
     "system": "aarch64-darwin"
   },
@@ -54,11 +54,11 @@
     "system": "aarch64-darwin"
   },
   "antigravity-cli": {
-    "drvPath": "/nix/store/r8h8y98vvrw9h7spllflw3xfb32w22pj-antigravity-cli-1.1.26.drv",
+    "drvPath": "/nix/store/gp350igxr02fig47inrk1z4m1ysvwd0g-antigravity-cli-1.1.27.drv",
     "isCached": true,
-    "name": "antigravity-cli-1.1.26",
+    "name": "antigravity-cli-1.1.27",
     "outputs": {
-      "out": "/nix/store/32bjxsfvn7fs90w1fa8hdivw119y3pia-antigravity-cli-1.1.26"
+      "out": "/nix/store/jwmr0sfd7p2l0dak7hj8z7hkrysqr5vi-antigravity-cli-1.1.27"
     },
     "system": "aarch64-darwin"
   },
@@ -480,11 +480,11 @@
     "system": "aarch64-darwin"
   },
   "default": {
-    "drvPath": "/nix/store/fapcvqi0dxrwbizbyma7l18l39hf1vdr-llm-agents-launcher.drv",
+    "drvPath": "/nix/store/xyqhywg13nz2fj2lfqllvzrriq5pmc8z-llm-agents-launcher.drv",
     "isCached": true,
     "name": "llm-agents-launcher",
     "outputs": {
-      "out": "/nix/store/px5iqzzx9jmxvhb0l7qjn5cw8zj7bci5-llm-agents-launcher"
+      "out": "/nix/store/1ka4jxak887d5rg8akj4hii4lqc16529-llm-agents-launcher"
     },
     "system": "aarch64-darwin"
   },
@@ -498,11 +498,11 @@
     "system": "aarch64-darwin"
   },
   "droid": {
-    "drvPath": "/nix/store/s3i40il3ymhhwhzw6aswm0403jlzlr99-droid-0.212.1.drv",
+    "drvPath": "/nix/store/4j2d858gd9vjl0nckhv6j0n5gx61yvvy-droid-0.213.0.drv",
     "isCached": true,
-    "name": "droid-0.212.1",
+    "name": "droid-0.213.0",
     "outputs": {
-      "out": "/nix/store/w4v4bvjjh3h0bwln5wrbss0p7d6pyhqr-droid-0.212.1"
+      "out": "/nix/store/fr4kybzs2w1cnsib696526lk636kp5yd-droid-0.213.0"
     },
     "system": "aarch64-darwin"
   },
@@ -552,11 +552,11 @@
     "system": "aarch64-darwin"
   },
   "flake-inputs": {
-    "drvPath": "/nix/store/7y3di0dhsvhf2l3zx8v75zm4myfnszad-flake-inputs.drv",
+    "drvPath": "/nix/store/mprq387k2lrna8c5if5zbzksw5s42ca2-flake-inputs.drv",
     "isCached": true,
     "name": "flake-inputs",
     "outputs": {
-      "out": "/nix/store/14jcjddbdkzbjz091gqgjsvklvfpxcg6-flake-inputs"
+      "out": "/nix/store/6jqz0ap32abibvkf990m4ghsamkq7qf3-flake-inputs"
     },
     "system": "aarch64-darwin"
   },
@@ -932,12 +932,12 @@
     "system": "aarch64-darwin"
   },
   "mcptoon": {
-    "drvPath": "/nix/store/5pf55105ig63s8s78cr9xknw565f57cf-mcptoon-0.7.3.drv",
+    "drvPath": "/nix/store/78s1y15li97fgaixl7xr9pqa6xl20sy1-mcptoon-0.7.5.drv",
     "isCached": false,
-    "name": "mcptoon-0.7.3",
+    "name": "mcptoon-0.7.5",
     "outputs": {
-      "dist": "/nix/store/8sqbrj26cfb171q2cls7jzikqy3yhrd7-mcptoon-0.7.3-dist",
-      "out": "/nix/store/mp8jzzjza4knv8sx06lkxysgjfbd5xp4-mcptoon-0.7.3"
+      "dist": "/nix/store/a0al738qg9zi4cnnxavv3p7mymh90z14-mcptoon-0.7.5-dist",
+      "out": "/nix/store/crj5gfc04fn6h2yijy5s0m351xfc9kk8-mcptoon-0.7.5"
     },
     "system": "aarch64-darwin"
   },
@@ -975,6 +975,15 @@
     "name": "multica-0.4.40",
     "outputs": {
       "out": "/nix/store/r2axf3pv4qgkk4ign299agra3pj9n0h0-multica-0.4.40"
+    },
+    "system": "aarch64-darwin"
+  },
+  "muse-code": {
+    "drvPath": "/nix/store/5mhv1zz12iqa189m2fl6nxyd9b94yqrn-muse-code-1.0.2-R2040.1.drv",
+    "isCached": true,
+    "name": "muse-code-1.0.2-R2040.1",
+    "outputs": {
+      "out": "/nix/store/86cipp444yh1q20rm2bg8fi6908ln1dx-muse-code-1.0.2-R2040.1"
     },
     "system": "aarch64-darwin"
   },
@@ -1042,11 +1051,11 @@
     "system": "aarch64-darwin"
   },
   "open-code-review": {
-    "drvPath": "/nix/store/vakvlm5bphzfkbq5nwyzls8qndj23gmi-open-code-review-1.11.4.drv",
+    "drvPath": "/nix/store/phm3ilz9389w7y41b3cbmrx835daqpjs-open-code-review-1.11.5.drv",
     "isCached": true,
-    "name": "open-code-review-1.11.4",
+    "name": "open-code-review-1.11.5",
     "outputs": {
-      "out": "/nix/store/hz8liky55l5bac9g4bhlkmznz55j0cr3-open-code-review-1.11.4"
+      "out": "/nix/store/rqxpl62jdb4s6a386n4a6vm0x0zvzmgd-open-code-review-1.11.5"
     },
     "system": "aarch64-darwin"
   },
@@ -1078,11 +1087,11 @@
     "system": "aarch64-darwin"
   },
   "opencode2": {
-    "drvPath": "/nix/store/sxknxmh68cyiivw5cjqx7nxzaiqnxidr-opencode2-0.0.0-beta-19135.drv",
+    "drvPath": "/nix/store/7jr54px26yiays0z1jqghikj21bpvk1n-opencode2-0.0.0-beta-19151.drv",
     "isCached": true,
-    "name": "opencode2-0.0.0-beta-19135",
+    "name": "opencode2-0.0.0-beta-19151",
     "outputs": {
-      "out": "/nix/store/h6472s22lng9ssrwjhy6iirkz3wvavk6-opencode2-0.0.0-beta-19135"
+      "out": "/nix/store/gbaj7710j9zll2688mz4r0lf16g3b423-opencode2-0.0.0-beta-19151"
     },
     "system": "aarch64-darwin"
   },
@@ -1268,12 +1277,12 @@
     "system": "aarch64-darwin"
   },
   "semble": {
-    "drvPath": "/nix/store/0k536azh4m1r4kzv5ssn9n3f1am91h31-semble-0.5.5.drv",
+    "drvPath": "/nix/store/hhw89vd921rk8mf6ixcz2hmr47rjzpc2-semble-0.5.6.drv",
     "isCached": false,
-    "name": "semble-0.5.5",
+    "name": "semble-0.5.6",
     "outputs": {
-      "dist": "/nix/store/nfy6wsi15a6vxmj88j21p9aypc6a0j9l-semble-0.5.5-dist",
-      "out": "/nix/store/w59d02nz67b9qqkwp5vj53gfp4s4lc1f-semble-0.5.5"
+      "dist": "/nix/store/b1kw3sxv817sfhqnmfldsvp35gcwadfr-semble-0.5.6-dist",
+      "out": "/nix/store/cyvifi8y9bhrgpmdn3m79rvxld8yfrv1-semble-0.5.6"
     },
     "system": "aarch64-darwin"
   },
@@ -1333,11 +1342,11 @@
     "system": "aarch64-darwin"
   },
   "swamp": {
-    "drvPath": "/nix/store/zbdwb4l9xa0jv6qb9k5d6mp4m2w4h8ds-swamp-20260904.182624.0-sha.49fbeacb.drv",
+    "drvPath": "/nix/store/7i1z6a9a50bc9p2wq6d0069dsg63qz5w-swamp-20260904.230512.0-sha.7b111963.drv",
     "isCached": true,
-    "name": "swamp-20260904.182624.0-sha.49fbeacb",
+    "name": "swamp-20260904.230512.0-sha.7b111963",
     "outputs": {
-      "out": "/nix/store/wl2jn7gzwyqkngibiaanm53aqxxbz8n1-swamp-20260904.182624.0-sha.49fbeacb"
+      "out": "/nix/store/byahyxbln7qqxgyg19d5k53wf2s6az6z-swamp-20260904.230512.0-sha.7b111963"
     },
     "system": "aarch64-darwin"
   },
@@ -1478,11 +1487,11 @@
     "system": "aarch64-darwin"
   },
   "workmux": {
-    "drvPath": "/nix/store/w3pndx8y3ngsaswxzcn1p3zs05wpf293-workmux-0.1.254.drv",
+    "drvPath": "/nix/store/bb30s25a05ii0j8ccmf7bi3p04kmpzil-workmux-0.1.255.drv",
     "isCached": true,
-    "name": "workmux-0.1.254",
+    "name": "workmux-0.1.255",
     "outputs": {
-      "out": "/nix/store/7pyqaszydk3srzrsgig76ga449l4f5z7-workmux-0.1.254"
+      "out": "/nix/store/llla2aiyc9jd20xnjk4whcnp82rirzpl-workmux-0.1.255"
     },
     "system": "aarch64-darwin"
   },
@@ -1514,11 +1523,11 @@
     "system": "aarch64-darwin"
   },
   "zeroclaw": {
-    "drvPath": "/nix/store/aj3snlrpwjg3dk3gq2r98k7axxnj287a-zeroclaw-0.8.4.drv",
+    "drvPath": "/nix/store/96p85yv3a3iy43g007rxbsis86zn2wwr-zeroclaw-0.8.5.drv",
     "isCached": true,
-    "name": "zeroclaw-0.8.4",
+    "name": "zeroclaw-0.8.5",
     "outputs": {
-      "out": "/nix/store/z01yiamv96x3q7f2cpc8paixw9j11g2s-zeroclaw-0.8.4"
+      "out": "/nix/store/pzrmp73izwz91agblb1zrawy20wz4nyx-zeroclaw-0.8.5"
     },
     "system": "aarch64-darwin"
   }

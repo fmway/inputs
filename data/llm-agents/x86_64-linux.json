@@ -1,0 +1,1652 @@
+{
+  "agent-browser": {
+    "drvPath": "/nix/store/x6gslb9l8c5vzj0y6fllvk39jig0aldc-agent-browser-0.36.0.drv",
+    "isCached": true,
+    "name": "agent-browser-0.36.0",
+    "outputs": {
+      "out": "/nix/store/iy5w6dfbisfmpscd2f71j9ycywh5vf4r-agent-browser-0.36.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "agent-deck": {
+    "drvPath": "/nix/store/vj301qw1spv8rr6k927fs7cdgnnjwh1d-agent-deck-1.15.0.drv",
+    "isCached": true,
+    "name": "agent-deck-1.15.0",
+    "outputs": {
+      "out": "/nix/store/bnah0skw8jydmy16ywz87wf3x9sj0s15-agent-deck-1.15.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "agentsview": {
+    "drvPath": "/nix/store/fs1pymlprddaa37ma1icq8f3wy533xsc-agentsview-0.41.1.drv",
+    "isCached": true,
+    "name": "agentsview-0.41.1",
+    "outputs": {
+      "out": "/nix/store/jjg1gywp2hazydsg66qxvsnrsd95r7vb-agentsview-0.41.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "agentty": {
+    "drvPath": "/nix/store/7zsf82sc4rk22j4603hyarr4pacpxx7l-agentty-0.8.0.drv",
+    "isCached": true,
+    "name": "agentty-0.8.0",
+    "outputs": {
+      "out": "/nix/store/8yjbsyyvhqqnsj3yr2c6987kwd4nlbfi-agentty-0.8.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "ai-memory": {
+    "drvPath": "/nix/store/b3s1g7l0h051kpgvx3in5wa8i4gas0h2-ai-memory-2.0.3.drv",
+    "isCached": true,
+    "name": "ai-memory-2.0.3",
+    "outputs": {
+      "out": "/nix/store/fw871ncgac0sr04v5wlrr56g1x409mvg-ai-memory-2.0.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "aionui": {
+    "drvPath": "/nix/store/wz2bh0djzl06aly8gr4fq6x0chlzqb2b-aionui-2.2.1.drv",
+    "isCached": true,
+    "name": "aionui-2.2.1",
+    "outputs": {
+      "out": "/nix/store/0d0l5afrcpy8hczxwdr93gngk9v39h14-aionui-2.2.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "amp": {
+    "drvPath": "/nix/store/2fgw06gcmmimii8gsh8r24vdgkp41f5m-amp-0.0.1788566489-g17fce3.drv",
+    "isCached": true,
+    "name": "amp-0.0.1788566489-g17fce3",
+    "outputs": {
+      "out": "/nix/store/np9ajc5nbmdj6c56fpg1bb8yvv4kabgq-amp-0.0.1788566489-g17fce3"
+    },
+    "system": "x86_64-linux"
+  },
+  "annot": {
+    "drvPath": "/nix/store/3ylmqps24cmlf0m9njx9an1n33904c89-annot-0.19.0.drv",
+    "isCached": true,
+    "name": "annot-0.19.0",
+    "outputs": {
+      "out": "/nix/store/rx7w9ni7k3adlamvkglf4z8gfb7s4314-annot-0.19.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "antigravity-cli": {
+    "drvPath": "/nix/store/w71ndk4v68pckwyhvjifv4xcxal16087-antigravity-cli-1.1.26.drv",
+    "isCached": true,
+    "name": "antigravity-cli-1.1.26",
+    "outputs": {
+      "out": "/nix/store/mrj5k30rqgj7b403rnz9qcin21pvxbjq-antigravity-cli-1.1.26"
+    },
+    "system": "x86_64-linux"
+  },
+  "aperant": {
+    "drvPath": "/nix/store/zk88xf26hkig67n7k1c70jxnrlj6n8pg-aperant-2.7.6.drv",
+    "isCached": true,
+    "name": "aperant-2.7.6",
+    "outputs": {
+      "out": "/nix/store/shg65fcs66kgdsg9xbn7ggc3nddjs8b7-aperant-2.7.6"
+    },
+    "system": "x86_64-linux"
+  },
+  "apm": {
+    "drvPath": "/nix/store/isj3wv55ja9f6b9pg9c28hlnck0lkhsh-apm-0.29.0.drv",
+    "isCached": false,
+    "name": "apm-0.29.0",
+    "outputs": {
+      "dist": "/nix/store/4kfg98p1j8l4644cqr7rziyswmfk1sn1-apm-0.29.0-dist",
+      "out": "/nix/store/yg0cfnrq97pvfmhyivx9bgyjsqszlzwv-apm-0.29.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "autolith": {
+    "drvPath": "/nix/store/bvski97wm6sdk92fa4c2ijhlsii5842p-autolith-0.41.2.drv",
+    "isCached": true,
+    "name": "autolith-0.41.2",
+    "outputs": {
+      "out": "/nix/store/hama2nja6n3d21r1v4wqi40w6qx46i3h-autolith-0.41.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "aven": {
+    "drvPath": "/nix/store/fvz3gl99pqwd695jii2wqp7gfwa35jjv-aven-0.1.35.drv",
+    "isCached": true,
+    "name": "aven-0.1.35",
+    "outputs": {
+      "out": "/nix/store/08fkx6dqrj031jh43pl5rj1lgqfw1k9n-aven-0.1.35"
+    },
+    "system": "x86_64-linux"
+  },
+  "ax": {
+    "drvPath": "/nix/store/2fc4yb6y72qk421p92w61fi5wf6mx00v-ax-0.1.25.drv",
+    "isCached": true,
+    "name": "ax-0.1.25",
+    "outputs": {
+      "out": "/nix/store/x757xrqm2cfddmkghgji9j08dknlhnsw-ax-0.1.25"
+    },
+    "system": "x86_64-linux"
+  },
+  "backlog-md": {
+    "drvPath": "/nix/store/kvsm3krmlynx5cvni9q8ig7hpn75p7s1-backlog-md-1.51.0.drv",
+    "isCached": true,
+    "name": "backlog-md-1.51.0",
+    "outputs": {
+      "out": "/nix/store/icg1qczvhgn47wwj5zqwx1s5ki1a0l6s-backlog-md-1.51.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "bb-app": {
+    "drvPath": "/nix/store/hnr07a3i3xwv4zh5lxb7d8si31bpfanw-bb-app-0.42.0.drv",
+    "isCached": true,
+    "name": "bb-app-0.42.0",
+    "outputs": {
+      "out": "/nix/store/s0976wdqhzl3ybranlsvi75qg7vvlagx-bb-app-0.42.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "beads": {
+    "drvPath": "/nix/store/1rn7vdycyqnw4hvnnik75bczspb86r5s-beads-1.2.2.drv",
+    "isCached": true,
+    "name": "beads-1.2.2",
+    "outputs": {
+      "out": "/nix/store/8vyf8zfipwbnhlgdrdlk9r9rmgr264px-beads-1.2.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "beads-rust": {
+    "drvPath": "/nix/store/wnmgf1j14ki9lnjz9iap8np65krp8wi5-beads-rust-0.5.10.drv",
+    "isCached": true,
+    "name": "beads-rust-0.5.10",
+    "outputs": {
+      "out": "/nix/store/2ymcqy18ml36x31z224ld86zn5zv5irf-beads-rust-0.5.10"
+    },
+    "system": "x86_64-linux"
+  },
+  "beads-viewer": {
+    "drvPath": "/nix/store/75sakvzj73i5pkz32hx3ckjsynyhcpya-beads-viewer-0.23.0.drv",
+    "isCached": true,
+    "name": "beads-viewer-0.23.0",
+    "outputs": {
+      "out": "/nix/store/kiymsfps3zasx7hv8w7vikkbaw05r3bw-beads-viewer-0.23.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "bernstein": {
+    "drvPath": "/nix/store/rkbv41das9qrh6zqnhnivfm3jmc0l2mj-bernstein-3.19.1.drv",
+    "isCached": false,
+    "name": "bernstein-3.19.1",
+    "outputs": {
+      "dist": "/nix/store/2qqiya3bsgzjadi6qxbx7nmfqhrf8ina-bernstein-3.19.1-dist",
+      "out": "/nix/store/yn7mgkh9hfvp2zhm5yfhx1kc4fwj92ql-bernstein-3.19.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "bun2nix": {
+    "drvPath": "/nix/store/jqikp75i3vr0i9jwgl96w2sx8cz2lfd1-bun2nix-2.1.2.drv",
+    "isCached": true,
+    "name": "bun2nix-2.1.2",
+    "outputs": {
+      "out": "/nix/store/wc7ic8dakrzsqscbyc0xklcg4v2qymf7-bun2nix-2.1.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "but": {
+    "drvPath": "/nix/store/i23p0k4km2nc9nbhflxw51f7l5lq13jf-but-0.22.3.drv",
+    "isCached": true,
+    "name": "but-0.22.3",
+    "outputs": {
+      "out": "/nix/store/skfyqzkqswkvds3ramq2j27l0gr65drh-but-0.22.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "cc-sdd": {
+    "drvPath": "/nix/store/k3c5jd2xvf25z9avyaf5l7j3kzh30g6y-cc-sdd-3.0.2.drv",
+    "isCached": true,
+    "name": "cc-sdd-3.0.2",
+    "outputs": {
+      "out": "/nix/store/6bkh6hwc8a25c9yndg0m9d9csn251kaa-cc-sdd-3.0.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "cc-switch-cli": {
+    "drvPath": "/nix/store/1fdi78zharn6f8626fz5ngdm8rh5vyw2-cc-switch-cli-5.10.4.drv",
+    "isCached": true,
+    "name": "cc-switch-cli-5.10.4",
+    "outputs": {
+      "out": "/nix/store/5iz4l4gbc6g90qyxvp4liyd7cdkpxqk5-cc-switch-cli-5.10.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "ccstatusline": {
+    "drvPath": "/nix/store/jm3aysra3n6mzvd87sxh74yvp22widrz-ccstatusline-2.2.29.drv",
+    "isCached": true,
+    "name": "ccstatusline-2.2.29",
+    "outputs": {
+      "out": "/nix/store/b3bvfcd92xkpampibdjjr25mdmcnm0ap-ccstatusline-2.2.29"
+    },
+    "system": "x86_64-linux"
+  },
+  "ccusage": {
+    "drvPath": "/nix/store/7d5jfw1f78j28715r9ym8fmvhamvka1z-ccusage-20.0.20.drv",
+    "isCached": true,
+    "name": "ccusage-20.0.20",
+    "outputs": {
+      "out": "/nix/store/y5c80hypy0f4j32cy0w4q3ld5ljal69z-ccusage-20.0.20"
+    },
+    "system": "x86_64-linux"
+  },
+  "chainlink": {
+    "drvPath": "/nix/store/ls1j8rsgj85cs55qi8q8shdn365xnr9r-chainlink-1.6.0.drv",
+    "isCached": true,
+    "name": "chainlink-1.6.0",
+    "outputs": {
+      "out": "/nix/store/px6fqlxqldy7sdfjvq16s55p274nwbbc-chainlink-1.6.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "chatgpt": {
+    "drvPath": "/nix/store/pnsqgjpxr8k3310v2lc7xqx92xch2bk4-chatgpt-26.901.41600.drv",
+    "isCached": true,
+    "name": "chatgpt-26.901.41600",
+    "outputs": {
+      "out": "/nix/store/km0kbl9sh13pf73q67zvxg99cx22ky9z-chatgpt-26.901.41600"
+    },
+    "system": "x86_64-linux"
+  },
+  "ck": {
+    "drvPath": "/nix/store/29ld3gjw0zh44y83ikj20dlv2817xgbd-ck-0.7.11.drv",
+    "isCached": true,
+    "name": "ck-0.7.11",
+    "outputs": {
+      "out": "/nix/store/yz8fkkc90x1d20gskzvhncgrr3hyjyz1-ck-0.7.11"
+    },
+    "system": "x86_64-linux"
+  },
+  "claude-agent-acp": {
+    "drvPath": "/nix/store/sg5j5w71pflqhdx8gnbglvm5k4abiwdh-claude-agent-acp-0.74.0.drv",
+    "isCached": true,
+    "name": "claude-agent-acp-0.74.0",
+    "outputs": {
+      "out": "/nix/store/f7275wfab5xsz33ivs2r2ra7gs5kihyr-claude-agent-acp-0.74.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "claude-code": {
+    "drvPath": "/nix/store/pw28dw60mf0q29c2a5agfn9ibd48pcgw-claude-code-2.1.261.drv",
+    "isCached": true,
+    "name": "claude-code-2.1.261",
+    "outputs": {
+      "out": "/nix/store/1b4n6gbw9ihgfn0s9yp3wcihw7dd5awh-claude-code-2.1.261"
+    },
+    "system": "x86_64-linux"
+  },
+  "claude-code-router": {
+    "drvPath": "/nix/store/40bz3sdb273f27pc0gr7rgcz7qibyw17-claude-code-router-3.0.22.drv",
+    "isCached": true,
+    "name": "claude-code-router-3.0.22",
+    "outputs": {
+      "out": "/nix/store/w9ha28w6y65cyrjsgzxg78y0sdidi3jq-claude-code-router-3.0.22"
+    },
+    "system": "x86_64-linux"
+  },
+  "claude-desktop": {
+    "drvPath": "/nix/store/c0f2bv3ixac30dxzk9qibwsk8y19wf7y-claude-desktop-1.46388.2.drv",
+    "isCached": true,
+    "name": "claude-desktop-1.46388.2",
+    "outputs": {
+      "out": "/nix/store/nk869f7qfsp636y4xvfpnr75x79k5k0p-claude-desktop-1.46388.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "claude-plugins": {
+    "drvPath": "/nix/store/gmk273bfw2gwi6869hrbddykffnas4ny-claude-plugins-0.2.0.drv",
+    "isCached": true,
+    "name": "claude-plugins-0.2.0",
+    "outputs": {
+      "out": "/nix/store/v6cakc8lyz7ykx2zf7811xml1ldl802z-claude-plugins-0.2.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "claudebox": {
+    "drvPath": "/nix/store/f72yxsfxpcp5r1gxb07rs6xyi62b9qbg-claudebox.drv",
+    "isCached": true,
+    "name": "claudebox",
+    "outputs": {
+      "out": "/nix/store/z085nzywpzbnpikmhqfgbrmm8mhby78l-claudebox"
+    },
+    "system": "x86_64-linux"
+  },
+  "clauth": {
+    "drvPath": "/nix/store/chbkfmm1j8bnxs886h5rlf5sx2b5jy5m-clauth-0.15.1.drv",
+    "isCached": true,
+    "name": "clauth-0.15.1",
+    "outputs": {
+      "out": "/nix/store/qd9j1b1xw00n14xn7fcnfrm4h0wdgmpm-clauth-0.15.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "claw-code": {
+    "drvPath": "/nix/store/l08d6g7xx39g6j7gx0l43d963xn109ic-claw-code-0-unstable-2026-08-16.drv",
+    "isCached": true,
+    "name": "claw-code-0-unstable-2026-08-16",
+    "outputs": {
+      "out": "/nix/store/7bh1pv2i72jb18gjrclbibizfsldjpdg-claw-code-0-unstable-2026-08-16"
+    },
+    "system": "x86_64-linux"
+  },
+  "cli-proxy-api": {
+    "drvPath": "/nix/store/82155cspl5v986rif4sj2l1src3d554b-cli-proxy-api-7.2.151.drv",
+    "isCached": true,
+    "name": "cli-proxy-api-7.2.151",
+    "outputs": {
+      "out": "/nix/store/j7r8jfb754n7cw3f8h10948gch5l21ac-cli-proxy-api-7.2.151"
+    },
+    "system": "x86_64-linux"
+  },
+  "cline": {
+    "drvPath": "/nix/store/frkn3610wib18iwjhcfg3bllg3x57as3-cline-3.0.61.drv",
+    "isCached": true,
+    "name": "cline-3.0.61",
+    "outputs": {
+      "out": "/nix/store/z9r6ywrpsmwj7mh5p1gl5bxa6q7y9cw1-cline-3.0.61"
+    },
+    "system": "x86_64-linux"
+  },
+  "code": {
+    "drvPath": "/nix/store/54fp6zj8hcwwqjamg62p46mmcvc9kbsd-code-0.6.180.drv",
+    "isCached": true,
+    "name": "code-0.6.180",
+    "outputs": {
+      "out": "/nix/store/jzdkn1w0kbp5ai73dkd24k0i1h42dd5c-code-0.6.180"
+    },
+    "system": "x86_64-linux"
+  },
+  "code-review-graph": {
+    "drvPath": "/nix/store/ih24lky9yjjc6cml7cx894x3kwwmycpf-code-review-graph-2.3.8.drv",
+    "isCached": false,
+    "name": "code-review-graph-2.3.8",
+    "outputs": {
+      "dist": "/nix/store/9g2iqqbd1bcm6jnkxqxqzjfbr5d477ml-code-review-graph-2.3.8-dist",
+      "out": "/nix/store/lq4aq7g9jnw8j63dlp10rf5by3iaqjwg-code-review-graph-2.3.8"
+    },
+    "system": "x86_64-linux"
+  },
+  "codegraph": {
+    "drvPath": "/nix/store/mgpj3l59c9mwk08fwy0n6f6yr8vpczbl-codegraph-1.6.0.drv",
+    "isCached": true,
+    "name": "codegraph-1.6.0",
+    "outputs": {
+      "out": "/nix/store/vdm34pl82rv64zix53kqn3c21m6b2axz-codegraph-1.6.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "coderabbit-cli": {
+    "drvPath": "/nix/store/qz1nfmsr7lnfr36cb523shl1kzjrjgxm-coderabbit-cli-0.7.6.drv",
+    "isCached": true,
+    "name": "coderabbit-cli-0.7.6",
+    "outputs": {
+      "out": "/nix/store/ax9syldr98izvfgwik1l5kig11m2hsmp-coderabbit-cli-0.7.6"
+    },
+    "system": "x86_64-linux"
+  },
+  "codex": {
+    "drvPath": "/nix/store/vmk7lv3400qwzy0lqbz6vrng4i1iwgpr-codex-0.153.4.drv",
+    "isCached": true,
+    "name": "codex-0.153.4",
+    "outputs": {
+      "out": "/nix/store/57p50yr3b1w4pl3nizi2n2lx9krl22f1-codex-0.153.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "codex-acp": {
+    "drvPath": "/nix/store/mkrc4nk7z770gbikq6fr8h419cp99cgg-codex-acp-1.10.0.drv",
+    "isCached": true,
+    "name": "codex-acp-1.10.0",
+    "outputs": {
+      "out": "/nix/store/8bq7xk2884g91kj11flii1nxw9vy89v7-codex-acp-1.10.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "codex-auth": {
+    "drvPath": "/nix/store/4a6w5lw6m3mkxl7kjqhb14f732wbww97-codex-auth-0.2.10.drv",
+    "isCached": true,
+    "name": "codex-auth-0.2.10",
+    "outputs": {
+      "out": "/nix/store/g65gyh23h70lg0gndilf1712w9q2fib7-codex-auth-0.2.10"
+    },
+    "system": "x86_64-linux"
+  },
+  "collie": {
+    "drvPath": "/nix/store/s87bwdbjzajhasjjj0wp00aj1hhfdd49-collie-1.5.1.drv",
+    "isCached": true,
+    "name": "collie-1.5.1",
+    "outputs": {
+      "out": "/nix/store/8ql0qd7w8q4r24rbhq3l18mmsvrd0165-collie-1.5.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "command-code": {
+    "drvPath": "/nix/store/4vf233x285j6mw45g9yvvqcxnhx8bkv7-command-code-1.49.1.drv",
+    "isCached": true,
+    "name": "command-code-1.49.1",
+    "outputs": {
+      "out": "/nix/store/jk4q2manavq7zzcqfrbm2lx14r09q9ll-command-code-1.49.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "context-hub": {
+    "drvPath": "/nix/store/28vh5f8diyhq50jpc9v845dhih8hr66b-context-hub-0.1.4.drv",
+    "isCached": true,
+    "name": "context-hub-0.1.4",
+    "outputs": {
+      "out": "/nix/store/wx4py0x1qmngxn915ddsdzd8vlx7fx4k-context-hub-0.1.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "copilot-cli": {
+    "drvPath": "/nix/store/2jxg1p85mbapfrxy4ffarzv2fyk0zi5h-copilot-cli-1.0.83.drv",
+    "isCached": true,
+    "name": "copilot-cli-1.0.83",
+    "outputs": {
+      "out": "/nix/store/kxwvkpv9d2i74y8mjpx0cy098apqcpg1-copilot-cli-1.0.83"
+    },
+    "system": "x86_64-linux"
+  },
+  "copilot-language-server": {
+    "drvPath": "/nix/store/bxg5s54z8n1867xnrjwa607cq6rg0vn0-copilot-language-server-1.541.0.drv",
+    "isCached": true,
+    "name": "copilot-language-server-1.541.0",
+    "outputs": {
+      "out": "/nix/store/4sfiw4rrxzg0bnrdr8gk211mpkwljadp-copilot-language-server-1.541.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "crit": {
+    "drvPath": "/nix/store/xz3zccz4r8rzlir4n15qli3yzk1pqb79-crit-0.20.0.drv",
+    "isCached": true,
+    "name": "crit-0.20.0",
+    "outputs": {
+      "out": "/nix/store/6g43h2i2qy10saglhy5wh3bpfydhqwxd-crit-0.20.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "crush": {
+    "drvPath": "/nix/store/hdqbn39zqx8nc80xz0vy0mbyh3mnj536-crush-0.92.0.drv",
+    "isCached": true,
+    "name": "crush-0.92.0",
+    "outputs": {
+      "out": "/nix/store/brgc40ks4gny9fhz2hm4y6d11psghbra-crush-0.92.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "ctx": {
+    "drvPath": "/nix/store/z0qlmms9fxy7c1hl3l3wbyb32vmfmi57-ctx-1.3.1.drv",
+    "isCached": true,
+    "name": "ctx-1.3.1",
+    "outputs": {
+      "out": "/nix/store/z7878cqxgabnx4ljj065nla62qjjhmwl-ctx-1.3.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "cubic": {
+    "drvPath": "/nix/store/9ixm57nbvcsvdmhqgyjk2zdh2q42491k-cubic-1.10.5.drv",
+    "isCached": true,
+    "name": "cubic-1.10.5",
+    "outputs": {
+      "out": "/nix/store/8vmffn85xsg48j0874wrm50mb9kbxdrx-cubic-1.10.5"
+    },
+    "system": "x86_64-linux"
+  },
+  "cursor-agent": {
+    "drvPath": "/nix/store/a6gfiq9czf6ra812hkx3wh523313qv8n-cursor-agent-2026.09.02-c22c1a3.drv",
+    "isCached": true,
+    "name": "cursor-agent-2026.09.02-c22c1a3",
+    "outputs": {
+      "out": "/nix/store/5y1gxzg8cvz1d8szl30kjz6rihkx2n24-cursor-agent-2026.09.02-c22c1a3"
+    },
+    "system": "x86_64-linux"
+  },
+  "default": {
+    "drvPath": "/nix/store/ik6vib10xw7jjwi22acj9vb8dsichwpf-llm-agents-launcher.drv",
+    "isCached": true,
+    "name": "llm-agents-launcher",
+    "outputs": {
+      "out": "/nix/store/5mxp9g34kkpqpplp61g9xc2b64abk4gx-llm-agents-launcher"
+    },
+    "system": "x86_64-linux"
+  },
+  "dolt": {
+    "drvPath": "/nix/store/incjic81yw43g5szmmnb5f1m7cjamv6f-dolt-2.3.2.drv",
+    "isCached": true,
+    "name": "dolt-2.3.2",
+    "outputs": {
+      "out": "/nix/store/w4x894q6b5s6f9mrq6qpa2wirj30c3jp-dolt-2.3.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "droid": {
+    "drvPath": "/nix/store/5yx42hdh7ixkyfknwm30nrzx2grljdb5-droid-0.212.1.drv",
+    "isCached": true,
+    "name": "droid-0.212.1",
+    "outputs": {
+      "out": "/nix/store/xrfgm87n5fp5059n6aw2gn9fdcfakv1b-droid-0.212.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "dsh": {
+    "drvPath": "/nix/store/gnfzjj4f38dh6qq1mpdphkf1m5jaspz9-dsh-0.1.1-rc.2.drv",
+    "isCached": true,
+    "name": "dsh-0.1.1-rc.2",
+    "outputs": {
+      "out": "/nix/store/g8iq5vvbb4djpqswilg63g8j3d8pzips-dsh-0.1.1-rc.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "eca": {
+    "drvPath": "/nix/store/1wgazmh8plfjii9l5fjqyrgmrfd0vhlq-eca-0.158.1.drv",
+    "isCached": true,
+    "name": "eca-0.158.1",
+    "outputs": {
+      "out": "/nix/store/p3pl467136ywkzfi3b2xidxvzawazms0-eca-0.158.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "entire": {
+    "drvPath": "/nix/store/kk8pab675axk83n5v4xh2q0b82gdy4xh-entire-0.10.5.drv",
+    "isCached": true,
+    "name": "entire-0.10.5",
+    "outputs": {
+      "out": "/nix/store/712dqf4vnw4ka5p332lr7jp5j0n1xpnf-entire-0.10.5"
+    },
+    "system": "x86_64-linux"
+  },
+  "executor": {
+    "drvPath": "/nix/store/jk2m2b10ashjn75pjyk8av4sm7hm2ql9-executor-1.6.7.drv",
+    "isCached": true,
+    "name": "executor-1.6.7",
+    "outputs": {
+      "out": "/nix/store/8pyx3qaj086vqhndpcma2x8fdvgxkwbs-executor-1.6.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "fence": {
+    "drvPath": "/nix/store/d47i07hayq26dl2pzcnb5n6wzyz88kgb-fence-0.1.67.drv",
+    "isCached": true,
+    "name": "fence-0.1.67",
+    "outputs": {
+      "out": "/nix/store/dvzviywpym77k232v56ng8f1i7qvqrd3-fence-0.1.67"
+    },
+    "system": "x86_64-linux"
+  },
+  "flake-inputs": {
+    "drvPath": "/nix/store/1injwavkrh2xfng0plflrlb94fvmj7ni-flake-inputs.drv",
+    "isCached": true,
+    "name": "flake-inputs",
+    "outputs": {
+      "out": "/nix/store/jw1zgq4sdrsxr90sr8q8qkh7wvy8h82a-flake-inputs"
+    },
+    "system": "x86_64-linux"
+  },
+  "forgecode": {
+    "drvPath": "/nix/store/c2519gbrjk7624k0ygs6ig5i2g1mn2hv-forgecode-2.13.21.drv",
+    "isCached": true,
+    "name": "forgecode-2.13.21",
+    "outputs": {
+      "out": "/nix/store/w0vzddqpj1l9fj6rk8pk6mr2myvg6mbp-forgecode-2.13.21"
+    },
+    "system": "x86_64-linux"
+  },
+  "formatelf": {
+    "drvPath": "/nix/store/lcas8771b4rvgnjl9imfqrpvdxi26j27-auto-formatelf-hook.drv",
+    "isCached": true,
+    "name": "auto-formatelf-hook",
+    "outputs": {
+      "out": "/nix/store/jvjhkmsjpc7ph29ib0a7ihgqr1srwv0p-auto-formatelf-hook"
+    },
+    "system": "x86_64-linux"
+  },
+  "formatter": {
+    "drvPath": "/nix/store/0si7hfmnaidxk9dg8nzxj9lzr79bhadz-treefmt.drv",
+    "isCached": true,
+    "name": "treefmt",
+    "outputs": {
+      "out": "/nix/store/6wmfd9734gvdbpaxxsh1lkndk34g610h-treefmt"
+    },
+    "system": "x86_64-linux"
+  },
+  "freebuff": {
+    "drvPath": "/nix/store/zhjn38jw3zhwkw9ppia8mhamvgznpcy7-freebuff-0.0.168.drv",
+    "isCached": true,
+    "name": "freebuff-0.0.168",
+    "outputs": {
+      "out": "/nix/store/scs0cxkgpriwhxbd75l9sd9ssdk0zil0-freebuff-0.0.168"
+    },
+    "system": "x86_64-linux"
+  },
+  "fx": {
+    "drvPath": "/nix/store/0a3bh8i31rl1mhj016jnqx0wz9ajkqkd-fx-0.0.7.drv",
+    "isCached": true,
+    "name": "fx-0.0.7",
+    "outputs": {
+      "out": "/nix/store/fssp2x24h0cpr0d6lw19k6jwr1b9bld3-fx-0.0.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "gascity": {
+    "drvPath": "/nix/store/s21mggz5qj7bv5zaah6l51y6jjahss1n-gascity-1.4.1.drv",
+    "isCached": true,
+    "name": "gascity-1.4.1",
+    "outputs": {
+      "out": "/nix/store/gv1iwr8jvzz4bc094dkkqckp3mq3si85-gascity-1.4.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "gastown": {
+    "drvPath": "/nix/store/2kmqlsprn15mh72kck5fly8w1i3b64sh-gastown-1.2.1.drv",
+    "isCached": true,
+    "name": "gastown-1.2.1",
+    "outputs": {
+      "out": "/nix/store/jyhql5akr9j3var7hmjf6rvnbwdbpfi5-gastown-1.2.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "gemini-cli": {
+    "drvPath": "/nix/store/1n2qmfb3azh1bwv4kzg69lxflhbdkdj7-gemini-cli-0.58.0.drv",
+    "isCached": true,
+    "name": "gemini-cli-0.58.0",
+    "outputs": {
+      "out": "/nix/store/rdwc2kdcjjq5kybrpknjb3hhp8953zdw-gemini-cli-0.58.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "git-ai": {
+    "drvPath": "/nix/store/m4bhzc9k6zm403pav770c0fsmahhjbyg-git-ai-1.7.2.drv",
+    "isCached": true,
+    "name": "git-ai-1.7.2",
+    "outputs": {
+      "out": "/nix/store/yvc0ap0q8hj9isvph5q46jag1kwrpcwj-git-ai-1.7.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "git-surgeon": {
+    "drvPath": "/nix/store/qqpa5vs0kzq6lk5nqg42m8i9cdd4akx5-git-surgeon-0.1.17.drv",
+    "isCached": true,
+    "name": "git-surgeon-0.1.17",
+    "outputs": {
+      "out": "/nix/store/mfiiwc9lm5bn3hmgah6a54pijcwqx6sd-git-surgeon-0.1.17"
+    },
+    "system": "x86_64-linux"
+  },
+  "gitbutler": {
+    "drvPath": "/nix/store/q30wnwzz1rxk073fyv2s3lahccim5600-gitbutler-0.22.3.drv",
+    "isCached": true,
+    "name": "gitbutler-0.22.3",
+    "outputs": {
+      "out": "/nix/store/pc0xbf1m5ajynckkiir8z9cmyf618ddr-gitbutler-0.22.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "gitclaw": {
+    "drvPath": "/nix/store/fqga7q05ynkvkhvblzi7213glkkcl3ak-gitclaw-2.2.0.drv",
+    "isCached": true,
+    "name": "gitclaw-2.2.0",
+    "outputs": {
+      "out": "/nix/store/9z2yddc67n4n3g7sixdb2znh4ckk1275-gitclaw-2.2.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "gitnexus": {
+    "drvPath": "/nix/store/gg5p0ir4xx5aiak28bm099adf3dgaclg-gitnexus-1.6.9.drv",
+    "isCached": true,
+    "name": "gitnexus-1.6.9",
+    "outputs": {
+      "out": "/nix/store/76ikzdgvjhjh5xrbqxg4y9gwn22frc12-gitnexus-1.6.9"
+    },
+    "system": "x86_64-linux"
+  },
+  "gnhf": {
+    "drvPath": "/nix/store/7i3p5867kvbg1bh9pd2x94pmi0fqxvrz-gnhf-0.1.49.drv",
+    "isCached": true,
+    "name": "gnhf-0.1.49",
+    "outputs": {
+      "out": "/nix/store/isjgp3qlwdz3k6pjawdi6v627yj8izii-gnhf-0.1.49"
+    },
+    "system": "x86_64-linux"
+  },
+  "gno": {
+    "drvPath": "/nix/store/2al9jagy28q7jfhd005igcdw5363sxdk-gno-1.46.0.drv",
+    "isCached": true,
+    "name": "gno-1.46.0",
+    "outputs": {
+      "out": "/nix/store/r78yppfp99bcwhw9sw5d0v3q1a8yfk1r-gno-1.46.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "go-bin": {
+    "drvPath": "/nix/store/rgm9whnr4717il2i357y37i0kc1mllhg-go-bin-1.26.8.drv",
+    "isCached": true,
+    "name": "go-bin-1.26.8",
+    "outputs": {
+      "out": "/nix/store/07al18kgpqsni8fmcg6mnqsvlhdy857x-go-bin-1.26.8"
+    },
+    "system": "x86_64-linux"
+  },
+  "goose-cli": {
+    "drvPath": "/nix/store/ldc6irfi3y04czh61hbicc9akh27xpya-goose-cli-1.49.0.drv",
+    "isCached": true,
+    "name": "goose-cli-1.49.0",
+    "outputs": {
+      "out": "/nix/store/nx8b1z3n1nj5lxjswjphiknhqxykf0wl-goose-cli-1.49.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "grok": {
+    "drvPath": "/nix/store/np97y5bv3b6f3l5f81vkgn3vzjpj818g-grok-1.0.13.drv",
+    "isCached": true,
+    "name": "grok-1.0.13",
+    "outputs": {
+      "out": "/nix/store/b95m3zk2rnq7jizc7fvgr92vxwp94bjw-grok-1.0.13"
+    },
+    "system": "x86_64-linux"
+  },
+  "handy": {
+    "drvPath": "/nix/store/xdh0jrb67bgra3qp6gdvjw1966n5lndm-handy-0.9.6.drv",
+    "isCached": true,
+    "name": "handy-0.9.6",
+    "outputs": {
+      "out": "/nix/store/qq3h54sbl57kw3pynfrlmng5c00kjpry-handy-0.9.6"
+    },
+    "system": "x86_64-linux"
+  },
+  "happy-coder": {
+    "drvPath": "/nix/store/7ii8id41nn3apncx0c81s7c2qlm3cndp-happy-coder-1.2.2.drv",
+    "isCached": true,
+    "name": "happy-coder-1.2.2",
+    "outputs": {
+      "out": "/nix/store/dywmgp9ykrdjhzz0j366ik542vyfj74s-happy-coder-1.2.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "hax": {
+    "drvPath": "/nix/store/nv1w5i146b4zywh32i2aqw9nv92a9pff-hax-0.5.0.drv",
+    "isCached": true,
+    "name": "hax-0.5.0",
+    "outputs": {
+      "out": "/nix/store/nvnk4cjy9536mk11h597vd42w6733376-hax-0.5.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "herdr": {
+    "drvPath": "/nix/store/f0fggh2a3yck94f5gsskyzpvs7k3dfgi-herdr-0.8.2.drv",
+    "isCached": true,
+    "name": "herdr-0.8.2",
+    "outputs": {
+      "out": "/nix/store/3p3h77wn2igs4xhvp49ki3w72mpis4q8-herdr-0.8.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "hermes-agent": {
+    "drvPath": "/nix/store/y49m07vss3kh3hjkxmqk71yqzf3idrx2-hermes-agent-2026.8.31.drv",
+    "isCached": false,
+    "name": "hermes-agent-2026.8.31",
+    "outputs": {
+      "dist": "/nix/store/0ddajd5ak61ccrimb3899cvnhaa9afpb-hermes-agent-2026.8.31-dist",
+      "out": "/nix/store/78mxb17qszsf87mhbzmpapch8pws06y0-hermes-agent-2026.8.31"
+    },
+    "system": "x86_64-linux"
+  },
+  "hermes-desktop": {
+    "drvPath": "/nix/store/crvzlm4pmy0696k49sihsasn7cbys5vh-hermes-desktop-0.17.0.drv",
+    "isCached": true,
+    "name": "hermes-desktop-0.17.0",
+    "outputs": {
+      "out": "/nix/store/9d116pc6lb6la8xznjqbxg3yf9lfqqcw-hermes-desktop-0.17.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "hermes-hud": {
+    "drvPath": "/nix/store/rjib3jw7fgia6vfblc5wa12dwin4rglr-hermes-hud-0.5.0.drv",
+    "isCached": false,
+    "name": "hermes-hud-0.5.0",
+    "outputs": {
+      "dist": "/nix/store/sm1bgbhzd07qn53r9mdd1qpj5s890h2i-hermes-hud-0.5.0-dist",
+      "out": "/nix/store/wfjbpdbhwf2xgvlyid8rrgcf67817nwf-hermes-hud-0.5.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "hermes-one": {
+    "drvPath": "/nix/store/q67h8r39nzzcwl7z34vq1yyzmrv25bj1-hermes-one-0.7.7.drv",
+    "isCached": true,
+    "name": "hermes-one-0.7.7",
+    "outputs": {
+      "out": "/nix/store/g26sd1f8skmyv97k4vcac6pylik3ak0x-hermes-one-0.7.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "hunk": {
+    "drvPath": "/nix/store/1mxkk1iysq5l7pci5p205qqczxqsxvy2-hunk-0.21.1.drv",
+    "isCached": true,
+    "name": "hunk-0.21.1",
+    "outputs": {
+      "out": "/nix/store/bgjkpkgljlbjyn9j0zbd8ay2i3snsvbi-hunk-0.21.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "icm": {
+    "drvPath": "/nix/store/74rxm0njg8jhcsnx42zsx2dwyf3cxksp-icm-0.10.63.drv",
+    "isCached": true,
+    "name": "icm-0.10.63",
+    "outputs": {
+      "out": "/nix/store/nc0fmsyypgnaaqfrn7fngjvarcl1aixp-icm-0.10.63"
+    },
+    "system": "x86_64-linux"
+  },
+  "ironclaw": {
+    "drvPath": "/nix/store/lq80nfzi34rijbyppb09nxqaggpqv96g-ironclaw-1.4.0.drv",
+    "isCached": true,
+    "name": "ironclaw-1.4.0",
+    "outputs": {
+      "out": "/nix/store/8p86g4q1fbdi5s83g0b640j5b5vdi17r-ironclaw-1.4.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "jcode": {
+    "drvPath": "/nix/store/xpshxainiz7h5wgl2r45ng9sm6bwi6wp-jcode-0.81.7.drv",
+    "isCached": true,
+    "name": "jcode-0.81.7",
+    "outputs": {
+      "out": "/nix/store/0hijh08xkrxsz54asfc6xj76r6k7p5xw-jcode-0.81.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "jscpd": {
+    "drvPath": "/nix/store/2955n5ij4vncqdzk0dq6nn8mkq4w26kd-jscpd-5.1.2.drv",
+    "isCached": true,
+    "name": "jscpd-5.1.2",
+    "outputs": {
+      "out": "/nix/store/qcyb493pvs5w44lzyg4hxcy5mny0hyb1-jscpd-5.1.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "jules": {
+    "drvPath": "/nix/store/8dz5ld90f7p7mdv5y9nln49ych45nslf-jules-0.1.42.drv",
+    "isCached": true,
+    "name": "jules-0.1.42",
+    "outputs": {
+      "out": "/nix/store/cyfp7g689yfqkr0mdrg887046023mnfh-jules-0.1.42"
+    },
+    "system": "x86_64-linux"
+  },
+  "junie": {
+    "drvPath": "/nix/store/92gjgr2pibz626bzpfq0l4qsp8bijxh4-junie-3013.7.drv",
+    "isCached": true,
+    "name": "junie-3013.7",
+    "outputs": {
+      "out": "/nix/store/nf8fbjsmz6w8h7zva96lz6pq9rl1mmlm-junie-3013.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "kandev": {
+    "drvPath": "/nix/store/1fywdpi5nbwd11j1p82ljavfbiakpjj1-kandev-0.91.0.drv",
+    "isCached": true,
+    "name": "kandev-0.91.0",
+    "outputs": {
+      "out": "/nix/store/w3n3zrmaz8arr7qr6ijh63a1b0sadkvw-kandev-0.91.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "kandev-desktop": {
+    "drvPath": "/nix/store/j9i1cld84gpgascvik4vp4mnzh2pg8ys-kandev-desktop-0.91.0.drv",
+    "isCached": true,
+    "name": "kandev-desktop-0.91.0",
+    "outputs": {
+      "out": "/nix/store/3wbcfch3ma1bm7dlslcz51gkqh36g6qp-kandev-desktop-0.91.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "kilocode-cli": {
+    "drvPath": "/nix/store/fm7arprpdfygc96hc0r0laqyizzqm4kc-kilocode-cli-7.5.14.drv",
+    "isCached": true,
+    "name": "kilocode-cli-7.5.14",
+    "outputs": {
+      "out": "/nix/store/l7djccxvx95fj7qz3ybkvfk48r46rsrh-kilocode-cli-7.5.14"
+    },
+    "system": "x86_64-linux"
+  },
+  "kimi-code": {
+    "drvPath": "/nix/store/xd8iggg2b05p3jrnz6fb62d9m0nypxlm-kimi-code-0.41.0.drv",
+    "isCached": true,
+    "name": "kimi-code-0.41.0",
+    "outputs": {
+      "out": "/nix/store/58smmbsxjg3k64jlc1bfilyhqv7ic548-kimi-code-0.41.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "lean-ctx": {
+    "drvPath": "/nix/store/bgd7n3ydp1ph5i05ff5api5wf073v55g-lean-ctx-3.10.0.drv",
+    "isCached": true,
+    "name": "lean-ctx-3.10.0",
+    "outputs": {
+      "out": "/nix/store/ygssmk16hcl5s6p9lvs8xya1z36i0c8l-lean-ctx-3.10.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "letta-code": {
+    "drvPath": "/nix/store/0kahry1k4f2yyw8han8lc66kqnxv9pzg-letta-code-0.31.12.drv",
+    "isCached": true,
+    "name": "letta-code-0.31.12",
+    "outputs": {
+      "out": "/nix/store/x6rxmmda3hm9r98gxkal4yv0k0rwb6l9-letta-code-0.31.12"
+    },
+    "system": "x86_64-linux"
+  },
+  "localgpt": {
+    "drvPath": "/nix/store/9h75il4zaav1hwd7b2p7nxphvhjdkch7-localgpt-0.3.6.drv",
+    "isCached": true,
+    "name": "localgpt-0.3.6",
+    "outputs": {
+      "out": "/nix/store/fgyh82aghqyrisrlijc92q8hvrffci9c-localgpt-0.3.6"
+    },
+    "system": "x86_64-linux"
+  },
+  "luvus": {
+    "drvPath": "/nix/store/m54nai3m0pl3f5516a8vfpgq5ibj711y-luvus-0.13.4.drv",
+    "isCached": true,
+    "name": "luvus-0.13.4",
+    "outputs": {
+      "out": "/nix/store/g33vyicl4fgsjnm9wwp7gafmc6p53a3j-luvus-0.13.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "mardi-gras": {
+    "drvPath": "/nix/store/dn0aqk1r5g9ix9a2gf4gayx0ic0l66kq-mardi-gras-0.32.0.drv",
+    "isCached": true,
+    "name": "mardi-gras-0.32.0",
+    "outputs": {
+      "out": "/nix/store/icq1lg6zf3kxiy45cf5f0bjr36fvrs7z-mardi-gras-0.32.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "mcporter": {
+    "drvPath": "/nix/store/31mdzb615cd8hs4lfjbs5y0cp481rm5v-mcporter-0.13.8.drv",
+    "isCached": true,
+    "name": "mcporter-0.13.8",
+    "outputs": {
+      "out": "/nix/store/zcm16l36hq7ndpzpsviyg3kyfl8b17av-mcporter-0.13.8"
+    },
+    "system": "x86_64-linux"
+  },
+  "mcptoon": {
+    "drvPath": "/nix/store/8c6zfclyiv7sp0lak67r8m71cf0mbypc-mcptoon-0.7.3.drv",
+    "isCached": false,
+    "name": "mcptoon-0.7.3",
+    "outputs": {
+      "dist": "/nix/store/f4bal3k3vkygzrnd7b6hv7zkkf35azvl-mcptoon-0.7.3-dist",
+      "out": "/nix/store/yi7p3akh6hsaiz1456g3xmxqj3ydm46m-mcptoon-0.7.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "memvid-cli": {
+    "drvPath": "/nix/store/y0livxzh5ynnlj1hx9sf796r0hls93vh-memvid-cli-2.0.160.drv",
+    "isCached": true,
+    "name": "memvid-cli-2.0.160",
+    "outputs": {
+      "out": "/nix/store/n9g5maym4qriv4zdjmgwyg9mx7bq0brd-memvid-cli-2.0.160"
+    },
+    "system": "x86_64-linux"
+  },
+  "mimo-code": {
+    "drvPath": "/nix/store/mzmyglwmsfz3sva71546mn62gc1vs3b9-mimo-code-0.1.14.drv",
+    "isCached": true,
+    "name": "mimo-code-0.1.14",
+    "outputs": {
+      "out": "/nix/store/izcas0fkg7d9c4zmi0811zdxr1j3v5v4-mimo-code-0.1.14"
+    },
+    "system": "x86_64-linux"
+  },
+  "mindwalk": {
+    "drvPath": "/nix/store/rpwz09m5qg2x7937acldks1mfni06jf0-mindwalk-0.5.0.drv",
+    "isCached": true,
+    "name": "mindwalk-0.5.0",
+    "outputs": {
+      "out": "/nix/store/277rm47lpv698da0cfcamhy697m75l2d-mindwalk-0.5.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "mistral-vibe": {
+    "drvPath": "/nix/store/9k5065w2j8mg3brrg31z9sy9j0k8wp9n-mistral-vibe-2.25.0.drv",
+    "isCached": false,
+    "name": "mistral-vibe-2.25.0",
+    "outputs": {
+      "dist": "/nix/store/wlk4h3sdp9zm0s9nsxq92ksprxn9wvgh-mistral-vibe-2.25.0-dist",
+      "out": "/nix/store/b79inx0dpn9njjfw3fjayqnr6svpnn89-mistral-vibe-2.25.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "multica": {
+    "drvPath": "/nix/store/4lc5bbgp2sw0n9gzwzj3c5gr7svysizw-multica-0.4.40.drv",
+    "isCached": true,
+    "name": "multica-0.4.40",
+    "outputs": {
+      "out": "/nix/store/x91774vhmwy0q1sy7xc6iqihy62msrvz-multica-0.4.40"
+    },
+    "system": "x86_64-linux"
+  },
+  "multica-desktop": {
+    "drvPath": "/nix/store/vxic2q3224pqff7lfbwgi46cqalnl4va-multica-desktop-0.4.40.drv",
+    "isCached": true,
+    "name": "multica-desktop-0.4.40",
+    "outputs": {
+      "out": "/nix/store/xhyaqg6sb5caja017i3nx227lrw8ys2i-multica-desktop-0.4.40"
+    },
+    "system": "x86_64-linux"
+  },
+  "nanocoder": {
+    "drvPath": "/nix/store/v141qa6ibbs1j5smzkc8lblf6syw6b5i-nanocoder-1.30.0.drv",
+    "isCached": true,
+    "name": "nanocoder-1.30.0",
+    "outputs": {
+      "out": "/nix/store/plj8nw94s22hcp5k8ai885wnydsr56fy-nanocoder-1.30.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "nono": {
+    "drvPath": "/nix/store/v1gchgvqh67a5xxhhyfh8lc509sxfh45-nono-0.75.0.drv",
+    "isCached": true,
+    "name": "nono-0.75.0",
+    "outputs": {
+      "out": "/nix/store/my2xw0mixdx4bl6r8rafs0ba6dn852q1-nono-0.75.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "officecli": {
+    "drvPath": "/nix/store/xhjbvlxvyxilngn6mxpxa3hvmk61vj4g-officecli-1.0.147.drv",
+    "isCached": true,
+    "name": "officecli-1.0.147",
+    "outputs": {
+      "out": "/nix/store/rvg7h9lia94isl7hqk50kcw2sr4xmc4d-officecli-1.0.147"
+    },
+    "system": "x86_64-linux"
+  },
+  "oh-my-claudecode": {
+    "drvPath": "/nix/store/khp9np18j7zv7pkmz0lm4dfgpgxi3j0h-oh-my-claudecode-5.2.0.drv",
+    "isCached": true,
+    "name": "oh-my-claudecode-5.2.0",
+    "outputs": {
+      "out": "/nix/store/bs17gprs1jpjdzkqrdc380yr6zlnys9z-oh-my-claudecode-5.2.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "oh-my-codex": {
+    "drvPath": "/nix/store/rvvzgnbv1bm2saivfk2m36za3y2fl6yp-oh-my-codex-0.21.3.drv",
+    "isCached": true,
+    "name": "oh-my-codex-0.21.3",
+    "outputs": {
+      "out": "/nix/store/yv8ry3y755bdmpa0arhmn832njgrxi69-oh-my-codex-0.21.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "oh-my-opencode": {
+    "drvPath": "/nix/store/j1m8vxkwg1rgriqw04zfncn18xmvd7zq-oh-my-opencode-5.0.0-beta.7.drv",
+    "isCached": true,
+    "name": "oh-my-opencode-5.0.0-beta.7",
+    "outputs": {
+      "out": "/nix/store/rqfljh289337j16avsziaasx5rk07ffr-oh-my-opencode-5.0.0-beta.7"
+    },
+    "system": "x86_64-linux"
+  },
+  "omp": {
+    "drvPath": "/nix/store/zkkibpq0gx6qksdm8nv076igwxqb8zc4-omp-18.1.10.drv",
+    "isCached": true,
+    "name": "omp-18.1.10",
+    "outputs": {
+      "out": "/nix/store/ihm3lschk50hl8pyykbqdjcpcn2l34sq-omp-18.1.10"
+    },
+    "system": "x86_64-linux"
+  },
+  "open-code-review": {
+    "drvPath": "/nix/store/bhgn8p2lwsdz5j4fm0iis7yqclgbmyzs-open-code-review-1.11.4.drv",
+    "isCached": true,
+    "name": "open-code-review-1.11.4",
+    "outputs": {
+      "out": "/nix/store/2v0g4325i8cganf84pfg98b0cw5rs7di-open-code-review-1.11.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "openclaw": {
+    "drvPath": "/nix/store/syh1zv62vs77b12rq8nminlyhi0948lf-openclaw-2026.8.2.drv",
+    "isCached": true,
+    "name": "openclaw-2026.8.2",
+    "outputs": {
+      "out": "/nix/store/fnrc9nl88qig6l6m13cr15pqdd6jbx00-openclaw-2026.8.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "opencode": {
+    "drvPath": "/nix/store/62rxhf0593hbq9pwbm8d0qac6wp6kigp-opencode-1.18.29.drv",
+    "isCached": true,
+    "name": "opencode-1.18.29",
+    "outputs": {
+      "out": "/nix/store/khqr7y023h057wv0pk0q1gsx79q6rpcl-opencode-1.18.29"
+    },
+    "system": "x86_64-linux"
+  },
+  "opencode-desktop": {
+    "drvPath": "/nix/store/dgj2jyqjf2qzk329i98g9q4i6azjgsfv-opencode-desktop-1.18.29.drv",
+    "isCached": true,
+    "name": "opencode-desktop-1.18.29",
+    "outputs": {
+      "out": "/nix/store/igjizyi9fh7zw99ym15ccaa7l0xq24c9-opencode-desktop-1.18.29"
+    },
+    "system": "x86_64-linux"
+  },
+  "opencode2": {
+    "drvPath": "/nix/store/a5kdyl8b2gm7ljpv79k768fzpdgrhyfi-opencode2-0.0.0-beta-19135.drv",
+    "isCached": true,
+    "name": "opencode2-0.0.0-beta-19135",
+    "outputs": {
+      "out": "/nix/store/b4i3660f5ynfmi8mwmkr82kg8fdqnjl6-opencode2-0.0.0-beta-19135"
+    },
+    "system": "x86_64-linux"
+  },
+  "openfang": {
+    "drvPath": "/nix/store/q1zgdjsjx84m8mxcx9m90y7f9wfqv7yy-openfang-0.6.9.drv",
+    "isCached": true,
+    "name": "openfang-0.6.9",
+    "outputs": {
+      "out": "/nix/store/pwic9r8bp6557iqab67kpbiyqh43h3k6-openfang-0.6.9"
+    },
+    "system": "x86_64-linux"
+  },
+  "openskills": {
+    "drvPath": "/nix/store/5wsagy5119qg9v8rxfwjn3cx91dhb9c2-openskills-1.5.0.drv",
+    "isCached": true,
+    "name": "openskills-1.5.0",
+    "outputs": {
+      "out": "/nix/store/4ypfix5q9g0k889756dd04lxbar6pzb0-openskills-1.5.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "openspec": {
+    "drvPath": "/nix/store/20yq76v63djy9kcdnlpy7fcc63pmdx0a-openspec-1.12.0.drv",
+    "isCached": true,
+    "name": "openspec-1.12.0",
+    "outputs": {
+      "out": "/nix/store/hkpvirr12h3qxxgx9ykh940n31b5m7j8-openspec-1.12.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "openspecui": {
+    "drvPath": "/nix/store/4iwn57x6wyvfq44j9rnnvq9mfpmq9grp-openspecui-12.0.0.drv",
+    "isCached": true,
+    "name": "openspecui-12.0.0",
+    "outputs": {
+      "out": "/nix/store/rfx1bx2imad0w4v3c3czh00ghb7yw69h-openspecui-12.0.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "orca": {
+    "drvPath": "/nix/store/kcn5wzx03z55sshrh351w99bkzyb13j7-orca-1.4.197.drv",
+    "isCached": true,
+    "name": "orca-1.4.197",
+    "outputs": {
+      "out": "/nix/store/avxf68f0c5z24k4cgjrr0cwkhm2l783f-orca-1.4.197"
+    },
+    "system": "x86_64-linux"
+  },
+  "ori": {
+    "drvPath": "/nix/store/szsq7c2ns8dfk9ml0izdqlg9yp4dczgn-ori-0.14.0-2adcd03.drv",
+    "isCached": true,
+    "name": "ori-0.14.0-2adcd03",
+    "outputs": {
+      "out": "/nix/store/nw6kzhgbawnnfzc6ppjxicq4wxalz71x-ori-0.14.0-2adcd03"
+    },
+    "system": "x86_64-linux"
+  },
+  "paperclip": {
+    "drvPath": "/nix/store/flw6ql7bl3x943jcmsm60x8kj6xndcjw-paperclip-2026.831.1.drv",
+    "isCached": true,
+    "name": "paperclip-2026.831.1",
+    "outputs": {
+      "out": "/nix/store/0nc858lc2p2qa9r769xrbbbwqjq27q2v-paperclip-2026.831.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "parallel-cli": {
+    "drvPath": "/nix/store/jbsf4q0b5whjh5f6j85zlr84ryzkkjx8-parallel-cli-0.9.3.drv",
+    "isCached": false,
+    "name": "parallel-cli-0.9.3",
+    "outputs": {
+      "dist": "/nix/store/y3macjxzydpgify7m5jb3a3ngazs4n15-parallel-cli-0.9.3-dist",
+      "out": "/nix/store/gw9w8mgamfcjwg0as1gfjlljl4v7qjfn-parallel-cli-0.9.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "paseo-desktop": {
+    "drvPath": "/nix/store/nhyjy7pnip4l74yfak50yqn8wwk1gaqs-paseo-desktop-0.7.2.drv",
+    "isCached": true,
+    "name": "paseo-desktop-0.7.2",
+    "outputs": {
+      "out": "/nix/store/jz6s4bppc7l4bwpiwgrl71640z8rlpgd-paseo-desktop-0.7.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "pdfvision": {
+    "drvPath": "/nix/store/v9068an98wr03044b94qziqlgspxdllp-pdfvision-0.16.0.drv",
+    "isCached": true,
+    "name": "pdfvision-0.16.0",
+    "outputs": {
+      "out": "/nix/store/9wsfi5l0balbrmxrmhnqcvax1g8hb8z7-pdfvision-0.16.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "pi": {
+    "drvPath": "/nix/store/snqiswkzlz2dcl4npicpa43xpxgb15fm-pi-0.85.0.drv",
+    "isCached": true,
+    "name": "pi-0.85.0",
+    "outputs": {
+      "out": "/nix/store/r221ikacynw2851mh6mzb62r9q2ag85c-pi-0.85.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "picoclaw": {
+    "drvPath": "/nix/store/h6zj6cwn82bjhkgixq1y2dbyywllvbff-picoclaw-0.3.1.drv",
+    "isCached": true,
+    "name": "picoclaw-0.3.1",
+    "outputs": {
+      "out": "/nix/store/7i1nyk6i8pmz36c29nhckzgq9fz6fzqa-picoclaw-0.3.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "plannotator": {
+    "drvPath": "/nix/store/6fxb8mvxmhlp6x14ppyfnds0gjk4c9y2-plannotator-0.27.12.drv",
+    "isCached": true,
+    "name": "plannotator-0.27.12",
+    "outputs": {
+      "out": "/nix/store/lg5dqz4gcm3wxvmqjc2zgya34bysmb3r-plannotator-0.27.12"
+    },
+    "system": "x86_64-linux"
+  },
+  "prime-agent": {
+    "drvPath": "/nix/store/inlp9108g116psr4w49iw32zixk3szhp-prime-agent-0.9.1.drv",
+    "isCached": true,
+    "name": "prime-agent-0.9.1",
+    "outputs": {
+      "out": "/nix/store/il10hlqhhd9sbfp6zajazcpm0lm9plra-prime-agent-0.9.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "qmd": {
+    "drvPath": "/nix/store/5kf0all6nrcxp2xfl252gl653jflqq78-qmd-2.8.3.drv",
+    "isCached": true,
+    "name": "qmd-2.8.3",
+    "outputs": {
+      "out": "/nix/store/3i176zj6krrpfnyrbsbdh9803m7z27l0-qmd-2.8.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "qoder-cli": {
+    "drvPath": "/nix/store/fsi82vnjzk6sx8y0lbi7v0xl6nz3cvdm-qoder-cli-1.1.44.drv",
+    "isCached": true,
+    "name": "qoder-cli-1.1.44",
+    "outputs": {
+      "out": "/nix/store/qnls83gscixyfndz0snqh01rsykb58r7-qoder-cli-1.1.44"
+    },
+    "system": "x86_64-linux"
+  },
+  "qoder-cli-cn": {
+    "drvPath": "/nix/store/pniml8isyq8sn5zakmbix8jl8154yz0c-qoder-cli-cn-1.1.44.drv",
+    "isCached": true,
+    "name": "qoder-cli-cn-1.1.44",
+    "outputs": {
+      "out": "/nix/store/lx9nb2fv3gnmf61v3p1bbc2byli5c05g-qoder-cli-cn-1.1.44"
+    },
+    "system": "x86_64-linux"
+  },
+  "qwen-code": {
+    "drvPath": "/nix/store/mb883iwqg6q4v0gmwf0pkdkh5md5wrq9-qwen-code-0.23.0.drv",
+    "isCached": true,
+    "name": "qwen-code-0.23.0",
+    "outputs": {
+      "out": "/nix/store/v5n6aah88gpgrzxbb79n6836hly5ihcl-qwen-code-0.23.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "ralph-tui": {
+    "drvPath": "/nix/store/a989k0im023jdq8bwspas4w6li7h2drk-ralph-tui-0.12.0.drv",
+    "isCached": true,
+    "name": "ralph-tui-0.12.0",
+    "outputs": {
+      "out": "/nix/store/dpdzzymnlh9s8970fwqgpgkiqpay41nc-ralph-tui-0.12.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "reasonix": {
+    "drvPath": "/nix/store/9ni5m48z4v0sicwrg5g1jzaa6wg147jk-reasonix-1.37.0.drv",
+    "isCached": true,
+    "name": "reasonix-1.37.0",
+    "outputs": {
+      "out": "/nix/store/rzdnwiwz5jw8d9zbhjs4wm8i48vzxxhm-reasonix-1.37.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "rtk": {
+    "drvPath": "/nix/store/8cv25nwrq2fl2cnlm8mmzrsl2ly48wy2-rtk-0.48.0.drv",
+    "isCached": true,
+    "name": "rtk-0.48.0",
+    "outputs": {
+      "out": "/nix/store/y9v4w50fdbanx9raacs1727lhfjk70fr-rtk-0.48.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "sandbox-runtime": {
+    "drvPath": "/nix/store/1rm0j7lsqqarv0qn358p12nawv0l4i3j-sandbox-runtime-0.0.75.drv",
+    "isCached": true,
+    "name": "sandbox-runtime-0.0.75",
+    "outputs": {
+      "out": "/nix/store/p531901hhrkv8p8ii3i2yvjgghcym34c-sandbox-runtime-0.0.75"
+    },
+    "system": "x86_64-linux"
+  },
+  "semble": {
+    "drvPath": "/nix/store/x2l6hkxgy3dbdiy3d54v9d2sp8wi75mz-semble-0.5.5.drv",
+    "isCached": false,
+    "name": "semble-0.5.5",
+    "outputs": {
+      "dist": "/nix/store/qqb5jhj38jj9l9wyw1nqpgbdsmiiacmy-semble-0.5.5-dist",
+      "out": "/nix/store/vpld85jjs0ni6wcnq4x5zwg0xlcisvxx-semble-0.5.5"
+    },
+    "system": "x86_64-linux"
+  },
+  "showboat": {
+    "drvPath": "/nix/store/7ixm0pmf1biv4zsjbzni949ays2cc4w9-showboat-0.6.1.drv",
+    "isCached": true,
+    "name": "showboat-0.6.1",
+    "outputs": {
+      "out": "/nix/store/0za7cdpwjy34nncpym3c10dfkrmbqykh-showboat-0.6.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "sidecar": {
+    "drvPath": "/nix/store/3fnlh0xk8y1h2x0jc0lnbizq8m8nipm4-sidecar-1.3.0.drv",
+    "isCached": true,
+    "name": "sidecar-1.3.0",
+    "outputs": {
+      "out": "/nix/store/9g9g3pbx9vz4d3m4659y0bvrxal41mv9-sidecar-1.3.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "site": {
+    "drvPath": "/nix/store/kgwql45skjvd31hbkkg8kmaa3jn6ya50-llm-agents-site.drv",
+    "isCached": true,
+    "name": "llm-agents-site",
+    "outputs": {
+      "out": "/nix/store/k5aa37v3iiqks8428i6b2nl7ff8a1jxm-llm-agents-site"
+    },
+    "system": "x86_64-linux"
+  },
+  "skills": {
+    "drvPath": "/nix/store/5zp1xinhqz64zn85jqir7508jsvr9pjw-skills-1.5.23.drv",
+    "isCached": true,
+    "name": "skills-1.5.23",
+    "outputs": {
+      "out": "/nix/store/s88qg1j52hrrp9q39n116ks032q5wsks-skills-1.5.23"
+    },
+    "system": "x86_64-linux"
+  },
+  "skills-installer": {
+    "drvPath": "/nix/store/yr6vvjw65qh3gig45w757shypd3cna18-skills-installer-0.3.1.drv",
+    "isCached": true,
+    "name": "skills-installer-0.3.1",
+    "outputs": {
+      "out": "/nix/store/gsllsyfky7gy27hmc4ngb0z3rj7d6lc9-skills-installer-0.3.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "spec-kit": {
+    "drvPath": "/nix/store/2jmc4xp600cpr64l15v7j8jmi99s0p0v-spec-kit-1.0.4.drv",
+    "isCached": false,
+    "name": "spec-kit-1.0.4",
+    "outputs": {
+      "dist": "/nix/store/l0fkx91y80ld8qb60g9qpl68g1rg8g4h-spec-kit-1.0.4-dist",
+      "out": "/nix/store/vkf1nmv4j2a2zx3zgwnx6zhk3mkm6qd1-spec-kit-1.0.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "sub2api": {
+    "drvPath": "/nix/store/8l6zmj8ljd36ia0qyvcdg8m1h8gbmkvr-sub2api-0.2.0.drv",
+    "isCached": true,
+    "name": "sub2api-0.2.0",
+    "outputs": {
+      "out": "/nix/store/ffn1y6kshb6wy86hbf7m2ddazivi5vlp-sub2api-0.2.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "swamp": {
+    "drvPath": "/nix/store/6kb03girsz62gjmia9s9hlxxyx4xb69j-swamp-20260904.182624.0-sha.49fbeacb.drv",
+    "isCached": true,
+    "name": "swamp-20260904.182624.0-sha.49fbeacb",
+    "outputs": {
+      "out": "/nix/store/rm2q2p9hwnj6wcsfj9wn8865sd6rx8z7-swamp-20260904.182624.0-sha.49fbeacb"
+    },
+    "system": "x86_64-linux"
+  },
+  "t3code": {
+    "drvPath": "/nix/store/pvbhglr6xij8d5bfgg89avssgcsy2kbg-t3code-0.0.38.drv",
+    "isCached": true,
+    "name": "t3code-0.0.38",
+    "outputs": {
+      "desktop": "/nix/store/93irz84qwjmqw29mzdq69d748j8qanm9-t3code-0.0.38-desktop",
+      "out": "/nix/store/yf95dxb3fx6bgf0bvkkqrm0gfgz36qlx-t3code-0.0.38"
+    },
+    "system": "x86_64-linux"
+  },
+  "t3code-desktop": {
+    "drvPath": "/nix/store/xc7fhynn77n6irdajd5yv7bgzzk2wjlk-t3code-desktop.drv",
+    "isCached": true,
+    "name": "t3code-desktop",
+    "outputs": {
+      "out": "/nix/store/vf5vkgbgcgh9q6pr3iz5q06ahdjc0dgg-t3code-desktop"
+    },
+    "system": "x86_64-linux"
+  },
+  "td": {
+    "drvPath": "/nix/store/ncsq4jaamyjrx5md6qw4djib0vb792g7-td-0.62.0.drv",
+    "isCached": true,
+    "name": "td-0.62.0",
+    "outputs": {
+      "out": "/nix/store/0kbyaw0m6jsh48mygf4v6b499j7hmz4n-td-0.62.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "terminal-use": {
+    "drvPath": "/nix/store/dxkalds0fi6cm0a75ncqqzv2f8jp0sr7-terminal-use-1.4.1.drv",
+    "isCached": true,
+    "name": "terminal-use-1.4.1",
+    "outputs": {
+      "out": "/nix/store/rznwxm3lqy0d6gkmqd71vdc48r8z5kkz-terminal-use-1.4.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "tgrab": {
+    "drvPath": "/nix/store/2x7psp4lsmacwlb2478j5558nah46mp9-tgrab-0.1.1.drv",
+    "isCached": true,
+    "name": "tgrab-0.1.1",
+    "outputs": {
+      "out": "/nix/store/w2j0zq9rripqig1dcwx393l11sgz395s-tgrab-0.1.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "tokscale": {
+    "drvPath": "/nix/store/ngs00fpm0hknb97jkz2kybsvphdcw2gy-tokscale-4.15.1.drv",
+    "isCached": true,
+    "name": "tokscale-4.15.1",
+    "outputs": {
+      "out": "/nix/store/8qfdslha0sxs69652dqfip6l6l1gp5a2-tokscale-4.15.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "toon": {
+    "drvPath": "/nix/store/r2bc1n4qw4ac4fzsj0f9r1by8vll5z26-toon-format-0.5.0.drv",
+    "isCached": true,
+    "name": "toon-format-0.5.0",
+    "outputs": {
+      "out": "/nix/store/vxci4f0i0hxbx8v1x8irql9i1630r12q-toon-format-0.5.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "trellis": {
+    "drvPath": "/nix/store/i9aygqcvpzq8c0klg4wgdxf98ii02i4b-trellis-0.6.16.drv",
+    "isCached": true,
+    "name": "trellis-0.6.16",
+    "outputs": {
+      "out": "/nix/store/6kg9jxs8pvwfmnp9vwki2y55spz3lkv4-trellis-0.6.16"
+    },
+    "system": "x86_64-linux"
+  },
+  "tui-test": {
+    "drvPath": "/nix/store/aj7i858qgzxfwnw68f9ym5big3kimgk8-tui-test-0.1.0-beta.3.drv",
+    "isCached": true,
+    "name": "tui-test-0.1.0-beta.3",
+    "outputs": {
+      "out": "/nix/store/8c55br9mvb5fpkfqyk474d7zz24gpbpk-tui-test-0.1.0-beta.3"
+    },
+    "system": "x86_64-linux"
+  },
+  "tuicr": {
+    "drvPath": "/nix/store/wh2f50qnj5c5xj5vmw03z2gwmkr7qh9x-tuicr-0.25.0.drv",
+    "isCached": true,
+    "name": "tuicr-0.25.0",
+    "outputs": {
+      "out": "/nix/store/gjk30iqi0z5v9whb2ba9fg0vpy927kph-tuicr-0.25.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "unpinCargoMsrvHook": {
+    "drvPath": "/nix/store/hk6x4b6qmgn68dmjjpkwm8yjsm1zvbg6-unpin-cargo-msrv-hook.drv",
+    "isCached": true,
+    "name": "unpin-cargo-msrv-hook",
+    "outputs": {
+      "out": "/nix/store/ssdqn2lhlnjx7vvn9knw449rb4pjydjk-unpin-cargo-msrv-hook"
+    },
+    "system": "x86_64-linux"
+  },
+  "unpinGoModVersionHook": {
+    "drvPath": "/nix/store/rbs07ydlqnravbbp7k0ibqqn1w0whs03-unpin-go-mod-version-hook.drv",
+    "isCached": true,
+    "name": "unpin-go-mod-version-hook",
+    "outputs": {
+      "out": "/nix/store/488kgkmgs3hzs7ap1ldbzv36i05vja2n-unpin-go-mod-version-hook"
+    },
+    "system": "x86_64-linux"
+  },
+  "versionCheckHomeHook": {
+    "drvPath": "/nix/store/1jd5z5sir2fr15mdxscqfb1mp2nwfqab-version-check-home-hook.drv",
+    "isCached": true,
+    "name": "version-check-home-hook",
+    "outputs": {
+      "out": "/nix/store/k38bm9g6dx84c5b87b7401alvwjipl62-version-check-home-hook"
+    },
+    "system": "x86_64-linux"
+  },
+  "vessel-browser": {
+    "drvPath": "/nix/store/6vg1c2i881bf93gl3wl26205jnl5mp7k-vessel-browser-0.1.198.drv",
+    "isCached": true,
+    "name": "vessel-browser-0.1.198",
+    "outputs": {
+      "out": "/nix/store/52lx0lzxw1xi1d0m60xqf2rgwfj05jy2-vessel-browser-0.1.198"
+    },
+    "system": "x86_64-linux"
+  },
+  "vibe-kanban": {
+    "drvPath": "/nix/store/x6i8j7p8wzv9is9dma15ldvhgwrdc0m8-vibe-kanban-0.1.44.drv",
+    "isCached": true,
+    "name": "vibe-kanban-0.1.44",
+    "outputs": {
+      "out": "/nix/store/y2z71gi9ql0k9fdqyhdqagafg8z0ld32-vibe-kanban-0.1.44"
+    },
+    "system": "x86_64-linux"
+  },
+  "vix": {
+    "drvPath": "/nix/store/52ccff7anqs3j1fckhgxhll2lrkbz47a-vix-0.5.9.drv",
+    "isCached": true,
+    "name": "vix-0.5.9",
+    "outputs": {
+      "out": "/nix/store/51fpln2q93b5affc1s40ckahzjm3knm1-vix-0.5.9"
+    },
+    "system": "x86_64-linux"
+  },
+  "voxterm": {
+    "drvPath": "/nix/store/aa9y2f61pjsk310pg6yj7r3dsfs7hdcc-voxterm-0.3.0.drv",
+    "isCached": false,
+    "name": "voxterm-0.3.0",
+    "outputs": {
+      "dist": "/nix/store/74pgfiaza6skjs13dhy20261pk6c546g-voxterm-0.3.0-dist",
+      "out": "/nix/store/0cc72qwpas31q93dp0mw2fd9ppyn2m0j-voxterm-0.3.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "voxtype": {
+    "drvPath": "/nix/store/b8vg7c2xmaviqbx3cp51l0k4q2fsc0bc-voxtype-1.0.1.drv",
+    "isCached": true,
+    "name": "voxtype-1.0.1",
+    "outputs": {
+      "out": "/nix/store/wygrwmg3a5s1b28x6jyy4zd2xl9414ay-voxtype-1.0.1"
+    },
+    "system": "x86_64-linux"
+  },
+  "workmux": {
+    "drvPath": "/nix/store/2wvgxgab4naai6rfs8cglf0ba6zn7s46-workmux-0.1.254.drv",
+    "isCached": true,
+    "name": "workmux-0.1.254",
+    "outputs": {
+      "out": "/nix/store/3arvps0g8vjjz1d9rbqwn2vpmhd9911r-workmux-0.1.254"
+    },
+    "system": "x86_64-linux"
+  },
+  "wrapBuddy": {
+    "drvPath": "/nix/store/xds7c3rw948ic97zfsii5z0hypdw3nx6-wrap-buddy-hook.drv",
+    "isCached": true,
+    "name": "wrap-buddy-hook",
+    "outputs": {
+      "out": "/nix/store/02gz96733nh609zh4jkhpshpbq4vx9ij-wrap-buddy-hook"
+    },
+    "system": "x86_64-linux"
+  },
+  "zaly": {
+    "drvPath": "/nix/store/5l0y9gvqykch4yg4yxx4ni90xjq1m9f5-zaly-0.0.5.drv",
+    "isCached": true,
+    "name": "zaly-0.0.5",
+    "outputs": {
+      "out": "/nix/store/mi58kdgfmp9426azk8arf7anhy9bmd3w-zaly-0.0.5"
+    },
+    "system": "x86_64-linux"
+  },
+  "zat": {
+    "drvPath": "/nix/store/ijzjwd3kbi182ygm263hbg70pl2la6wg-zat-0.5.4.drv",
+    "isCached": true,
+    "name": "zat-0.5.4",
+    "outputs": {
+      "out": "/nix/store/qdfkydbqyh3s16p7hch1ax85by9j6gb1-zat-0.5.4"
+    },
+    "system": "x86_64-linux"
+  },
+  "zcode": {
+    "drvPath": "/nix/store/rm8k6xshxiqr885c9r5v4gmxip8cdvdf-zcode-3.11.2.drv",
+    "isCached": true,
+    "name": "zcode-3.11.2",
+    "outputs": {
+      "out": "/nix/store/qg7nrfdv93pfyl4g4jqlld335a3ffc1p-zcode-3.11.2"
+    },
+    "system": "x86_64-linux"
+  },
+  "zeroclaw": {
+    "drvPath": "/nix/store/qr9wl4hbg4lgcnyiy8lkyv79xhcq85hn-zeroclaw-0.8.4.drv",
+    "isCached": true,
+    "name": "zeroclaw-0.8.4",
+    "outputs": {
+      "out": "/nix/store/766z67qrynvsbxbmzph0zrz7a72si2wm-zeroclaw-0.8.4"
+    },
+    "system": "x86_64-linux"
+  }
+}

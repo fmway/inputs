@@ -1,0 +1,55 @@
+name: daily-update
+on:
+  push:
+    paths:
+      - "dev/collections.json"
+      - "dev/flake.nix"
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract data from dev/collections.json
+        id: setup
+        run: |
+          inputs="$(jq -r '[.[].inputName] | join(" ")' dev/collections.json)"
+          substituters="$(jq -r '([.[] | .extraCaches.substituters // empty] | add // []) | unique | join(" ")' dev/collections.json)"
+          keys="$(jq -r '([.[] | .extraCaches."trusted-public-keys" // empty] | add // []) | unique | join(" ")' dev/collections.json)"
+          echo "substituters=$substituters" >> "$GITHUB_OUTPUT"
+          echo "trusted-keys=$keys" >> "$GITHUB_OUTPUT"
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v16
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+            substituters = https://cache.nixos.org/ ${{ steps.setup.outputs.substituters }}
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= ${{ steps.setup.outputs.trusted-keys }}
+
+      - name: Update dev flake inputs
+        run: nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
+
+      - name: Refresh derivation data
+        run: nix run ./dev#refresh
+
+      - name: Update Readme
+        run: nix run ./dev#readme README.md
+
+      - name: Commit & push if there are updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(inputs): refresh collection data"
+          commit_user_name: "fmway[bot]"
+          commit_user_email: "fm18lv@gmail.com"

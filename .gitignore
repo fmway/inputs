@@ -1,0 +1,3 @@
+.gcroots/
+**/*.jsonl
+**/*.jsonl.tmp

@@ -1,0 +1,11 @@
+{
+  "numtide/llm-agents.nix": {
+    "inputName": "llm-agents",
+    "repo": "https://github.com/numtide/llm-agents.nix",
+    "extraCaches": {
+      "substituters": [ "https://cache.numtide.com" ],
+      "trusted-public-keys": [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ]
+    },
+    "aliases": [ "llm-agents" ]
+  }
+}

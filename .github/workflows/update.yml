@@ -29,6 +29,7 @@ jobs:
           keys="$(jq -r '([.[] | .extraCaches."trusted-public-keys" // empty] | add // []) | unique | join(" ")' dev/collections.json)"
           echo "substituters=$substituters" >> "$GITHUB_OUTPUT"
           echo "trusted-keys=$keys" >> "$GITHUB_OUTPUT"
+          echo "inputs=$inputs" >> "$GITHUB_OUTPUT"
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16

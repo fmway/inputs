@@ -49,8 +49,23 @@ jobs:
         run: nix run ./dev#readme README.md
 
       - name: Commit & push if there are updates
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore(inputs): refresh collection data"
-          commit_user_name: "fmway[bot]"
-          commit_user_email: "fm18lv@gmail.com"
+        env:
+          COMMIT_MESSAGE: "chore(inputs): refresh collection data"
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "fmway[bot]"
+          git config user.email "fm18lv@gmail.com"
+          git add -A
+          if [ "$(git log -1 --format=%s)" = "$COMMIT_MESSAGE" ]; then
+            # Squash into the previous identical bot commit instead of
+            # stacking another one on top.
+            echo "Amending previous identical commit"
+            git commit --amend --no-edit
+            git push --force-with-lease
+          else
+            git commit -m "$COMMIT_MESSAGE"
+            git push
+          fi

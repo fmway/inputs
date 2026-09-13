@@ -113,10 +113,14 @@ nix eval --json ./dev#refresh
 nix eval --json ./dev#readme
 ```
 
+There is no test suite (`tests/` is empty) — these targeted evals are the
+verification.
+
 ## Update pipeline
 
 `refresh.sh` runs two phases back to back (raw snapshots are kept as
-gitignored `.jsonl` scratch); **cwd must be the repo root**:
+gitignored `.jsonl` scratch, gc roots in `.gcroots/`); **cwd must be the repo
+root**. Env overrides: `WORKERS` (default 8), `NIX_EVAL_JOBS`.
 
 1. **Collect** — for each key in `dev/collections.json`: resolves the input
    name against `(import ./dev/flake.nix).inputs`, discovers the actual
@@ -138,10 +142,14 @@ CI (`.github/workflows/update.yml`) runs daily: `nix flake update` in `./dev`
 → `refresh` → `readme` → auto-commit. It also triggers on pushes touching
 `dev/collections.json` or `dev/flake.nix` (and `workflow_dispatch`).
 
+CI bumps **only the collected input names** (passed to `nix flake update` from
+`dev/collections.json`), never `nixpkgs`, `with-inputs`, or `fmway-lib`. Bump
+the tooling pins manually when needed.
+
 ## Adding an input
 
 1. Add `inputs.<name>.url` in `dev/flake.nix`; run `nix flake lock` in `./dev`.
 2. Add the mapping in `dev/collections.json`:
    `"owner/repo" → { inputName = "<name>"; repo = "https://github.com/owner/repo"; aliases = [ "<alias>" ]; }`
    (plus `extraCaches` when the upstream publishes a substituter).
-3. Run `nix run ./dev#.refresh` and `nix run ./dev#readme README.md`.
+3. Run `nix run ./dev#refresh` and `nix run ./dev#readme README.md`.

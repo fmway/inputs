@@ -10,7 +10,7 @@
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-    moku.url = "github:moku-project/moku";
+    moku.url = "github:moku-project/moku/v0.12.0";
   };
 
   outputs =

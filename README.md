@@ -6,6 +6,7 @@ nixpkgs closure into your own flake.
 
 ## Current flakes:
 <!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})") collections) %}-->
+- [moku-project/moku](https://github.com/moku-project/moku)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix)
 <!--{% end %}-->
 

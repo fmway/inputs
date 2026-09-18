@@ -1,0 +1,20 @@
+{
+  "default": {
+    "drvPath": "/nix/store/7pikzsg3gcn1r2zkxjdmw5n00vbij4r1-moku-0.12.0.drv",
+    "isCached": true,
+    "name": "moku-0.12.0",
+    "outputs": {
+      "out": "/nix/store/5rvsf896v0r987cdv4f00xah19iydzxw-moku-0.12.0"
+    },
+    "system": "x86_64-linux"
+  },
+  "moku": {
+    "drvPath": "/nix/store/7pikzsg3gcn1r2zkxjdmw5n00vbij4r1-moku-0.12.0.drv",
+    "isCached": true,
+    "name": "moku-0.12.0",
+    "outputs": {
+      "out": "/nix/store/5rvsf896v0r987cdv4f00xah19iydzxw-moku-0.12.0"
+    },
+    "system": "x86_64-linux"
+  }
+}

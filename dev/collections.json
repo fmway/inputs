@@ -7,5 +7,15 @@
       "trusted-public-keys": [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ]
     },
     "aliases": [ "llm-agents" ]
+  },
+  "moku-project/moku": {
+    "inputName": "moku",
+    "repo": "https://github.com/moku-project/moku",
+    "extraCaches": {
+      "substituters": [ "https://moku.cachix.org" ],
+      "trusted-public-keys": [ "moku.cachix.org-1:EnMXp6/uQVI6IRbKW0xEQylSYoV2N4vszOsoW6/Pq1s=" ]
+    },
+    "aliases": [ "moku" ],
+    "tags": true
   }
 }

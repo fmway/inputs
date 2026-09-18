@@ -10,8 +10,7 @@
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-    # Add the next collected input here:
-    # some-input.url = "github:owner/repo";
+    moku.url = "github:moku-project/moku";
   };
 
   outputs =

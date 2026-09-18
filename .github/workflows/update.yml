@@ -39,6 +39,16 @@ jobs:
             substituters = https://cache.nixos.org/ ${{ steps.setup.outputs.substituters }}
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= ${{ steps.setup.outputs.trusted-keys }}
 
+      - name: Bump tagged inputs to their newest release
+        run: |
+          # TODO: support another platform
+          while IFS=$'\t' read -r name repo; do
+            ghrepo="${repo#https://github.com/}"
+            latest="$(curl -fsSL "https://api.github.com/repos/${ghrepo}/releases/latest" | jq -r '.tag_name')"
+            echo "$ghrepo/$latest (latest)"
+            sed -i -E "s|(${name}\\.url *= *\"github:${ghrepo})(/[^\"]*)?\"|\1/${latest}\"|" dev/flake.nix
+          done < <(jq -r 'to_entries[] | select(.value.tags == true) | [.value.inputName, .value.repo] | @tsv' dev/collections.json)
+
       - name: Update dev flake inputs
         run: nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
 

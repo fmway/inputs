@@ -34,26 +34,11 @@ command -v "$NIX_EVAL_JOBS" >/dev/null || {
 # Inputs are declared in ./dev/flake.nix and pinned in ./dev/flake.lock;
 # metadata must be read from the dev flake, not the (empty) main flake.
 # The collection is the main flake's *private* module file (never exposed as a
-# flake output), so import it directly. Systems are NOT maintained anywhere:
-# each input's systems are discovered dynamically from its own `packages`
-# output, so a flake can gain (or lose) a system like armv7l-linux with no
-# change here.
+# flake output), so import it directly. Systems are declared manually per entry
+# in dev/collections.json (no discovery); refresh prunes stale data not in the
+# list.
 collection_dir="$PWD/dev/collections.json"
 inputs="$(nix eval --json --impure --expr '(import ./dev/flake.nix).inputs')"
-
-flakeref() {
-  jq -r --arg k "$1" '.[$k].url' <<<"$inputs"
-}
-
-# Discover which systems a flake provides by evaluating its `packages` output
-# and listing the attribute names. Nothing is hardcoded, so any system the
-# flake offers (x86_64-linux, aarch64-linux, armv7l-linux, …) shows up here.
-discover_systems() {
-  input="$1"
-  systems="$(nix eval "./dev#inputs.$input.packages" --apply 'builtins.attrNames' 2>/dev/null)"
-  echo "$systems" > "./data/$input/systems.nix"
-  nix eval --expr "$systems" --json | jq -r '.[]'
-}
 
 failed=0
 
@@ -64,14 +49,14 @@ jq -r 'keys[]' "$collection_dir" >"$keys_tmp"
 #### Collect
 while IFS= read -r key; do
   input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_dir")"
-  ref="$(flakeref "$input" || true)"
+  ref="$(jq -r --arg k "$key" '.[$k].url' <<<"$inputs")"
   [ -n "$ref" ] || continue
 
   echo "collecting $input ($key)"
   echo "  flake: $ref"
   mkdir -p "data/$input"
 
-  systems="$(discover_systems "$input" | tr '\n' ' ')" || true
+  systems="$(jq -r --arg k "$key" '.[$k].systems' "$collection_dir" | tr '\n' ' ')" || true
   if [ -z "${systems%% }" ]; then
       echo "  skip: no \`packages\` output upstream (attribute absent?)" >&2
       continue

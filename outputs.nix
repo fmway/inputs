@@ -1,7 +1,5 @@
 { self, ... }: let
-  collection = builtins.mapAttrs (_: v: v // {
-    systems = import ./data/${v.inputName}/systems.nix;
-  }) (builtins.fromJSON (builtins.readFile ./dev/collections.json));
+  collection = builtins.fromJSON (builtins.readFile ./dev/collections.json);
   keys = builtins.attrNames collection;
 
   resolvedDev = let

@@ -6,7 +6,8 @@
       "substituters": [ "https://cache.numtide.com" ],
       "trusted-public-keys": [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ]
     },
-    "aliases": [ "llm-agents" ]
+    "aliases": [ "llm-agents" ],
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ]
   },
   "moku-project/moku": {
     "inputName": "moku",
@@ -16,6 +17,7 @@
       "trusted-public-keys": [ "moku.cachix.org-1:EnMXp6/uQVI6IRbKW0xEQylSYoV2N4vszOsoW6/Pq1s=" ]
     },
     "aliases": [ "moku" ],
+    "systems": [ "x86_64-linux" ],
     "tags": true
   }
 }

@@ -1,17 +1,44 @@
 { self, ... }: let
-  collection = builtins.fromJSON (builtins.readFile ./dev/collections.json);
-  keys = builtins.attrNames collection;
-
-  resolvedDev = let
-    lock = builtins.fromJSON (builtins.readFile ./dev/flake.lock);
-    locked = lock.nodes.with-inputs.locked;
-    with-inputs = fetchTarball {
-      url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.zip";
-      sha256 = locked.narHash;
+  extraOutput = {
+    "StarryReverie/selector4nix" = flake: let
+      withSystem = system: fn:
+        fn { config.packages = flake.packages.${system}; };
+      config = import "${flake.outPath}/nix/flake/module.nix" {
+        inherit withSystem config; 
+        inputs = {}; self = {};
+        flake-parts-lib.importApply = importApply;
+      };
+    in config.flake // rec {
+      overlays = {
+        selector4nix = _: super: {
+          selector4nix = flake.packages.${super.stdenv.hostPlatform.system}.selector4nix;
+        };
+        default = overlays.selector4nix;
+      };
     };
-  in (import with-inputs).from.flake ./dev (_: { nixpkgs-lib.follows = "nixpkgs"; });
+  };
+  importApply =
+    modulePath: staticArgs:
+    {
+      _file = modulePath;
+      imports = [
+        (import modulePath staticArgs)
+      ];
+    };
+  collections = builtins.fromJSON (builtins.readFile ./dev/collections.json);
+  keys = builtins.attrNames collections;
+  
+  lock = builtins.fromJSON (builtins.readFile ./dev/flake.lock);
+  fetchInput = input: let
+    locked = lock.nodes.${lock.nodes.root.inputs.${input}}.locked;
+  in fetchTarball {
+    url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.zip";
+    sha256 = locked.narHash;
+  };
+  resolvedDev =
+    (import (fetchInput "with-inputs")).from.flake ./dev {};
 
-  allSystems = uniq (builtins.concatLists (builtins.catAttrs "systems" (builtins.attrValues collection)));
+  allSystems = uniq (builtins.concatLists (builtins.catAttrs "systems" (builtins.attrValues collections)));
 
   uniq = xs: builtins.foldl' (acc: x: if acc != [ ] && builtins.elem x acc then acc else acc ++ [ x ]) [ ] xs;
 
@@ -34,7 +61,7 @@
   mkOutputs =
     inputs: let
       flakes = genAttrs keys (key: let
-        inherit (collection.${key}) systems inputName;
+        inherit (collections.${key}) systems inputName;
         flake = inputs.${inputName};
         packages = genAttrs systems (system:
           import ./lib/packages.nix {
@@ -42,22 +69,31 @@
             dataFile = fetchData inputName system;
             original = inputs.${inputName}.packages.${system} or { };
           });
+        outPath = fetchInput inputName;
       in {
         inherit (flake) sourceInfo outputs;
-        inherit packages;
+        inherit packages outPath;
       } // (
-        if collection.${key} ? extraCaches then
-          { extraCaches = collection.${key}.extraCaches; }
+        if collections.${key} ? extraCaches then
+          { extraCaches = collections.${key}.extraCaches; }
+        else {}) // (
+        if extraOutput ? ${key} then
+          extraOutput.${key} { inherit packages outPath; }
         else {}));
       aliases = builtins.listToAttrs (builtins.concatMap (key: map (name: {
         inherit name;
         value = self.${key};
-      }) (collection.${key}.aliases or [])) keys);
-    in flakes // aliases // {
-      inherit inputs;
+      }) (collections.${key}.aliases or [])) keys);
+    in {
+      inherit collections flakes aliases;
       packages = genAttrs allSystems (system:
         builtins.listToAttrs (builtins.concatMap (key: if self.${key}.packages ? ${system} then
-          map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collection.${key}.aliases or []))
+          map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collections.${key}.aliases or []))
         else []) keys));
     };
-in (resolvedDev mkOutputs)
+  r = resolvedDev mkOutputs;
+  finalInputs = r.flakes // r.aliases;
+in finalInputs // {
+  inputs = finalInputs;
+  inherit (r) collections packages;
+}

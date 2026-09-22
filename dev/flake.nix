@@ -11,6 +11,7 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     moku.url = "github:moku-project/moku/v0.13.1";
+    selector4nix.url = "github:StarryReverie/selector4nix";
   };
 
   outputs =
@@ -33,7 +34,7 @@
           "into inputs here at eval time, so this flake never writes a flake.lock."
         ];
         outputs.__raw = "inputs: import ./outputs.nix inputs";
-        nixConfig = builtins.zipAttrsWith (_: builtins.concatLists)
+        nixConfig = builtins.zipAttrsWith (_: v: lib.unique (builtins.concatLists v))
           (lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections);
       };
     in {

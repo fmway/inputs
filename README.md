@@ -5,9 +5,9 @@ fake derivations, so consuming their packages doesn't drag each upstream
 nixpkgs closure into your own flake.
 
 ## Current flakes:
-<!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})") collections) %}-->
-- [moku-project/moku](https://github.com/moku-project/moku)
-- [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix)
+<!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})" + lib.optionalString (v.aliases or [] != []) " (alias: ${builtins.concatStringsSep ", " v.aliases})") collections) %}-->
+- [moku-project/moku](https://github.com/moku-project/moku) (alias: moku)
+- [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
 <!--{% end %}-->
 
 ## Usage

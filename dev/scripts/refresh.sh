@@ -37,26 +37,26 @@ command -v "$NIX_EVAL_JOBS" >/dev/null || {
 # flake output), so import it directly. Systems are declared manually per entry
 # in dev/collections.json (no discovery); refresh prunes stale data not in the
 # list.
-collection_dir="$PWD/dev/collections.json"
+collection_file="$PWD/dev/collections.json"
 inputs="$(nix eval --json --impure --expr '(import ./dev/flake.nix).inputs')"
 
 failed=0
 
 keys_tmp="$(mktemp)"
 trap 'rm -f "$keys_tmp"' EXIT HUP INT TERM
-jq -r 'keys[]' "$collection_dir" >"$keys_tmp"
+jq -r 'keys[]' "$collection_file" >"$keys_tmp"
 
 #### Collect
 while IFS= read -r key; do
-  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_dir")"
-  ref="$(jq -r --arg k "$key" '.[$k].url' <<<"$inputs")"
+  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
+  ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
   [ -n "$ref" ] || continue
 
   echo "collecting $input ($key)"
   echo "  flake: $ref"
   mkdir -p "data/$input"
 
-  systems="$(jq -r --arg k "$key" '.[$k].systems' "$collection_dir" | tr '\n' ' ')" || true
+  systems="$(jq -r --arg k "$key" '.[$k].systems[]' "$collection_file" | tr '\n' ' ')" || true
   if [ -z "${systems%% }" ]; then
       echo "  skip: no \`packages\` output upstream (attribute absent?)" >&2
       continue
@@ -130,8 +130,8 @@ refine_leaves='
       })
     end)'
 
-jq -r 'keys[]' "$collection_dir" | while IFS= read -r key; do
-  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_dir")"
+jq -r 'keys[]' "$collection_file" | while IFS= read -r key; do
+  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
   for jsonl in data/"$input"/*.jsonl; do
     [ -e "$jsonl" ] || continue
     system="$(basename "$jsonl" .jsonl)"

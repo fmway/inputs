@@ -50,15 +50,26 @@ Fake derivations merely serve already-built store outputs — they have no `.drv
 of their own (`drvPath` throws). The real upstream derivation is always
 available under `.orig`.
 
+### Where the data comes from
+
+Each input's refined package data is published to a GitHub **release** tagged
+`data-YYYYMMDD` (one `<input>-<system>.min.json` asset per system, overwritten
+in place when the daily pipeline re-runs). The flake declares no inputs and
+fetches lazily: evaluating `packages.x86_64-linux` downloads only the
+`x86_64-linux` asset — an `aarch64-linux` eval never pulls `x86_64-linux`
+data. `dev/data-lock.json` pins the current release tag and the SRI hash of
+every asset.
+
 ## Adding an input
 
 1. Declare it in `inputs` in `dev/flake.nix` and run `nix flake lock` in `./dev`.
 2. Map the public output key → input name in `dev/collections.json`
    (`inputName`, `repo`, `systems`, plus optional `aliases`, `extraCaches`, and
    `tags = true` for release-tagged inputs).
-3. Run `nix run ./dev#refresh`, `nix run ./dev#readme README.md`, and
-   `nix run ./dev#flake flake.nix`, then commit the `data/` and
-   `dev/flake.lock` changes.
+3. Run `nix run ./dev#refresh`, `nix run ./dev#publish` (uploads the data
+   release, needs `gh`), `nix run ./dev#readme README.md`, and
+   `nix run ./dev#flake flake.nix`, then commit `dev/data-lock.json` and the
+   other changed files.
 
 ## Requirements
 

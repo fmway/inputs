@@ -17,6 +17,20 @@
 
   genAttrs = names: f: builtins.listToAttrs (map (name: { inherit name; value = f name; }) names);
 
+  # Refined data lives on the GitHub *release* (tag `data-yyyymmdd`, published
+  # by dev/scripts/publish.sh), not in the repo — so this flake is input-less
+  # and system-lazy: only the *.min.json for the system you read is fetched.
+  # dev/data-lock.json pins the current release tag and the SRI hash of every
+  # asset (local hash computed before upload, so it always matches).
+  release = builtins.fromJSON (builtins.readFile ./dev/data-lock.json);
+
+  fetchData =
+    input: system:
+    builtins.fetchurl {
+      url = "https://github.com/fmway/inputs/releases/download/${release.tag}/${input}-${system}.min.json";
+      sha256 = release.sha256."${input}-${system}";
+    };
+
   mkOutputs =
     inputs: let
       flakes = genAttrs keys (key: let
@@ -25,7 +39,7 @@
         packages = genAttrs systems (system:
           import ./lib/packages.nix {
             inherit system;
-            dataFile = ./data/${inputName}/${system}.json;
+            dataFile = fetchData inputName system;
             original = inputs.${inputName}.packages.${system} or { };
           });
       in {

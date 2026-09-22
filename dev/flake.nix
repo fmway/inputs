@@ -50,6 +50,15 @@
           };
         in "${pkg}/bin/refresh";
 
+        publish.type = "app";
+        publish.program = let
+          pkg = pkgs.writeShellApplication {
+            name = "publish";
+            runtimeInputs = with pkgs; [ jq nix gh ];
+            text = "exec \"${./scripts/publish.sh}\"";
+          };
+        in "${pkg}/bin/publish";
+
         readme.type = "app";
         readme.program = let
           var = { prefix = "<!--{"; postfix = "}-->"; inherit collections lib; };

@@ -4,6 +4,8 @@ on:
     paths:
       - "dev/collections.json"
       - "dev/flake.nix"
+    branches:
+      - main
   schedule:
     - cron: "0 3 * * *"
   workflow_dispatch: {}
@@ -54,6 +56,11 @@ jobs:
 
       - name: Refresh derivation data
         run: nix run ./dev#refresh
+
+      - name: Publish data release & update data-lock
+        run: nix run ./dev#publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Readme
         run: nix run ./dev#readme README.md

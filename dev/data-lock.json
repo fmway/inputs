@@ -1,0 +1,9 @@
+{
+  "tag": "data-20260922",
+  "sha256": {
+    "llm-agents-aarch64-darwin": "sha256-Isa8ULZ3hLsz/koH+2PP0E21jygJAWS34ne/c5sIdrg=",
+    "llm-agents-aarch64-linux": "sha256-rnDUL/zzX/9IemUEqxCdXh0cVR4eonjbuSQEx7ZQ/dQ=",
+    "llm-agents-x86_64-linux": "sha256-rS+NoT8oKu6rGTjkFHP+N5XCW4btlQlRkT10UCZOhxg=",
+    "moku-x86_64-linux": "sha256-OBKdhi+GSLDcAMnCOdubiJli5LN7N2gxWUBIEjOq0us="
+  }
+}

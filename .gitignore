@@ -1,3 +1,2 @@
 .gcroots/
-**/*.jsonl
-**/*.jsonl.tmp
+data/

@@ -14,7 +14,7 @@
   };
 
   outputs =
-    { self, nixpkgs, fmway-lib, ... } @ inputs:
+    { self, nixpkgs, ... } @ inputs:
     let
       systems = [
         "x86_64-linux"
@@ -24,7 +24,18 @@
 
       forAllSystems = lib.genAttrs systems;
       collections = builtins.fromJSON (builtins.readFile ./collections.json);
-      inherit (nixpkgs) lib;
+      lib = nixpkgs.lib.extend inputs.fmway-lib.overlays.default;
+      flake = {
+        description = "fmway/inputs — clean, input-less flake rerouting collected flake inputs through fake derivations";
+
+        inputs.__doc = [
+          "Empty by design: the ./dev flake owns every pin and its lock is resolved"
+          "into inputs here at eval time, so this flake never writes a flake.lock."
+        ];
+        outputs.__raw = "inputs: import ./outputs.nix inputs";
+        nixConfig = builtins.zipAttrsWith (_: builtins.concatLists)
+          (lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections);
+      };
     in {
       inherit inputs collections;
       apps = forAllSystems (system: let
@@ -42,7 +53,7 @@
         readme.type = "app";
         readme.program = let
           var = { prefix = "<!--{"; postfix = "}-->"; inherit collections lib; };
-          txt = fmway-lib.fmway.mkParse' var (builtins.readFile ../README.md);
+          txt = lib.fmway.mkParse' var (builtins.readFile ../README.md);
           pkg = pkgs.writeScript "gen-readme.sh" /* bash */ ''
             #!${lib.getExe pkgs.bash}
 
@@ -50,6 +61,14 @@
             cat ${pkgs.writeText "README.md" txt} > $output
           '';
         in "${pkg}";
+
+        flake.type = "app";
+        flake.program = "${pkgs.writeScript "gen-flake.sh" /* bash */ ''
+          #!${lib.getExe pkgs.bash}
+
+          output="''${1:-/dev/stdout}"
+          cat ${pkgs.writeText "flake.nix" (lib.fmway.genNix flake)} > $output
+        ''}";
       });
 
       devShells = forAllSystems (

@@ -58,6 +58,9 @@ jobs:
       - name: Update Readme
         run: nix run ./dev#readme README.md
 
+      - name: Update flake
+        run: nix run ./dev#flake flake.nix
+
       - name: Commit & push if there are updates
         env:
           COMMIT_MESSAGE: "chore(inputs): refresh collection data"

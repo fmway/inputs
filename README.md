@@ -43,12 +43,8 @@ For a fake (cached) package:
 ```sh
 nix shell '.#llm-agents.opencode.out'
 nix build '.#llm-agents.opencode.orig'   # real derivation
-nix build '.#llm-agents.apm'             # some packages are uncached → build locally
+nix build '.#llm-agents.apm'             # some are uncached → build locally
 ```
-
-Use the alias (`llm-agents`) on the CLI — `nix build '.#"numtide/llm-agents.nix"'` is
-handled specially by nix because of the `/` in the attribute name and never
-reaches the rerouted packages. In Nix expressions either works.
 
 Fake derivations merely serve already-built store outputs — they have no `.drv`
 of their own (`drvPath` throws). The real upstream derivation is always
@@ -58,8 +54,11 @@ available under `.orig`.
 
 1. Declare it in `inputs` in `dev/flake.nix` and run `nix flake lock` in `./dev`.
 2. Map the public output key → input name in `dev/collections.json`
-   (optionally with `aliases` and `extraCaches`).
-3. Run `nix run ./dev#refresh` and `nix run ./dev#readme README.md`.
+   (`inputName`, `repo`, `systems`, plus optional `aliases`, `extraCaches`, and
+   `tags = true` for release-tagged inputs).
+3. Run `nix run ./dev#refresh`, `nix run ./dev#readme README.md`, and
+   `nix run ./dev#flake flake.nix`, then commit the `data/` and
+   `dev/flake.lock` changes.
 
 ## Requirements
 

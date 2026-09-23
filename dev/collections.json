@@ -35,5 +35,15 @@
     },
     "aliases": [ "selector4nix" ],
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-darwin", "x86_64-linux" ]
+  },
+  "chaotic-cx/nyx": {
+    "inputName": "chaotic",
+    "repo": "https://github.com/chaotic-cx/nyx",
+    "extraCaches": {
+      "substituters": [ "https://nyx-cache.chaotic.cx/" ],
+      "trusted-public-keys": [ "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk=" ]
+    },
+    "aliases": [ "chaotic" ],
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ]
   }
 }

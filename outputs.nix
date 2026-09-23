@@ -1,5 +1,15 @@
 { self, ... }: let
   extraOutput = {
+    "chaotic-cx/nyx" = flake: {
+      vendored = import "${flake.outPath}/vendor";
+      # FIXME
+      nixosModules = let r = removeAttrs (import "${flake.outPath}/modules/nixos" {}) [ "default" "nyx-cache" "nyx-overlay" "nyx-registry" ]; in
+        r // {
+          default.imports = builtins.attrValues r;
+        };
+
+      overlays.default = _: super: flake.packages.${super.stdenv.hostPlatform.system};
+    };
     "StarryReverie/selector4nix" = flake: let
       withSystem = system: fn:
         fn { config.packages = flake.packages.${system}; };
@@ -59,7 +69,8 @@
     };
 
   mkOutputs =
-    inputs: let
+    s: let
+      inputs = s.outputs.inputs;
       flakes = genAttrs keys (key: let
         inherit (collections.${key}) systems inputName;
         flake = inputs.${inputName};

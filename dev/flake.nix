@@ -12,11 +12,21 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     moku.url = "github:moku-project/moku/v0.13.1";
     selector4nix.url = "github:StarryReverie/selector4nix";
+    chaotic.url = "github:chaotic-cx/nyx";
   };
 
   outputs =
     { self, nixpkgs, ... } @ inputs:
     let
+      overrideInput = {
+        chaotic = { self, ... }:
+        {
+          packages = let
+            packageNames = lib.unique (map (s:
+              if lib.hasInfix "." s then builtins.head (lib.splitString "." s) else s) (builtins.attrNames self.packages.x86_64-linux));
+          in lib.genAttrs systems (system: lib.genAttrs packageNames (pname: self.unrestrictedPackages.${system}.${pname}));
+        };
+      };
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -38,7 +48,8 @@
           (lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections);
       };
     in {
-      inherit inputs collections;
+      inherit collections;
+      inputs = builtins.mapAttrs (k: v: v // (if overrideInput ? ${k} then overrideInput.${k} ({ self = v.sourceInfo // v.outputs; } // v.inputs) else {})) inputs;
       apps = forAllSystems (system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
@@ -46,7 +57,7 @@
         refresh.program = let
           pkg = pkgs.writeShellApplication {
             name = "refresh";
-            runtimeInputs = with pkgs; [ jq nix-eval-jobs nix ];
+            runtimeInputs = with pkgs; [ jq nix-eval-jobs ];
             text = "exec \"${./scripts/refresh.sh}\"";
           };
         in "${pkg}/bin/refresh";
@@ -55,7 +66,7 @@
         publish.program = let
           pkg = pkgs.writeShellApplication {
             name = "publish";
-            runtimeInputs = with pkgs; [ jq nix gh ];
+            runtimeInputs = with pkgs; [ jq gh ];
             text = "exec \"${./scripts/publish.sh}\"";
           };
         in "${pkg}/bin/publish";

@@ -1,13 +1,16 @@
 {
-  "tag": "data-20260922",
+  "tag": "data-20260924",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-sqUgO/grdnY6yVYfMvlXOP/ChyYSZZwBexpaaFX41A0=",
-    "llm-agents-aarch64-linux": "sha256-atLwGQHlmY+bsZLLm10bJF62dxihavwrZmyYnSwE64s=",
-    "llm-agents-x86_64-linux": "sha256-G40EwkzBYEtEytPgT42Gzc/Hx1RB0Vt++QMOe7MxaqA=",
-    "moku-x86_64-linux": "sha256-OBKdhi+GSLDcAMnCOdubiJli5LN7N2gxWUBIEjOq0us=",
-    "selector4nix-aarch64-darwin": "sha256-T8mzF4HrdpEb3k2bdxXixutGTVzcf7eTgl5K0HUkRy0=",
-    "selector4nix-aarch64-linux": "sha256-JiS8mqX70dzlUUu8v5Or+zGdaiV6yRFQEgD8/yHkw8I=",
+    "llm-agents-aarch64-darwin": "sha256-qdPX1odw+NITYjBqSowg2n7dWKIpgp4BGDQSc5iFkY8=",
+    "llm-agents-aarch64-linux": "sha256-HpwSXNK4U40zyJFLt/mvVVVXLjsKxjbR2ot4kkkDSPw=",
+    "llm-agents-x86_64-linux": "sha256-Csa8qlVmhdHj8piH2gArXzCsy1tNe1mW2EHOJmjsfW8=",
+    "moku-x86_64-linux": "sha256-DDMYxk5ZdaimrZlGHyfhKn/ZIywMz1ky1eZuZc1AEZ0=",
+    "selector4nix-aarch64-darwin": "sha256-/3/WrkKgjuRWyZT01hoSRcdzuDagb8caMtQnEEenBj8=",
+    "selector4nix-aarch64-linux": "sha256-TI7vb5ghzbO6LDj5xOYqz4jyP6QaWPvZ4NImAo+1rbo=",
     "selector4nix-x86_64-darwin": "sha256-w+MMSE4kz4f4CUf4my1wkXijQqY9YNEnFfBqy1BR13s=",
-    "selector4nix-x86_64-linux": "sha256-dnDLzZSyDvvl0CAG6WObZi7o5lFsIA8EQfdyS24Toos="
+    "selector4nix-x86_64-linux": "sha256-Hl2rSUJjfimVJPv/d86CjmaKr24SWJzVcUYcs5DX0c8=",
+    "chaotic-aarch64-darwin": "sha256-bQ68yukhhwGakomWvBlYlTBEwHD+tNtLQyPzi9Y8XfA=",
+    "chaotic-aarch64-linux": "sha256-vJCmL9BIM0eAxV3l7q16wC0B3Bw1gyVxRkxEKts29FY=",
+    "chaotic-x86_64-linux": "sha256-Zm/42Ehqp/w2TIBRm9xcie5BrVon51mR3KAcJUGckMY="
   }
 }

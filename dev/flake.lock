@@ -50,6 +50,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "nixos",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -289,12 +305,12 @@
     },
     "root": {
       "inputs": {
+        "flake-compat": "flake-compat",
         "fmway-lib": "fmway-lib",
         "llm-agents": "llm-agents",
         "moku": "moku",
         "nixpkgs": "nixpkgs_3",
-        "selector4nix": "selector4nix",
-        "with-inputs": "with-inputs"
+        "selector4nix": "selector4nix"
       }
     },
     "rust-overlay": {
@@ -393,21 +409,6 @@
       "original": {
         "owner": "moku-project",
         "repo": "Tsunagu",
-        "type": "github"
-      }
-    },
-    "with-inputs": {
-      "locked": {
-        "lastModified": 1788467216,
-        "narHash": "sha256-yFXytpx2/EzFCji5gbn819t9AcIOe5LnlFTnrIkoZ/Q=",
-        "owner": "denful",
-        "repo": "with-inputs",
-        "rev": "f0a6bc2464d744e6e3089f89ea6efeb9427c4acd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "denful",
-        "repo": "with-inputs",
         "type": "github"
       }
     }

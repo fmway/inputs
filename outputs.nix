@@ -1,7 +1,7 @@
 { self, ... }: let
   extraOutput = {
     "chaotic-cx/nyx" = flake: {
-      vendored = import "${flake.outPath}/vendor";
+      vendored = import "${flake}/vendor";
       # FIXME
       nixosModules = let r = removeAttrs (import "${flake.outPath}/modules/nixos" {}) [ "default" "nyx-cache" "nyx-overlay" "nyx-registry" ]; in
         r // {
@@ -13,7 +13,7 @@
     "StarryReverie/selector4nix" = flake: let
       withSystem = system: fn:
         fn { config.packages = flake.packages.${system}; };
-      config = import "${flake.outPath}/nix/flake/module.nix" {
+      config = import "${flake}/nix/flake/module.nix" {
         inherit withSystem config; 
         inputs = {}; self = {};
         flake-parts-lib.importApply = importApply;
@@ -39,14 +39,10 @@
   keys = builtins.attrNames collections;
   
   lock = builtins.fromJSON (builtins.readFile ./dev/flake.lock);
-  fetchInput = input: let
-    locked = lock.nodes.${lock.nodes.root.inputs.${input}}.locked;
-  in fetchTarball {
-    url = "https://github.com/${locked.owner}/${locked.repo}/archive/${locked.rev}.zip";
-    sha256 = locked.narHash;
-  };
-  resolvedDev =
-    (import (fetchInput "with-inputs")).from.flake ./dev {};
+  getSource = input:
+    fetchTree lock.nodes.${lock.nodes.root.inputs.${input}}.locked;
+
+  inputs = (import (getSource "flake-compat") { src = ./dev; }).outputs.inputs;
 
   allSystems = uniq (builtins.concatLists (builtins.catAttrs "systems" (builtins.attrValues collections)));
 
@@ -68,43 +64,38 @@
       sha256 = release.sha256."${input}-${system}";
     };
 
-  mkOutputs =
-    s: let
-      inputs = s.outputs.inputs;
-      flakes = genAttrs keys (key: let
-        inherit (collections.${key}) systems inputName;
-        flake = inputs.${inputName};
-        packages = genAttrs systems (system:
-          import ./lib/packages.nix {
-            inherit system;
-            dataFile = fetchData inputName system;
-            original = inputs.${inputName}.packages.${system} or { };
-          });
-        outPath = fetchInput inputName;
-      in {
-        inherit (flake) sourceInfo outputs;
-        inherit packages outPath;
-      } // (
-        if collections.${key} ? extraCaches then
-          { extraCaches = collections.${key}.extraCaches; }
-        else {}) // (
-        if extraOutput ? ${key} then
-          extraOutput.${key} { inherit packages outPath; }
-        else {}));
-      aliases = builtins.listToAttrs (builtins.concatMap (key: map (name: {
-        inherit name;
-        value = self.${key};
-      }) (collections.${key}.aliases or [])) keys);
-    in {
-      inherit collections flakes aliases;
-      packages = genAttrs allSystems (system:
-        builtins.listToAttrs (builtins.concatMap (key: if self.${key}.packages ? ${system} then
-          map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collections.${key}.aliases or []))
-        else []) keys));
+  flakes = genAttrs keys (key: let
+    inherit (collections.${key}) systems inputName;
+    flake = inputs.${inputName};
+    packages = genAttrs systems (system:
+      import ./lib/packages.nix {
+        inherit system;
+        dataFile = fetchData inputName system;
+        original = inputs.${inputName}.packages.${system} or { };
+      });
+      sourceInfo = getSource inputName;
+    r = {
+      inherit (flake) outputs;
+      inherit packages sourceInfo;
+      inherit (sourceInfo) outPath lastModified lastModifiedDate narHash rev shortRev;
     };
-  r = resolvedDev mkOutputs;
-  finalInputs = r.flakes // r.aliases;
-in finalInputs // {
-  inputs = finalInputs;
-  inherit (r) collections packages;
+  in r // (
+    if collections.${key} ? extraCaches then
+      { extraCaches = collections.${key}.extraCaches; }
+    else {}) // (
+    if extraOutput ? ${key} then
+      extraOutput.${key} r
+    else {}));
+  aliases = builtins.listToAttrs (builtins.concatMap (key: map (name: {
+    inherit name;
+    value = self.${key};
+  }) (collections.${key}.aliases or [])) keys);
+
+in flakes // aliases // {
+  inherit collections;
+  packages = genAttrs allSystems (system:
+    builtins.listToAttrs (builtins.concatMap (key: if self.${key}.packages ? ${system} then
+      map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collections.${key}.aliases or []))
+    else []) keys));
+  inputs = flakes // aliases;
 }

@@ -4,8 +4,8 @@
   inputs = {
     # core inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    with-inputs.url = "github:denful/with-inputs";
-    with-inputs.flake = false;
+    flake-compat.url = "github:nixos/flake-compat";
+    flake-compat.flake = false;
     fmway-lib.url = "github:fmway/lib";
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
 

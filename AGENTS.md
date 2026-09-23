@@ -9,8 +9,8 @@ consumer-facing documentation lives in [README.md](README.md).
   Declares **no inputs** (never writes a lock); its `nixConfig` is derived from
   the collection's `extraCaches`; `outputs = inputs: import ./outputs.nix inputs`.
 - `outputs.nix` — the real logic. Reads `dev/collections.json` and
-  `dev/data-lock.json`, resolves the dev flake into real inputs via with-inputs
-  (fetched over GitHub from the very pin in `dev/flake.lock`), and rebuilds
+  `dev/data-lock.json`, resolves the dev flake into real inputs (fetched over GitHub
+  from the very pin in `dev/flake.lock`), and rebuilds
   every collected input's `packages.<system>` from refined data fetched from a
   GitHub **release**.
 - `dev/flake.nix`, `dev/flake.lock` — every collected input's pin plus the
@@ -68,19 +68,9 @@ and `.orig` touch the upstream flake (`.outputs` also needs the
 
 ## Resolution mechanics
 
-- The main flake declares **no inputs**. `outputs.nix` locates the `with-inputs`
+- The main flake declares **no inputs**. `outputs.nix` locates the `flake-compat`
   node in `dev/flake.lock`, fetches that exact commit from GitHub with
-  `builtins.fetchTarball`, then calls
-  `(import with-inputs).from.flake ./dev (_: { nixpkgs-lib.follows = "nixpkgs"; })`
-  to get the resolved inputs, and applies `mkOutputs` over them. Do not vendor
-  with-inputs.
-- The `{}` argument is with-inputs' follows/override block. The
-  `nixpkgs-lib.follows = "nixpkgs"` alias is **required**: with-inputs resolves
-  each sub-input by name against the lock's top-level nodes, and flake-parts'
-  `nixpkgs-lib` exists only as a follows edge (`llm-agents → nixpkgs`), so it
-  has no node of its own — without the alias, evaluating the *upstream* flake
-  (uncached packages, `.outputs`, `.orig`) fails with
-  `attribute 'lib' missing`.
+  `builtins.fetchTree`.
 
 ## Invariants — do not break
 
@@ -175,7 +165,7 @@ update` (only the collected input names) → `refresh` → `publish` → `readme
 `flake` → auto-commit (commits `dev/data-lock.json`, the pins, and generated
 README/flake.nix — never `data/`). It also triggers on pushes touching
 `dev/collections.json` or `dev/flake.nix` (and `workflow_dispatch`). `nixpkgs`,
-`with-inputs`, and `fmway-lib` are never bumped by CI — move those pins
+`flake-compat`, and `fmway-lib` are never bumped by CI — move those pins
 manually when needed.
 
 Inputs marked `"tags": true` are pinned to a release **tag** (e.g.

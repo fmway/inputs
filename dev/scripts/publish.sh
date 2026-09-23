@@ -14,12 +14,14 @@
 
 set -eu
 
-NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
-export NIX_CONFIG
-
 command -v jq >/dev/null || { echo "publish.sh: jq is required (use \`nix run ./dev#publish\`)" >&2; exit 1; }
 command -v gh >/dev/null || { echo "publish.sh: gh is required (use \`nix run ./dev#publish\`)" >&2; exit 1; }
 command -v nix >/dev/null || { echo "publish.sh: nix is required (use \`nix run ./dev#publish\`)" >&2; exit 1; }
+
+NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
+export NIX_CONFIG
+COMMIT_MESSAGE="${COMMIT_MESSAGE:-"chore(inputs): refresh collection data"}"
+RELEASE_NOTE="${RELEASE_NOTE:-"automated data release for fmway/inputs"}"
 
 collection_dir="$PWD/dev/collections.json"
 tag="data-$(date -u +%Y%m%d)"
@@ -53,10 +55,6 @@ jq -r 'to_entries[] | [.value.inputName, (.value.systems | join(" "))] | @tsv' "
     done
   done
 
-# Recreate the release so re-runs within one day overwrite it in place.
-gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
-gh release create "$tag" "$stag"/* --title "$tag" --notes "automated data release for fmway/inputs" >/dev/null
-
 # Write the lock the main flake reads at eval time (tag + per-asset SRI).
 sha_map='{}'
 while read -r key sha; do
@@ -64,3 +62,28 @@ while read -r key sha; do
 done <"$stag/.hashes"
 
 jq -n --arg tag "$tag" --argjson sha "$sha_map" '{tag: $tag, sha256: $sha}' >dev/data-lock.json
+
+if [ -z "$(git status --porcelain)" ]; then
+  echo "No changes to commit"
+  exit 0
+fi
+
+git config user.name "fmway[bot]"
+git config user.email "fm18lv@gmail.com"
+git add -A
+
+if [ "$(git log -1 --format=%s)" = "$COMMIT_MESSAGE" ]; then
+  # Squash into the previous identical bot commit instead of
+  # stacking another one on top.
+  echo "Amending previous identical commit"
+  git commit --amend --no-edit
+  git push --force-with-lease
+else
+  git commit -m "$COMMIT_MESSAGE"
+  git push
+fi
+
+# Recreate the release so re-runs within one day overwrite it in place.
+gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
+gh api -X DELETE "repos/$repo/git/refs/tags/$tag" 2>/dev/null || true
+gh release create "$tag" "$stag"/* --title "$tag" --notes "$RELEASE_NOTE" >/dev/null

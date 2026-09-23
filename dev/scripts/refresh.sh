@@ -18,18 +18,14 @@
 
 set -eu
 
+command -v jq >/dev/null || { echo "refresh.sh: jq is required (use \`nix run ./dev#refresh\`)" >&2; exit 1; }
+command -v nix-eval-jobs >/dev/null || { echo "refresh.sh: nix-eval-jobs is required (use \`nix run ./dev#refresh\`)" >&2; exit 1; }
+
 NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
 export NIX_CONFIG
 WORKERS="${WORKERS:-8}"
-NIX_EVAL_JOBS="${NIX_EVAL_JOBS:-nix-eval-jobs}"
 GCROOTS="$PWD/.gcroots"
 mkdir -p "$GCROOTS"
-
-command -v jq >/dev/null || { echo "refresh.sh: jq is required (use \`nix run ./dev#refresh\`)" >&2; exit 1; }
-command -v "$NIX_EVAL_JOBS" >/dev/null || {
-  echo "refresh.sh: $NIX_EVAL_JOBS is required (use \`nix run ./dev#refresh\`)" >&2
-  exit 1
-}
 
 # Inputs are declared in ./dev/flake.nix and pinned in ./dev/flake.lock;
 # metadata must be read from the dev flake, not the (empty) main flake.
@@ -84,11 +80,12 @@ while IFS= read -r key; do
     errs="$GCROOTS/refresh.err"
 
     echo "  evaluating packages.$system"
-    if "$NIX_EVAL_JOBS" \
+    if nix-eval-jobs \
       --workers "$WORKERS" \
       --gc-roots-dir "$GCROOTS" \
       --flake "./dev#inputs.$input.packages.$system" \
       --check-cache-status \
+      --meta \
       --option accept-flake-config true \
       >"$tmp" 2>"$errs"; then
       # nix-eval-jobs can report warnings but still exit 0; an empty snapshot
@@ -126,7 +123,8 @@ refine_leaves='
         name: $r.name,
         system: $r.system,
         outputs: ($r.outputs // {}),
-        drvPath: $r.drvPath
+        drvPath: $r.drvPath,
+        meta: ($r.meta | with_entries(select(.key | in({broken:1,insecure:1,unfree:1,unsupported:1,changelog:1,description:1,homepage:1,mainProgram:1}))))
       })
     end)'
 

@@ -58,7 +58,7 @@ in
   pname = (builtins.parseDrvName drvName).name;
   version = (builtins.parseDrvName drvName).version or entry.version or null;
   system = entry.system or null;
-  meta = { };
+  meta = entry.meta or { };
   outputs = outputNames;
   outputName = defaultOutput;
   outPath = outputsSet.${defaultOutput};

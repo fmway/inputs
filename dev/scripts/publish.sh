@@ -13,6 +13,7 @@
 # hasn't run yet).
 
 set -eu
+shopt -s nocasematch
 
 command -v jq >/dev/null || { echo "publish.sh: jq is required (use \`nix run ./dev#publish\`)" >&2; exit 1; }
 command -v gh >/dev/null || { echo "publish.sh: gh is required (use \`nix run ./dev#publish\`)" >&2; exit 1; }
@@ -20,7 +21,11 @@ command -v nix >/dev/null || { echo "publish.sh: nix is required (use \`nix run 
 
 NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
 export NIX_CONFIG
-COMMIT_MESSAGE="${COMMIT_MESSAGE:-"chore(inputs): refresh collection data"}"
+
+PREV_COMMIT="$(git log -1 --pretty=%B)"
+[[ "$PREV_COMMIT" =~ ^add[[:space:]] ]] &&
+  COMMIT_MESSAGE="${COMMIT_MESSAGE:-$PREV_COMMIT}" ||
+  COMMIT_MESSAGE="${COMMIT_MESSAGE:-"chore(inputs): refresh collection data"}"
 RELEASE_NOTE="${RELEASE_NOTE:-"automated data release for fmway/inputs"}"
 
 collection_dir="$PWD/dev/collections.json"

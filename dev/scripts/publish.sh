@@ -21,11 +21,13 @@ command -v nix >/dev/null || { echo "publish.sh: nix is required (use \`nix run 
 
 NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
 export NIX_CONFIG
-
+DEFAULT_COMMIT="chore(inputs): refresh collection data"
+DAILY="${DAILY:-0}"
 PREV_COMMIT="$(git log -1 --pretty=%B)"
 [[ "$PREV_COMMIT" =~ ^add[[:space:]] ]] &&
   COMMIT_MESSAGE="${COMMIT_MESSAGE:-$PREV_COMMIT}" ||
-  COMMIT_MESSAGE="${COMMIT_MESSAGE:-"chore(inputs): refresh collection data"}"
+  COMMIT_MESSAGE="${COMMIT_MESSAGE:-$DEFAULT_COMMIT}"
+[ "$DAILY" -eq 0 ] || COMMIT_MESSAGE="$DEFAULT_COMMIT"
 RELEASE_NOTE="${RELEASE_NOTE:-"automated data release for fmway/inputs"}"
 
 collection_dir="$PWD/dev/collections.json"

@@ -1,2 +1,4 @@
 .gcroots/
 data/
+result
+result-*

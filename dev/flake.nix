@@ -45,7 +45,16 @@
         ];
         outputs.__raw = "inputs: import ./outputs.nix inputs";
         nixConfig = builtins.zipAttrsWith (_: v: lib.unique (builtins.concatLists v))
-          (lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections);
+          ((lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections) ++ [
+            {
+              extra-trusted-substituters = [
+                "https://fmcachix.cachix.org"
+              ];
+              extra-trusted-public-keys = [
+                "fmcachix.cachix.org-1:Z5j9jk83ctoCK22EWrbQL6AAP3CTYnZ/PHljlYSakrw="
+              ];
+            }
+          ]);
       };
     in {
       inherit collections;

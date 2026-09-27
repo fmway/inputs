@@ -45,5 +45,16 @@
     },
     "aliases": [ "chaotic" ],
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ]
+  },
+  "nix-community/lanzaboote": {
+    "inputName": "lanzaboote",
+    "repo": "https://github.com/nix-community/lanzaboote",
+    "aliases": [ "lanzaboote" ],
+    "extraCaches": {
+      "substituters": [ "https://nix-community.cachix.org" ],
+      "trusted-public-keys": [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ]
+    },
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "tags": true
   }
 }

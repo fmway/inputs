@@ -10,6 +10,7 @@
 
       overlays.default = _: super: flake.packages.${super.stdenv.hostPlatform.system};
     };
+
     "StarryReverie/selector4nix" = flake: let
       withSystem = system: fn:
         fn { config.packages = flake.packages.${system}; };
@@ -25,6 +26,16 @@
         };
         default = overlays.selector4nix;
       };
+    };
+
+    "nix-community/lanzaboote" = flake: rec {
+      nixosModules.lanzaboote =
+        { lib, pkgs, ... }:
+        {
+          imports = [ "${flake}/nix/modules/lanzaboote.nix" ];
+          boot.lanzaboote.package = lib.mkDefault (flake.packages.${pkgs.stdenv.hostPlatform.system}.lzbt);
+        };
+      nixosModules.default = nixosModules.lanzaboote;
     };
   };
   importApply =

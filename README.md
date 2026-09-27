@@ -9,6 +9,7 @@ nixpkgs closure into your own flake.
 - [StarryReverie/selector4nix](https://github.com/StarryReverie/selector4nix) (alias: selector4nix)
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)
 - [moku-project/moku](https://github.com/moku-project/moku) (alias: moku)
+- [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
 <!--{% end %}-->
 

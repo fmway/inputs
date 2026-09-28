@@ -14,22 +14,14 @@
     selector4nix.url = "github:StarryReverie/selector4nix";
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
   };
 
   outputs =
     { self, nixpkgs, ... } @ inputs:
     let
-      recurseForLinux = pkgName:
-        lib.optionalAttrs (lib.hasPrefix "linuxPackages" pkgName) { recurseForDerivations = true; };
       overrideInput = {
-        nix-cachyos-kernel = { self, ... }: {
-          packages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
-            recurseForLinux pkgName // pkg)) self.legacyPackages;
-        };
         chaotic = { self, ... }: {
-          packages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
-            recurseForLinux pkgName // pkg)) self.unrestrictedPackages;
+          packages = self.unrestrictedPackages;
         };
       };
       systems = [

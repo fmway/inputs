@@ -1,21 +1,7 @@
 { self, ... }: let
   extraOutput = {
-    "xddxdd/nix-cachyos-kernel" = flake: rec {
-      packages = fixPackages flake.packages;
-      legacyPackages = packages;
-
-      overlay = overlays.pinned;
-      overlays.default = _: super: {
-        cachyosKernels = import "${flake}/loadPackages.nix" { nixpkgs.outPath = super.path; } super;
-      };
-      overlays.pinned = _: super: {
-        cachyosKernels = legacyPackages.${super.stdenv.hostPlatform.system};
-      };
-    };
-
-    "chaotic-cx/nyx" = flake: rec {
-      packages = fixPackages flake.packages;
-      legacyPackages = packages;
+    "chaotic-cx/nyx" = flake: {
+      legacyPackages = flake.outputs.legacyPackages;
       vendored = import "${flake}/vendor";
       # FIXME
       nixosModules = let r = removeAttrs (import "${flake.outPath}/modules/nixos" {}) [ "default" "nyx-cache" "nyx-overlay" "nyx-registry" ]; in
@@ -54,36 +40,6 @@
     };
   };
 
-  fixPackages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
-    (if hasPrefix "linuxPackages" pkgName then let k = normalizeKernelPackage pkg; in k // fakeExtendForKernel k else pkg) //
-    normalizeZfsPackage pkgName));
-
-  hasPrefix = prefix: str:
-    builtins.substring 0 (builtins.stringLength prefix) str == prefix;
-
-  normalizeZfsPackage = pkgName: if hasPrefix "zfs" pkgName then { kernelModuleAttribute = pkgName; } else {};
-
-  normalizeKernelPackage =
-    builtins.mapAttrs (pkgName: pkg: (normalizeZfsPackage pkgName) // pkg);
-
-  fakeExtendForKernel = pkg:
-  {
-    # FIXME
-    extend = fn: let
-      super = pkg // {
-        kernel = pkg.kernel // rec {
-          features = { efiBootStub = true; ia32Emulation = true; netfilterRPFilter = true; };
-          kernelPatches = [];
-          override = fn': let
-            r = (if builtins.isFunction fn' then fn' else _: fn') { inherit features kernelPatches; };
-          in if checkIfEmpty (removeAttrs r [ "features" ]) && r.features or {} == features then pkg.kernel else pkg.kernel.orig.override fn';
-        };
-      };
-      self = pkg // fn self super;
-    in self;
-      
-  };
-  checkIfEmpty = o: if o == {} || o == [] || isNull o || o == "" then true else if builtins.isAttrs o then builtins.all (k: checkIfEmpty o.${k}) (builtins.attrNames o) else false;
   importApply =
     modulePath: staticArgs:
     {

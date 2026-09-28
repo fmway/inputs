@@ -1,7 +1,8 @@
 { self, ... }: let
   extraOutput = {
     "xddxdd/nix-cachyos-kernel" = flake: rec {
-      legacyPackages = flake.packages;
+      packages = fixPackages flake.packages;
+      legacyPackages = packages;
 
       overlay = overlays.pinned;
       overlays.default = _: super: {
@@ -12,7 +13,9 @@
       };
     };
 
-    "chaotic-cx/nyx" = flake: {
+    "chaotic-cx/nyx" = flake: rec {
+      packages = fixPackages flake.packages;
+      legacyPackages = packages;
       vendored = import "${flake}/vendor";
       # FIXME
       nixosModules = let r = removeAttrs (import "${flake.outPath}/modules/nixos" {}) [ "default" "nyx-cache" "nyx-overlay" "nyx-registry" ]; in
@@ -50,6 +53,37 @@
       nixosModules.default = nixosModules.lanzaboote;
     };
   };
+
+  fixPackages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
+    (if hasPrefix "linuxPackages" pkgName then let k = normalizeKernelPackage pkg; in k // fakeExtendForKernel k else pkg) //
+    normalizeZfsPackage pkgName));
+
+  hasPrefix = prefix: str:
+    builtins.substring 0 (builtins.stringLength prefix) str == prefix;
+
+  normalizeZfsPackage = pkgName: if hasPrefix "zfs" pkgName then { kernelModuleAttribute = pkgName; } else {};
+
+  normalizeKernelPackage =
+    builtins.mapAttrs (pkgName: pkg: (normalizeZfsPackage pkgName) // pkg);
+
+  fakeExtendForKernel = pkg:
+  {
+    # FIXME
+    extend = fn: let
+      super = pkg // {
+        kernel = pkg.kernel // rec {
+          features = { efiBootStub = true; ia32Emulation = true; netfilterRPFilter = true; };
+          kernelPatches = [];
+          override = fn': let
+            r = (if builtins.isFunction fn' then fn' else _: fn') { inherit features kernelPatches; };
+          in if checkIfEmpty (removeAttrs r [ "features" ]) && r.features or {} == features then pkg.kernel else pkg.kernel.orig.override fn';
+        };
+      };
+      self = pkg // fn self super;
+    in self;
+      
+  };
+  checkIfEmpty = o: if o == {} || o == [] || isNull o || o == "" then true else if builtins.isAttrs o then builtins.all (k: checkIfEmpty o.${k}) (builtins.attrNames o) else false;
   importApply =
     modulePath: staticArgs:
     {
@@ -65,7 +99,7 @@
   getSource = input:
     fetchTree lock.nodes.${lock.nodes.root.inputs.${input}}.locked;
 
-  inputs = (import (getSource "flake-compat") { src = ./dev; }).outputs.inputs;
+  inputs = (import (getSource "flake-compat") { src = ./dev; }).outputs.outputs.inputs;
 
   allSystems = uniq (builtins.concatLists (builtins.catAttrs "systems" (builtins.attrValues collections)));
 

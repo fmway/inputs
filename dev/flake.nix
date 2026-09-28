@@ -20,14 +20,16 @@
   outputs =
     { self, nixpkgs, ... } @ inputs:
     let
+      recurseForLinux = pkgName:
+        lib.optionalAttrs (lib.hasPrefix "linuxPackages" pkgName) { recurseForDerivations = true; };
       overrideInput = {
-        nix-cachyos-kernel = { self, ... }: { packages = self.legacyPackages; };
-        chaotic = { self, ... }:
-        {
-          packages = let
-            packageNames = lib.unique (map (s:
-              if lib.hasInfix "." s then builtins.head (lib.splitString "." s) else s) (builtins.attrNames self.packages.x86_64-linux));
-          in lib.genAttrs systems (system: lib.genAttrs packageNames (pname: self.unrestrictedPackages.${system}.${pname}));
+        nix-cachyos-kernel = { self, ... }: {
+          packages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
+            recurseForLinux pkgName // pkg)) self.legacyPackages;
+        };
+        chaotic = { self, ... }: {
+          packages = builtins.mapAttrs (_: builtins.mapAttrs (pkgName: pkg:
+            recurseForLinux pkgName // pkg)) self.unrestrictedPackages;
         };
       };
       systems = [

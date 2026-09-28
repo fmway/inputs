@@ -23,7 +23,7 @@ command -v nix-eval-jobs >/dev/null || { echo "refresh.sh: nix-eval-jobs is requ
 
 NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
 export NIX_CONFIG
-WORKERS="${WORKERS:-8}"
+WORKERS="${WORKERS:-4}"
 GCROOTS="$PWD/.gcroots"
 mkdir -p "$GCROOTS"
 

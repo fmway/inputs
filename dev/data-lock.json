@@ -9,9 +9,9 @@
     "selector4nix-aarch64-linux": "sha256-HU94vXvYUIpYXVf0BvxV8RsGa5Ki80eTbQHs03ttClQ=",
     "selector4nix-x86_64-darwin": "sha256-w+MMSE4kz4f4CUf4my1wkXijQqY9YNEnFfBqy1BR13s=",
     "selector4nix-x86_64-linux": "sha256-5opuBtdcIbwdozXj/AoFXAjc6V99DiWUjcv3aN8qbLE=",
-    "chaotic-aarch64-darwin": "sha256-o1cdxgWtblmzIiuRzHwrkWoamGqK0ZSzlGQx3W8e22I=",
-    "chaotic-aarch64-linux": "sha256-b4zisH6VhRDwemm5X8BFL4rMeDMo7WsH8s5ENE5q8/E=",
-    "chaotic-x86_64-linux": "sha256-TQfM/p4WqICfU44rulp9UxmIBrIG/QUx4MRiY3jWkUE=",
+    "chaotic-aarch64-darwin": "sha256-4urwGKQcjX2vbglZjDHfuczFAZvoAzgoykjjNnDiE6g=",
+    "chaotic-aarch64-linux": "sha256-it/yXJO2yC/2LERmoaqFjR2YBJJ5AKFyiO/MnuPwHvo=",
+    "chaotic-x86_64-linux": "sha256-84D4Qe6mMdiXGvFr6KKo6ch5BPbdOC+r3H/0rSO/xfM=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "nix-cachyos-kernel-x86_64-linux": "sha256-TO4Ogf5+MBEbxGZIYfYBkzh63drKuXczM6wPlsYTWCg="

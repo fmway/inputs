@@ -56,5 +56,15 @@
     },
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true
+  },
+  "xddxdd/nix-cachyos-kernel": {
+    "inputName": "nix-cachyos-kernel",
+    "repo": "https://github.com/xddxdd/nix-cachyos-kernel",
+    "aliases": [ "nix-cachyos-kernel" ],
+    "extraCaches": {
+      "substituters": [ "https://attic.xuyh0120.win/lantian" ],
+      "trusted-public-keys": [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ]
+    },
+    "systems": [ "x86_64-linux" ]
   }
 }

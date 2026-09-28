@@ -1,5 +1,17 @@
 { self, ... }: let
   extraOutput = {
+    "xddxdd/nix-cachyos-kernel" = flake: rec {
+      legacyPackages = flake.packages;
+
+      overlay = overlays.pinned;
+      overlays.default = _: super: {
+        cachyosKernels = import "${flake}/loadPackages.nix" { nixpkgs.outPath = super.path; } super;
+      };
+      overlays.pinned = _: super: {
+        cachyosKernels = legacyPackages.${super.stdenv.hostPlatform.system};
+      };
+    };
+
     "chaotic-cx/nyx" = flake: {
       vendored = import "${flake}/vendor";
       # FIXME

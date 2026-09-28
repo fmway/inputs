@@ -14,12 +14,14 @@
     selector4nix.url = "github:StarryReverie/selector4nix";
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
   };
 
   outputs =
     { self, nixpkgs, ... } @ inputs:
     let
       overrideInput = {
+        nix-cachyos-kernel = { self, ... }: { packages = self.legacyPackages; };
         chaotic = { self, ... }:
         {
           packages = let

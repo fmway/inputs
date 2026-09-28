@@ -11,6 +11,7 @@ nixpkgs closure into your own flake.
 - [moku-project/moku](https://github.com/moku-project/moku) (alias: moku)
 - [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
+- [xddxdd/nix-cachyos-kernel](https://github.com/xddxdd/nix-cachyos-kernel) (alias: nix-cachyos-kernel)
 <!--{% end %}-->
 
 ## Usage

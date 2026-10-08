@@ -56,5 +56,13 @@
     },
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true
+  },
+  "Mic92/direnv-instant": {
+    "inputName": "direnv-instant",
+    "repo": "https://github.com/Mic92/direnv-instant",
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
+    "aliases": [ "direnv-instant" ],
+    "tags": true,
+    "build": true
   }
 }

@@ -1,17 +1,17 @@
 {
-  "tag": "data-20261007",
+  "tag": "data-20261008",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-KTY7c6k4WmjboldVmWIUg7PKDxU8KL2X+7GMr6HtTMo=",
-    "llm-agents-aarch64-linux": "sha256-g6yJ8+T8b0YKP39pzErm0o02nXNRUMUSkzsPUk/syws=",
-    "llm-agents-x86_64-linux": "sha256-PAL2XwfSUNIZP3OO3J+SPCdlmOUhS04SXZ8Uq0z6F1M=",
+    "llm-agents-aarch64-darwin": "sha256-Xz+rh5729HJY+dbspPzDI4ohh4k5qtw3xvE9puFdXW8=",
+    "llm-agents-aarch64-linux": "sha256-kEqOsipT9sEj+p0waF9VkDvsk01BLAz3HH9GOrNJqsY=",
+    "llm-agents-x86_64-linux": "sha256-7Mrz58+lni+b+YZuhF2Tzw5x3wsUq1AvLsF3RTN7UCc=",
     "moku-x86_64-linux": "sha256-DDMYxk5ZdaimrZlGHyfhKn/ZIywMz1ky1eZuZc1AEZ0=",
-    "selector4nix-aarch64-darwin": "sha256-g1mEFAYdHbngmk2Yex4PZzuDyPhbmYpZtm8Px9cZOVQ=",
-    "selector4nix-aarch64-linux": "sha256-RxYMrHLedQudppBLrGzD4zXyaS+7REP9WOfAOyZmIPc=",
+    "selector4nix-aarch64-darwin": "sha256-Dtoo4guEPxBMCjD6lTLUL7xsY/tDTb99aYqgp423tow=",
+    "selector4nix-aarch64-linux": "sha256-pps6I5hshKwfU9AP3AVGW/rRDk0Tez/ErT51LkG6w8Q=",
     "selector4nix-x86_64-darwin": "sha256-w+MMSE4kz4f4CUf4my1wkXijQqY9YNEnFfBqy1BR13s=",
-    "selector4nix-x86_64-linux": "sha256-HqtJ5l7acJPDG3nys1JAYPMLha4u5zx50Rq5IFoUytk=",
-    "chaotic-aarch64-darwin": "sha256-diIOM5y7FnJrERkq/VFclMpg76qEtPLSQyheyIWANRw=",
-    "chaotic-aarch64-linux": "sha256-YZR8uXJmWX2mcvSJZc8oc98iEtww8+H0hlkQIkWkqSM=",
-    "chaotic-x86_64-linux": "sha256-YBABjIzg/b1+82CB72Jf/wC+7tMgXu3mLFXKBEUvLEk=",
+    "selector4nix-x86_64-linux": "sha256-O/M5d4ZXRQ+/BnYVMQmTjSzX4UV/xT/etEV0dT78GN0=",
+    "chaotic-aarch64-darwin": "sha256-VInMlqJxhIzpSriPWdA0xBeFGiq7QY83Hm4zi3uZasw=",
+    "chaotic-aarch64-linux": "sha256-cmeAA2B5sd0k13eZfn4MS0PwQYJWWn/W1nn8H0hEg+c=",
+    "chaotic-x86_64-linux": "sha256-BVKntSRdQFISZa+yMaV9qdx+43m7AwyIPAUd2PjNBRE=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8="
   }

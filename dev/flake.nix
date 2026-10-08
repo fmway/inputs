@@ -78,24 +78,10 @@
         in "${pkg}/bin/publish";
 
         readme.type = "app";
-        readme.program = let
-          var = { prefix = "<!--{"; postfix = "}-->"; inherit collections lib; };
-          txt = lib.fmway.mkParse' var (builtins.readFile ../README.md);
-          pkg = pkgs.writeScript "gen-readme.sh" /* bash */ ''
-            #!${lib.getExe pkgs.bash}
-
-            output="''${1:-/dev/stdout}"
-            cat ${pkgs.writeText "README.md" txt} > $output
-          '';
-        in "${pkg}";
+        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections lib; source = ../README.md; }}";
 
         flake.type = "app";
-        flake.program = "${pkgs.writeScript "gen-flake.sh" /* bash */ ''
-          #!${lib.getExe pkgs.bash}
-
-          output="''${1:-/dev/stdout}"
-          cat ${pkgs.writeText "flake.nix" (lib.fmway.genNix flake)} > $output
-        ''}";
+        flake.program = "${lib.fmway.genNix.mkScript pkgs flake}";
       });
 
       devShells = forAllSystems (

@@ -156,7 +156,7 @@ nix run ./dev#flake flake.nix
 ```
 
 `readme` regenerates the "Current flakes" section from `dev/collections.json`
-via `fmway-lib`'s `mkParse'` (template markers `<!--{% ... %}-->`); `flake`
+via `fmway-lib`'s `parse` (template markers `<!--{% ... %}-->`); `flake`
 regenerates the main `flake.nix` via `lib.fmway.genNix` on the `flake` spec in
 `dev/flake.nix`.
 

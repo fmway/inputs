@@ -33,10 +33,30 @@
       nixosModules.lanzaboote =
         { lib, pkgs, ... }:
         {
+          key = "nixos-community/lanzaboote.module.nixos";
           imports = [ "${flake}/nix/modules/lanzaboote.nix" ];
-          boot.lanzaboote.package = lib.mkDefault (flake.packages.${pkgs.stdenv.hostPlatform.system}.lzbt);
+          boot.lanzaboote.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.lzbt;
         };
       nixosModules.default = nixosModules.lanzaboote;
+    };
+
+    "Mic92/direnv-instant" = flake: rec {
+      nixosModules.direnv-instant =
+        { lib, pkgs, ... }:
+        {
+          key = "Mic92/direnv-instant.module.nixos";
+          imports = [ "${flake}/nixos.nix" ];
+          programs.direnv-instant.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.direnv-instant;
+        };
+      nixosModules.default = nixosModules.direnv-instant;
+
+      homeModules.direnv-instant =
+        { lib, pkgs, ... }:
+        {
+          key = "Mic92/direnv-instant.module.homeManager";
+          imports = [ "${flake}/home.nix" ];
+          programs.direnv-instant.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.direnv-instant;
+        };
     };
   };
 

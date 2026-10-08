@@ -1,18 +1,21 @@
 {
   "tag": "data-20261008",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-Xz+rh5729HJY+dbspPzDI4ohh4k5qtw3xvE9puFdXW8=",
-    "llm-agents-aarch64-linux": "sha256-kEqOsipT9sEj+p0waF9VkDvsk01BLAz3HH9GOrNJqsY=",
-    "llm-agents-x86_64-linux": "sha256-7Mrz58+lni+b+YZuhF2Tzw5x3wsUq1AvLsF3RTN7UCc=",
+    "llm-agents-aarch64-darwin": "sha256-YR/AezVF9h9CZQy1K2KglRXHNy+TWdNJVtUujLEvE98=",
+    "llm-agents-aarch64-linux": "sha256-8kApQ8TFIamrlzTM0FXJ2jO0isyyar0wOK4x2YdU7uE=",
+    "llm-agents-x86_64-linux": "sha256-K0osGgoH2o65WnFo0Weswr7CJDV0c5TlPtGTjPoQW0I=",
     "moku-x86_64-linux": "sha256-DDMYxk5ZdaimrZlGHyfhKn/ZIywMz1ky1eZuZc1AEZ0=",
-    "selector4nix-aarch64-darwin": "sha256-Dtoo4guEPxBMCjD6lTLUL7xsY/tDTb99aYqgp423tow=",
-    "selector4nix-aarch64-linux": "sha256-pps6I5hshKwfU9AP3AVGW/rRDk0Tez/ErT51LkG6w8Q=",
+    "selector4nix-aarch64-darwin": "sha256-e+dOMVQVD4bnmX0F01hMXPOIstHR07m5BMFQw/kpaK0=",
+    "selector4nix-aarch64-linux": "sha256-sle6IPKjUUsnMYPxxarKXErTV8DMSPk/xfgtUExueB8=",
     "selector4nix-x86_64-darwin": "sha256-w+MMSE4kz4f4CUf4my1wkXijQqY9YNEnFfBqy1BR13s=",
-    "selector4nix-x86_64-linux": "sha256-O/M5d4ZXRQ+/BnYVMQmTjSzX4UV/xT/etEV0dT78GN0=",
-    "chaotic-aarch64-darwin": "sha256-VInMlqJxhIzpSriPWdA0xBeFGiq7QY83Hm4zi3uZasw=",
-    "chaotic-aarch64-linux": "sha256-cmeAA2B5sd0k13eZfn4MS0PwQYJWWn/W1nn8H0hEg+c=",
+    "selector4nix-x86_64-linux": "sha256-fkts8WfNr1UqDrBnHBaUR0qo3oR4SEZvj7ZyelBMRUw=",
+    "chaotic-aarch64-darwin": "sha256-Oy/RTuv6Hyg7GoZMQunexihDoQSuU2JQey8gld1/OpQ=",
+    "chaotic-aarch64-linux": "sha256-YvpRAPdLwlj5vx8PfCVctAWxkS6gbSzRU5AiREWWyus=",
     "chaotic-x86_64-linux": "sha256-BVKntSRdQFISZa+yMaV9qdx+43m7AwyIPAUd2PjNBRE=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
-    "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8="
+    "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
+    "direnv-instant-aarch64-darwin": "sha256-OTddYTSPrg7vVpTgiUTSL/UaWLB0+z1vltb9SjWjWww=",
+    "direnv-instant-aarch64-linux": "sha256-puwqA9lW3DljDSBVaSDXpJKg1zsyuGKqamN9l/hfzW0=",
+    "direnv-instant-x86_64-linux": "sha256-KS20ZNw7ZfbLCjazoedVbeqnZUsGe/9yF+GrlqoySwc="
   }
 }

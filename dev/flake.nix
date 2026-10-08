@@ -14,6 +14,7 @@
     selector4nix.url = "github:StarryReverie/selector4nix";
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
+    direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
   };
 
   outputs =

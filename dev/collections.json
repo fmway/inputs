@@ -9,17 +9,6 @@
     "aliases": [ "llm-agents" ],
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ]
   },
-  "moku-project/moku": {
-    "inputName": "moku",
-    "repo": "https://github.com/moku-project/moku",
-    "extraCaches": {
-      "substituters": [ "https://moku.cachix.org" ],
-      "trusted-public-keys": [ "moku.cachix.org-1:EnMXp6/uQVI6IRbKW0xEQylSYoV2N4vszOsoW6/Pq1s=" ]
-    },
-    "aliases": [ "moku" ],
-    "systems": [ "x86_64-linux" ],
-    "tags": true
-  },
   "StarryReverie/selector4nix": {
     "inputName": "selector4nix",
     "repo": "https://github.com/StarryReverie/selector4nix",

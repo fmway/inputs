@@ -4,7 +4,6 @@
     "llm-agents-aarch64-darwin": "sha256-NvRIafpdQX/IqCNCvLAsAQ4ME+cNhSpOWdtygBHQ6sc=",
     "llm-agents-aarch64-linux": "sha256-eY/qgHlT5Is3Euy0TDcRgzxDao/eBy+04i0StAb3duI=",
     "llm-agents-x86_64-linux": "sha256-pcM9KtTKBjnKJnscOgfrA+HqCDdEtNwm36KV+ZYEf7Y=",
-    "moku-x86_64-linux": "sha256-DDMYxk5ZdaimrZlGHyfhKn/ZIywMz1ky1eZuZc1AEZ0=",
     "selector4nix-aarch64-darwin": "sha256-TPrYRVPpLyEm9KyztJNP4iDSVAiONnKPRV50l8ZJ7G4=",
     "selector4nix-aarch64-linux": "sha256-h+k8LRn4kgda5xXpnUi34P6OPII4YppN9zGKnznyZcM=",
     "selector4nix-x86_64-darwin": "sha256-w+MMSE4kz4f4CUf4my1wkXijQqY9YNEnFfBqy1BR13s=",

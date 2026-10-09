@@ -169,7 +169,7 @@ README/flake.nix — never `data/`). It also triggers on pushes touching
 manually when needed.
 
 Inputs marked `"tags": true` are pinned to a release **tag** (e.g.
-`github:moku-project/moku/v0.13.1`). Before locking, CI queries
+`github:nix-community/lanzaboote/v1.2.0`). Before locking, CI queries
 `repos/<owner>/<repo>/releases/latest` and rewrites the tag in `dev/flake.nix`
 to the newest release, so these inputs move forward without manual edits.
 

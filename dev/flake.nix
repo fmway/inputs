@@ -10,7 +10,6 @@
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-    moku.url = "github:moku-project/moku/v0.13.1";
     selector4nix.url = "github:StarryReverie/selector4nix";
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";

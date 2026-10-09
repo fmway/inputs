@@ -25,6 +25,7 @@ NIX_CONFIG="${NIX_CONFIG:-experimental-features = nix-command flakes}"
 export NIX_CONFIG
 WORKERS="${WORKERS:-4}"
 GCROOTS="$PWD/.gcroots"
+UPDATED="${UPDATED:-""}"
 mkdir -p "$GCROOTS"
 
 # Inputs are declared in ./dev/flake.nix and pinned in ./dev/flake.lock;
@@ -46,7 +47,9 @@ jq -r 'keys[]' "$collection_file" >"$keys_tmp"
 while IFS= read -r key; do
   input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
   ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
+  fetch=1
   [ -n "$ref" ] || continue
+  [ -z "$UPDATED" ] || [[ "$(jq -r --arg input "$input" '. as $up | $input | IN($up[])' <<<"$UPDATED")" = "true" ]] || fetch=0
 
   echo "collecting $input ($key)"
   echo "  flake: $ref"
@@ -80,7 +83,11 @@ while IFS= read -r key; do
     errs="$GCROOTS/refresh.err"
 
     echo "  evaluating packages.$system"
-    if nix-eval-jobs \
+    if [ "$fetch" -eq 0 ]; then
+      echo "skip: etected same resource, download the previous data"
+      # TODO: auto url
+      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$input-$system.json" | jq -r .storePath)" "data/$input/$system.json"
+    elif nix-eval-jobs \
       --workers "$WORKERS" \
       --gc-roots-dir "$GCROOTS" \
       --flake "./dev#inputs.$input.packages.$system" \

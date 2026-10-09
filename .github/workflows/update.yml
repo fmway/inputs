@@ -13,51 +13,44 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ci
+  cancel-in-progress: true
+
 jobs:
-  update:
+  init:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    outputs:
+      substituters: ${{ steps.setup.outputs.substituters }}
+      trusted-keys: ${{ steps.setup.outputs.trusted-keys }}
+      inputs: ${{ steps.setup.outputs.inputs }}
+      build: ${{ steps.update.outputs.build }}
+      updated: ${{ steps.update.outputs.updated }}
+      nix-config: |
+        experimental-features = nix-command flakes
+        substituters = https://cache.nixos.org/ https://fmcachix.cachix.org ${{ steps.setup.outputs.substituters }}
+        trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= fmcachix.cachix.org-1:Z5j9jk83ctoCK22EWrbQL6AAP3CTYnZ/PHljlYSakrw= ${{ steps.setup.outputs.trusted-keys }}
+        
     steps:
     - name: Checkout
       uses: actions/checkout@v7
       with:
         fetch-depth: 0
-
     - name: Extract data from dev/collections.json
       id: setup
       run: |
         inputs="$(jq -r '[.[].inputName] | join(" ")' dev/collections.json)"
         substituters="$(jq -r '([.[] | .extraCaches.substituters // empty] | add // []) | unique | join(" ")' dev/collections.json)"
         keys="$(jq -r '([.[] | .extraCaches."trusted-public-keys" // empty] | add // []) | unique | join(" ")' dev/collections.json)"
-        build="$(jq -r 'map(select(.build == true or (.build | type) == "array")) | length > 0' dev/collections.json)"
         echo "substituters=$substituters" >> "$GITHUB_OUTPUT"
         echo "trusted-keys=$keys" >> "$GITHUB_OUTPUT"
         echo "inputs=$inputs" >> "$GITHUB_OUTPUT"
-        echo "build=$build" >> "$GITHUB_OUTPUT"
-
-    - uses: wimpysworld/nothing-but-nix@main
-      if: ${{ steps.setup.outputs.build == 'true' }}
-      with:
-        hatchet-protocol: 'rampage'
-        root-safe-haven: '3072'
-        mnt-safe-haven: '2048'
 
     - name: Install Nix
       uses: cachix/install-nix-action@v31
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          substituters = https://cache.nixos.org/ ${{ steps.setup.outputs.substituters }}
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= ${{ steps.setup.outputs.trusted-keys }}
-          ${{ steps.setup.outputs.build == 'true' && 'build-dir = /nix/build' || '' }}
-
-    - uses: cachix/cachix-action@master
-      if: ${{ steps.setup.outputs.build == 'true' }}
-      with:
-        name: fmcachix
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-        skipAddingSubstituter: true
+        extra_nix_config: ${{ needs.init.outputs.nix-config }}
 
     - name: Bump tagged inputs to their newest release
       run: |
@@ -71,8 +64,57 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Update dev flake inputs
+      id: update
+      run: |
+        nix flake update --flake path:./dev ${{ needs.init.outputs.inputs }}
+        updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
+        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array") and (.inputName | IN($updated[])))) | length > 0' dev/collections.json)"
+        echo "updated=$updated" | tee --append "$GITHUB_OUTPUT"
+        echo "build=$build" | tee --append "$GITHUB_OUTPUT"
+
+    - uses: actions/upload-artifact@v7
+      with:
+        name: flake
+        path: |
+          ./dev/flake.lock
+          ./dev/flake.nix
+  build:
+    if: ${{ needs.init.outputs.build == 'true' }}
+    runs-on: ubuntu-latest
+    needs: [init]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+
+    - uses: wimpysworld/nothing-but-nix@main
+      with:
+        hatchet-protocol: 'rampage'
+        root-safe-haven: '3072'
+        mnt-safe-haven: '2048'
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v31
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+        extra_nix_config: ${{ needs.init.outputs.nix-config }}
+
+    - uses: cachix/cachix-action@master
+      with:
+        name: fmcachix
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        skipAddingSubstituter: true
+
+    - uses: actions/download-artifact@v8
+      with:
+        name: flake
+        path: ./dev
+
     - name: Build all inputs that required to build
-      if: ${{ steps.setup.outputs.build == 'true' }}
+      env:
+        updated: ${{ needs.init.outputs.updated }}
       run: |
         while IFS=$'\t' read -r name package; do
           # Only support x86_64-linux for now
@@ -80,13 +122,36 @@ jobs:
           package="$(awk "{for(i=1;i<=NF;i++) \$i=\"./dev#inputs.$name.packages.x86_64-linux.\"\$i} 1" <<<"$package")"
 
           nix build --out-link "result/$name" $package --verbose
-        done < <(jq -r '.[] | select(.build == true or (.build | type) == "array") | [.inputName, (if .build == true then "all" else (.build | join (" ")) end)] | @tsv' dev/collections.json)
+        done < <(jq -r "$updated"' as $updated | .[] | select((.build == true or (.build | type) == "array") and (.inputName | IN($updated[]))) | [.inputName, (if .build == true then "all" else (.build | join (" ")) end)] | @tsv' dev/collections.json)
 
-    - name: Update dev flake inputs
-      run: nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
+    - name: GC clean
+      run: nix-collect-garbage -d
+  update:
+    if: ${{ always() && needs.init.result == 'success' && needs.build.result != 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    needs: [init, build]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v31
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+        extra_nix_config: ${{ needs.init.outputs.nix-config }}
+
+    - uses: actions/download-artifact@v8
+      with:
+        name: flake
+        path: ./dev
 
     - name: Refresh derivation data
       run: nix run ./dev#refresh
+      env:
+        UPDATED: ${{ needs.init.outputs.updated }}
 
     - name: Update Readme
       run: nix run ./dev#readme README.md
@@ -99,7 +164,3 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DAILY: ${{ github.event_name == 'schedule' && 1 || 0 }}
       run: nix run ./dev#publish
-
-    - name: GC clean
-      if: ${{ steps.setup.outputs.build == 'true' }}
-      run: nix-collect-garbage -d

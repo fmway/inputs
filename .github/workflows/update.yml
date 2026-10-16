@@ -26,11 +26,12 @@ jobs:
       inputs: ${{ steps.setup.outputs.inputs }}
       build: ${{ steps.update.outputs.build }}
       updated: ${{ steps.update.outputs.updated }}
+      matrix: ${{ steps.update.outputs.matrix }}
       nix-config: |
         experimental-features = nix-command flakes
         substituters = https://cache.nixos.org/ https://fmcachix.cachix.org ${{ steps.setup.outputs.substituters }}
         trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= fmcachix.cachix.org-1:Z5j9jk83ctoCK22EWrbQL6AAP3CTYnZ/PHljlYSakrw= ${{ steps.setup.outputs.trusted-keys }}
-        
+
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -70,8 +71,19 @@ jobs:
         nix flake update --flake path:./dev ${{ needs.init.outputs.inputs }}
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
         build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array") and (.inputName | IN($updated[])))) | length > 0' dev/collections.json)"
+        matrix="$(jq -c "$updated"' as $updated
+          | . as $collections
+          | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
+              system: $sys,
+              runner: (if $sys == "aarch64-linux" then "ubuntu-24.04-arm" else "ubuntu-latest" end),
+              inputs: ([$collections[] | select((.build == true or (.build | type) == "array")
+                                    and (.inputName | IN($updated[]))
+                                    and (.systems // [] | index($sys)))
+                          | { inputName: .inputName, packages: (if .build == true then "all" else (.build | join (" ")) end) }])
+            }) | map(select(.inputs | length > 0))' dev/collections.json)"
         echo "updated=$updated" | tee --append "$GITHUB_OUTPUT"
         echo "build=$build" | tee --append "$GITHUB_OUTPUT"
+        echo "matrix=$matrix" | tee --append "$GITHUB_OUTPUT"
 
     - uses: actions/upload-artifact@v7
       with:
@@ -81,8 +93,12 @@ jobs:
           ./dev/flake.nix
   build:
     if: ${{ needs.init.outputs.build == 'true' }}
-    runs-on: ubuntu-latest
     needs: [init]
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.init.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -112,17 +128,18 @@ jobs:
         name: flake
         path: ./dev
 
-    - name: Build all inputs that required to build
+    - name: Build inputs for ${{ matrix.system }}
       env:
-        updated: ${{ needs.init.outputs.updated }}
+        system: ${{ matrix.system }}
+        inputs: ${{ toJson(matrix.inputs) }}
       run: |
         while IFS=$'\t' read -r name package; do
-          # Only support x86_64-linux for now
-          [[ "$package" != "all" ]] || package="$(nix eval ./dev#inputs.$name.packages.x86_64-linux --apply 'x: builtins.concatStringsSep " " (builtins.attrNames x)' --raw)"
-          package="$(awk "{for(i=1;i<=NF;i++) \$i=\"./dev#inputs.$name.packages.x86_64-linux.\"\$i} 1" <<<"$package")"
+          [[ -z "$name" ]] && continue
+          [[ "$package" != "all" ]] || package="$(nix eval ./dev#inputs.$name.packages.$system --apply 'x: builtins.concatStringsSep " " (builtins.attrNames x)' --raw)"
+          package="$(awk "{for(i=1;i<=NF;i++) \$i=\"./dev#inputs.$name.packages.$system.\"\$i} 1" <<<"$package")"
 
           nix build --out-link "result/$name" $package --verbose
-        done < <(jq -r "$updated"' as $updated | .[] | select((.build == true or (.build | type) == "array") and (.inputName | IN($updated[]))) | [.inputName, (if .build == true then "all" else (.build | join (" ")) end)] | @tsv' dev/collections.json)
+        done < <(jq -r '.[] | [.inputName, .packages] | @tsv' <<<"$inputs")
 
     - name: GC clean
       run: nix-collect-garbage -d

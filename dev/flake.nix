@@ -14,6 +14,10 @@
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
+
+    # artcraft
+    filmcraft.url = "github:storytold/filmcraft/v0.8.0";
+    filmcraft.flake = false;
   };
 
   outputs =
@@ -26,9 +30,31 @@
       };
 
       overrideBuilders = {
+        artcraft.pdfcraft = self:
+          self.overrideAttrs (old: let
+            attributions = fromTOML (builtins.readFile "${old.src}/ATTRIBUTION.toml");
+          in {
+            postInstall = old.postInstall or "" + lib.concatMapStrings (x: /* sh */ ''
+              cp "${builtins.fetchurl { inherit (x) url sha256; }}" "$out/share/$pname/${x.file}"
+              cp "${builtins.fetchurl { url = x.license_url; sha256 = x.license_sha256; }}" "$out/share/$pname/${x.file}.LICENSE.txt"
+            '') (builtins.filter (x: x.kind == "model") attributions.fetched);
+          });
+
+        # TODO: add driver support
+        artcraft.filmcraft = self:
+          self.overrideAttrs (o: {
+            patches = o.patches or [] ++ [
+              ./patches/no-ensure-desktop-filmcraft.patch
+            ];
+           });
       };
 
       builders = {
+        artcraft = system: { inputName, ... }:
+          nixpkgs.legacyPackages.${system}.callPackage ./artcraft.nix {
+            name = inputName;
+            source = inputs.${inputName};
+          };
       };
       systems = [
         "x86_64-linux"

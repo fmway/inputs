@@ -28,6 +28,12 @@ nixpkgs closure into your own flake.
 
 ## Custom packages
 <!--{% (_: custom_packages) %}-->
+<details>
+  <summary>artcraft</summary>
+
+  - [filmcraft](https://github.com/storytold/filmcraft)
+</details>
+
 <!--{% end %}-->
 
 ## Usage

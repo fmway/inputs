@@ -1,4 +1,4 @@
-name: daily-update
+name: ci
 on:
   push:
     paths:
@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: ci
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name != 'schedule' }}
 
 jobs:
   init:

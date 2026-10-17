@@ -43,17 +43,22 @@ keys_tmp="$(mktemp)"
 trap 'rm -f "$keys_tmp"' EXIT HUP INT TERM
 jq -r 'keys[]' "$collection_file" >"$keys_tmp"
 
+rm -rf data
+
 #### Collect
 while IFS= read -r key; do
   input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
   ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
+  group="$(jq -r --arg k "$key" '.[$k].group // ""' "$collection_file")"
+  [ -z "$group" ] && name="$input" || name="$group"
+  
   fetch=1
   [ -n "$ref" ] || continue
   [ -z "$UPDATED" ] || [[ "$(jq -r --arg input "$input" '. as $up | $input | IN($up[])' <<<"$UPDATED")" = "true" ]] || fetch=0
 
   echo "collecting $input ($key)"
   echo "  flake: $ref"
-  mkdir -p "data/$input"
+  mkdir -pv "data/$name"
 
   systems="$(jq -r --arg k "$key" '.[$k].systems[]' "$collection_file" | tr '\n' ' ')" || true
   if [ -z "${systems%% }" ]; then
@@ -62,43 +67,33 @@ while IFS= read -r key; do
   fi
   printf '  systems: %s\n' "$systems"
 
-  # Prune any previously collected system the flake no longer provides
-  # (including stale placeholder jsons for systems that are now absent).
-  for old in data/"$input"/*.jsonl data/"$input"/*.json; do
-    [ -e "$old" ] || continue
-    s="$(basename "$old" .jsonl)"
-    s="$(basename "$s" .json)"
-    case " $systems " in
-      *" $s "*) ;;
-      *)
-        rm -f -- "$old"
-        echo "  pruned: $s (no longer provided upstream)" >&2
-        ;;
-    esac
-  done
-
   for system in $systems; do
-    out="data/$input/$system.jsonl"
+    out="data/$name/$system.jsonl"
     tmp="$out.tmp"
     errs="$GCROOTS/refresh.err"
 
     echo "  evaluating packages.$system"
-    if [ "$fetch" -eq 0 ]; then
-      echo "skip: etected same resource, download the previous data"
+    opts=(
+      --workers "$WORKERS"
+      --gc-roots-dir "$GCROOTS"
+      --check-cache-status
+      --meta
+      --option accept-flake-config true
+    )
+    [ -z "$group" ] && opts+=( --flake "./dev#inputs.$name.packages.$system" ) || opts+=( --flake "./dev#inputs.$name.packages.$system.$input" )
+    if [ -z "$group" ] && [ "$fetch" -eq 0 ]; then
+      echo "skip: detected same resource, download the previous data"
       # TODO: auto url
-      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$input-$system.json" | jq -r .storePath)" "data/$input/$system.json"
-    elif nix-eval-jobs \
-      --workers "$WORKERS" \
-      --gc-roots-dir "$GCROOTS" \
-      --flake "./dev#inputs.$input.packages.$system" \
-      --check-cache-status \
-      --meta \
-      --option accept-flake-config true \
-      >"$tmp" 2>"$errs"; then
+      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$name-$system.json" | jq -r .storePath)" "data/$name/$system.json"
+    elif nix-eval-jobs "${opts[@]}" >"$tmp" 2>"$errs"; then
       # nix-eval-jobs can report warnings but still exit 0; an empty snapshot
       # usually means the attribute does not exist upstream.
       if [ -s "$tmp" ]; then
-        mv "$tmp" "$out"
+        if [ -z "$group" ]; then
+          mv "$tmp" "$out"
+        else
+          jq -c --arg attr "$input" '. + { attr: $attr, attrPath: [ $attr ] }' "$tmp" >> "$out"
+        fi
         echo "    ok: $(wc -l <"$out") records"
       else
         rm -f "$tmp"
@@ -135,8 +130,7 @@ refine_leaves='
       })
     end)'
 
-jq -r 'keys[]' "$collection_file" | while IFS= read -r key; do
-  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
+jq -r '([(.[] | .group // .inputName)] | unique)[]' "$collection_file" | while IFS= read -r input; do
   for jsonl in data/"$input"/*.jsonl; do
     [ -e "$jsonl" ] || continue
     system="$(basename "$jsonl" .jsonl)"

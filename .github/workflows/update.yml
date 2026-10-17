@@ -68,19 +68,22 @@ jobs:
     - name: Update dev flake inputs
       id: update
       run: |
-        nix flake update --flake path:./dev ${{ needs.init.outputs.inputs }}
+        nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
-        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array") and (.inputName | IN($updated[])))) | length > 0' dev/collections.json)"
+        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .group != null) and ((.inputName | IN($updated[])) or .group != null))) | length > 0' dev/collections.json)"
         matrix="$(jq -c "$updated"' as $updated
-          | . as $collections
-          | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
+          | . | to_entries | [
+              (map(select(.value.single_build != true)) | from_entries),
+              (map(select(.value.single_build == true))[] | {(.key): .value})
+            ]
+          | map (. as $collections | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
               system: $sys,
               runner: (if $sys == "aarch64-linux" then "ubuntu-24.04-arm" else "ubuntu-latest" end),
-              inputs: ([$collections[] | select((.build == true or (.build | type) == "array")
-                                    and (.inputName | IN($updated[]))
-                                    and (.systems // [] | index($sys)))
-                          | { inputName: .inputName, packages: (if .build == true then "all" else (.build | join (" ")) end) }])
-            }) | map(select(.inputs | length > 0))' dev/collections.json)"
+              inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .group != null)
+                                    and (.systems // [] | index($sys))
+                                    and (.inputName | IN($updated[])))
+                          | { inputName: (.group // .inputName), packages: (if .group != null then .inputName elif .build == true then "all" else (.build | join (" ")) end) }])
+            } | select(.inputs | length > 0))) | flatten' dev/collections.json)"
         echo "updated=$updated" | tee --append "$GITHUB_OUTPUT"
         echo "build=$build" | tee --append "$GITHUB_OUTPUT"
         echo "matrix=$matrix" | tee --append "$GITHUB_OUTPUT"
@@ -92,6 +95,9 @@ jobs:
           ./dev/flake.lock
           ./dev/flake.nix
   build:
+    permissions:
+      contents: read
+      id-token: write
     if: ${{ needs.init.outputs.build == 'true' }}
     needs: [init]
     strategy:
@@ -116,6 +122,9 @@ jobs:
       with:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
         extra_nix_config: ${{ needs.init.outputs.nix-config }}
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+      with:
+        use-flakehub: false
 
     - uses: cachix/cachix-action@master
       with:

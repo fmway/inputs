@@ -3,7 +3,7 @@
 
   inputs = {
     # core inputs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     flake-compat.url = "github:nixos/flake-compat";
     flake-compat.flake = false;
     fmway-lib.url = "github:fmway/lib";
@@ -24,12 +24,20 @@
           packages = self.unrestrictedPackages;
         };
       };
+
+      overrideBuilders = {
+      };
+
+      builders = {
+      };
       systems = [
         "x86_64-linux"
         "aarch64-linux"
         "aarch64-darwin"
       ];
 
+      # { <groupName> = unique <systems>; }
+      groups = lib.select "(**(group)).*.**1.systems.**" collections;
       forAllSystems = lib.genAttrs systems;
       collections = builtins.fromJSON (builtins.readFile ./collections.json);
       lib = nixpkgs.lib.extend inputs.fmway-lib.overlays.default;
@@ -40,7 +48,7 @@
           "Empty by design: the ./dev flake owns every pin and its lock is resolved"
           "into inputs here at eval time, so this flake never writes a flake.lock."
         ];
-        outputs.__raw = "inputs: import ./outputs.nix inputs";
+        outputs.__raw = "inputs: import ./default.nix";
         nixConfig = builtins.zipAttrsWith (_: v: lib.unique (builtins.concatLists v))
           ((lib.select "**.??extraCaches.{?substituters:extra-substituters,?trusted-public-keys:extra-trusted-public-keys}" collections) ++ [
             {
@@ -54,8 +62,19 @@
           ]);
       };
     in {
-      inherit collections;
-      inputs = builtins.mapAttrs (k: v: v // (if overrideInput ? ${k} then overrideInput.${k} ({ self = v.sourceInfo // v.outputs; } // v.inputs) else {})) inputs;
+      inherit collections groups;
+      inputs =
+        builtins.mapAttrs (k: v: v // (if overrideInput ? ${k} then overrideInput.${k} ({ self = v.sourceInfo // v.outputs; } // v.inputs) else {})) inputs
+        //
+        builtins.mapAttrs (group: systems: {
+          packages = lib.genAttrs systems (system:
+            builtins.mapAttrs (name: x:
+              overrideBuilders.${group}.${name} or (x: x)
+                (builders.${group} system x)
+            ) (lib.filterAttrs (_: v: v.group or "" == group) collections)
+          );
+        }) groups
+        ;
       apps = forAllSystems (system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
@@ -78,7 +97,7 @@
         in "${pkg}/bin/publish";
 
         readme.type = "app";
-        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections lib; source = ../README.md; }}";
+        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections groups lib; source = ../README.md; }}";
 
         flake.type = "app";
         flake.program = "${lib.fmway.genNix.mkScript pkgs flake}";

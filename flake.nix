@@ -22,5 +22,5 @@
       "https://fmcachix.cachix.org"
     ];
   };
-  outputs = inputs: import ./outputs.nix inputs;
+  outputs = inputs: import ./default.nix;
 }

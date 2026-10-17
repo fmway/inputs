@@ -1,4 +1,4 @@
-{ self, ... }: let
+let
   extraOutput = {
     "chaotic-cx/nyx" = flake: {
       legacyPackages = flake.outputs.legacyPackages;
@@ -68,7 +68,14 @@
         (import modulePath staticArgs)
       ];
     };
-  collections = builtins.fromJSON (builtins.readFile ./dev/collections.json);
+  _collections = builtins.fromJSON (builtins.readFile ./dev/collections.json);
+  _keys= builtins.partition (x: _collections.${x} ? group) (builtins.attrNames _collections);
+  _groups = builtins.groupBy (x: x.group) (map (x: _collections.${x} // { name = x; }) _keys.right);
+  collections = removeAttrs _collections _keys.right // builtins.mapAttrs (group: v: {
+    isGroup = true;
+    inputName = group;
+    systems = uniq (builtins.concatMap (x: x.systems) v);
+  }) _groups;
   keys = builtins.attrNames collections;
   
   lock = builtins.fromJSON (builtins.readFile ./dev/flake.lock);
@@ -82,6 +89,8 @@
   uniq = xs: builtins.foldl' (acc: x: if acc != [ ] && builtins.elem x acc then acc else acc ++ [ x ]) [ ] xs;
 
   genAttrs = names: f: builtins.listToAttrs (map (name: { inherit name; value = f name; }) names);
+
+  optKey = cond: name: if cond then name else null;
 
   # Refined data lives on the GitHub *release* (tag `data-yyyymmdd`, published
   # by dev/scripts/publish.sh), not in the repo — so this flake is input-less
@@ -100,35 +109,39 @@
   flakes = genAttrs keys (key: let
     inherit (collections.${key}) systems inputName;
     flake = inputs.${inputName};
+    isGroup = collections.${key}.isGroup or false;
     packages = genAttrs systems (system:
       import ./lib/packages.nix {
         inherit system;
         dataFile = fetchData inputName system;
         original = inputs.${inputName}.packages.${system} or { };
       });
-      sourceInfo = getSource inputName;
-    r = {
+    # Group entries are routed synthetically through `inputs.<group>` in
+    # dev/flake.nix — no source tree, no lock to look up.
+    sourceInfo = if isGroup then null else getSource inputName;
+    r = if isGroup then {
+      inherit packages;
+    } else {
       inherit (flake) outputs;
       inherit packages sourceInfo;
       inherit (sourceInfo) outPath lastModified lastModifiedDate narHash rev shortRev;
     };
-  in r // (
-    if collections.${key} ? extraCaches then
-      { extraCaches = collections.${key}.extraCaches; }
-    else {}) // (
-    if extraOutput ? ${key} then
-      extraOutput.${key} r
-    else {}));
+    extras = extraOutput.${key} or (_: {}) r;
+  in r // {
+    ${optKey (collections?${key}.extraCaches) "extraCaches"} = collections.${key}.extraCaches;
+  } // extras);
   aliases = builtins.listToAttrs (builtins.concatMap (key: map (name: {
     inherit name;
     value = self.${key};
   }) (collections.${key}.aliases or [])) keys);
 
-in flakes // aliases // {
-  inherit collections;
-  packages = genAttrs allSystems (system:
-    builtins.listToAttrs (builtins.concatMap (key: if self.${key}.packages ? ${system} then
-      map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collections.${key}.aliases or []))
-    else []) keys));
-  inputs = flakes // aliases;
-}
+  self = flakes // aliases // {
+    inherit collections;
+    _inputs = inputs;
+    packages = genAttrs allSystems (system:
+      builtins.listToAttrs (builtins.concatMap (key: if self.${key}.packages ? ${system} then
+        map (name: { inherit name; value = self.${key}.packages.${system}; }) ([key] ++ (collections.${key}.aliases or []))
+      else []) keys));
+    inputs = flakes // aliases;
+  };
+in self

@@ -38,8 +38,8 @@ echo "publishing data release: $tag ($repo)"
 
 stag="$(mktemp -d)"
 trap 'rm -rf "$stag"' EXIT HUP INT TERM
-
-jq -r 'to_entries[] | [.value.inputName, (.value.systems | join(" "))] | @tsv' "$collection_dir" |
+groups="$(nix eval ./dev#groups --json | jq -c)"
+jq -r "($groups"' | to_entries | map({value:{inputName: .key, systems: .value}})) as $groups | map(select(.group == null)) | [to_entries[], $groups[]][] | [.value.inputName, (.value.systems | join(" "))] | @tsv' "$collection_dir" |
   while IFS=$'\t' read -r input systems; do
     for system in $systems; do
       json="data/$input/$system.json"

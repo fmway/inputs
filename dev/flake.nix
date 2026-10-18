@@ -8,6 +8,8 @@
     flake-compat.flake = false;
     fmway-lib.url = "github:fmway/lib";
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     selector4nix.url = "github:StarryReverie/selector4nix";
@@ -16,12 +18,36 @@
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
 
     # artcraft
-    filmcraft.url = "github:storytold/filmcraft/v0.8.0";
+    cadcraft.url = "github:storytold/cadcraft/v0.8.0";
+    cadcraft.flake = false;
+    deckcraft.url = "github:storytold/deckcraft/v0.8.0";
+    deckcraft.flake = false;
+    designcraft.url = "github:storytold/designcraft/v0.9.0";
+    designcraft.flake = false;
+    effectcraft.url = "github:storytold/effectcraft/v0.11.1";
+    effectcraft.flake = false;
+    figcraft.url = "github:storytold/figcraft/v0.7.0";
+    figcraft.flake = false;
+    filmcraft.url = "github:storytold/filmcraft/v0.9.0";
     filmcraft.flake = false;
+    gridcraft.url = "github:storytold/gridcraft/v0.8.0";
+    gridcraft.flake = false;
+    lightcraft.url = "github:storytold/lightcraft/v0.9.1";
+    lightcraft.flake = false;
+    pdfcraft.url = "github:storytold/pdfcraft/v0.9.0";
+    pdfcraft.flake = false;
+    photocraft.url = "github:storytold/photocraft/v0.10.0";
+    photocraft.flake = false;
+    soundcraft.url = "github:storytold/soundcraft/v0.8.0";
+    soundcraft.flake = false;
+    vectorcraft.url = "github:storytold/vectorcraft/v0.13.1";
+    vectorcraft.flake = false;
+    wordcraft.url = "github:storytold/wordcraft/v0.8.0";
+    wordcraft.flake = false;
   };
 
   outputs =
-    { self, nixpkgs, ... } @ inputs:
+    { self, nixpkgs, rust-overlay, ... } @ inputs:
     let
       overrideInput = {
         chaotic = { self, ... }: {
@@ -30,18 +56,32 @@
       };
 
       overrideBuilders = {
-        artcraft.pdfcraft = self:
-          self.overrideAttrs (old: let
+        artcraft.pdfcraft = system: self: let
+          r = # need latest rustc in x86_64-linux
+            if system == "x86_64-linux" then let
+              pkgs = nixpkgs.legacyPackages.${system};
+              rust-bin = rust-overlay.lib.mkRustBin {} pkgs;
+            in self.override {
+                rustPlatform = pkgs.makeRustPlatform rec {
+                  cargo = rust-bin.fromRustupToolchain { channel = "stable"; };
+                  rustc = cargo;
+                };
+              }
+            else self;
+        in r.overrideAttrs (old: let
             attributions = fromTOML (builtins.readFile "${old.src}/ATTRIBUTION.toml");
           in {
             postInstall = old.postInstall or "" + lib.concatMapStrings (x: /* sh */ ''
-              cp "${builtins.fetchurl { inherit (x) url sha256; }}" "$out/share/$pname/${x.file}"
-              cp "${builtins.fetchurl { url = x.license_url; sha256 = x.license_sha256; }}" "$out/share/$pname/${x.file}.LICENSE.txt"
+              install -Dm644 "${builtins.fetchurl { inherit (x) url sha256; }}" "$out/share/$pname/${x.file}"
+              install -Dm644 "${builtins.fetchurl {
+                url = x.license_url or x.licence_url;
+                sha256 = x.license_sha256 or x.licence_sha256;
+              }}" "$out/share/$pname/${x.file}.LICENSE.txt"
             '') (builtins.filter (x: x.kind == "model") attributions.fetched);
           });
 
         # TODO: add driver support
-        artcraft.filmcraft = self:
+        artcraft.filmcraft = system: self:
           self.overrideAttrs (o: {
             patches = o.patches or [] ++ [
               ./patches/no-ensure-desktop-filmcraft.patch
@@ -95,7 +135,7 @@
         builtins.mapAttrs (namespace: systems: {
           packages = lib.genAttrs systems (system:
             builtins.mapAttrs (name: x:
-              overrideBuilders.${namespace}.${name} or (x: x)
+              overrideBuilders.${namespace}.${name} or (_: x: x) system
                 (builders.${namespace} system x)
             ) (lib.filterAttrs (_: v: v.namespace or "" == namespace) collections)
           );

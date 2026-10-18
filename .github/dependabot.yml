@@ -16,3 +16,4 @@ updates:
       interval: weekly
     allow:
       - dependency-name: nixpkgs
+      - dependency-name: rust-overlay

@@ -54,12 +54,108 @@
     "tags": true,
     "build": true
   },
+  "cadcraft": {
+    "inputName": "cadcraft",
+    "repo": "https://github.com/storytold/cadcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "deckcraft": {
+    "inputName": "deckcraft",
+    "repo": "https://github.com/storytold/deckcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "designcraft": {
+    "inputName": "designcraft",
+    "repo": "https://github.com/storytold/designcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "effectcraft": {
+    "inputName": "effectcraft",
+    "repo": "https://github.com/storytold/effectcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "figcraft": {
+    "inputName": "figcraft",
+    "repo": "https://github.com/storytold/figcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
   "filmcraft": {
     "inputName": "filmcraft",
     "repo": "https://github.com/storytold/filmcraft",
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "namespace": "artcraft",
-    "build_group": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "gridcraft": {
+    "inputName": "gridcraft",
+    "repo": "https://github.com/storytold/gridcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "lightcraft": {
+    "inputName": "lightcraft",
+    "repo": "https://github.com/storytold/lightcraft",
+    "systems": [ "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "pdfcraft": {
+    "inputName": "pdfcraft",
+    "repo": "https://github.com/storytold/pdfcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "photocraft": {
+    "inputName": "photocraft",
+    "repo": "https://github.com/storytold/photocraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "soundcraft": {
+    "inputName": "soundcraft",
+    "repo": "https://github.com/storytold/soundcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "vectorcraft": {
+    "inputName": "vectorcraft",
+    "repo": "https://github.com/storytold/vectorcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
+    "tags": true
+  },
+  "wordcraft": {
+    "inputName": "wordcraft",
+    "repo": "https://github.com/storytold/wordcraft",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "namespace": "artcraft",
+    "build_group": "single",
     "tags": true
   }
 }

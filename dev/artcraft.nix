@@ -118,7 +118,7 @@ in rustPlatform.buildRustPackage {
       --replace-fail "@VERSION@" "${version}" \
       --replace-fail "@DATE@" "${buildDate}"
     substituteInPlace $out/share/applications/${appId}.desktop \
-      --replace-fail "Exec=$pname" "Exec=$out/$pname"
+      --replace-fail "Exec=$pname" "Exec=$out/bin/$pname"
 
     desktop-file-validate $out/share/applications/${appId}.desktop
     XDG_CACHE_HOME=$TMPDIR/.cache appstreamcli validate --no-net \
@@ -126,16 +126,15 @@ in rustPlatform.buildRustPackage {
 
     cp -R $src/assets/app-icon/hicolor $out/share/icons/
 
-    mkdir -p "$out/share/doc/$pname"
     for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE; do
-      [ ! -f "$f" ] || cp "$f" "$out/share/doc/$pname"
+      [ ! -f "$src/$f" ] || install -Dm644 "$src/$f" "$out/share/doc/$pname/$f"
     done
 
     ${lib.optionalString (!isNull craft-fonts) /* sh */ ''
       for f in ${craft-fonts}/fonts/*/OFL.txt; do
         [ -f "$f" ] || continue
         family="$(basename "$(dirname "$f")")"
-        cp "$f" "$out/share/doc/$pname"
+        install -Dm644 "$f" "$out/share/doc/$pname/OFL-$family.txt"
       done
     ''}
   '';

@@ -31,7 +31,19 @@ nixpkgs closure into your own flake.
 <details>
   <summary>artcraft</summary>
 
-  - [filmcraft](https://github.com/storytold/filmcraft)
+  - [cadcraft](https://github.com/storytold/cadcraft)
+- [deckcraft](https://github.com/storytold/deckcraft)
+- [designcraft](https://github.com/storytold/designcraft)
+- [effectcraft](https://github.com/storytold/effectcraft)
+- [figcraft](https://github.com/storytold/figcraft)
+- [filmcraft](https://github.com/storytold/filmcraft)
+- [gridcraft](https://github.com/storytold/gridcraft)
+- [lightcraft](https://github.com/storytold/lightcraft)
+- [pdfcraft](https://github.com/storytold/pdfcraft)
+- [photocraft](https://github.com/storytold/photocraft)
+- [soundcraft](https://github.com/storytold/soundcraft)
+- [vectorcraft](https://github.com/storytold/vectorcraft)
+- [wordcraft](https://github.com/storytold/wordcraft)
 </details>
 
 <!--{% end %}-->

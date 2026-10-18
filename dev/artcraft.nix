@@ -124,7 +124,7 @@ in rustPlatform.buildRustPackage {
     XDG_CACHE_HOME=$TMPDIR/.cache appstreamcli validate --no-net \
       $out/share/metainfo/${appId}.metainfo.xml
 
-    cp -R $src/assets/app-icon/hicolor $out/share/icons/
+    cp -R $src/assets/app-icon/hicolor $out/share/icons/hicolor
 
     for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE; do
       [ ! -f "$src/$f" ] || install -Dm644 "$src/$f" "$out/share/doc/$pname/$f"

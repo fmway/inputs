@@ -1,15 +1,15 @@
 <!--{=
-  genListCustomPackage = group:
+  genListCustomPackage = namespace:
     lib.concatMapStringsSep "\n" (k:
       "- [${k}](${collections.${k}.repo})"
-    ) (builtins.filter (x: collections.${x}.group or "" == group) (builtins.attrNames collections));
-  custom_packages = lib.concatMapAttrsStringSep "" (group: _: ''
+    ) (builtins.filter (x: collections.${x}.namespace or "" == namespace) (builtins.attrNames collections));
+  custom_packages = lib.concatMapAttrsStringSep "" (namespace: _: ''
     <details>
-      <summary>${group}</summary>
+      <summary>${namespace}</summary>
 
-      ${genListCustomPackage group}
+      ${genListCustomPackage namespace}
     </details>
-  '') groups;
+  '') namespaces;
 }-->
 # fmway/inputs (AI Assisted)
 
@@ -18,7 +18,7 @@ fake derivations, so consuming their packages doesn't drag each upstream
 nixpkgs closure into your own flake.
 
 ## Current flakes:
-<!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})" + lib.optionalString (v.aliases or [] != []) " (alias: ${builtins.concatStringsSep ", " v.aliases})") (lib.filterAttrs (_: v: !v?group) collections)) %}-->
+<!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})" + lib.optionalString (v.aliases or [] != []) " (alias: ${builtins.concatStringsSep ", " v.aliases})") (lib.filterAttrs (_: v: !v?namespace) collections)) %}-->
 - [Mic92/direnv-instant](https://github.com/Mic92/direnv-instant) (alias: direnv-instant)
 - [StarryReverie/selector4nix](https://github.com/StarryReverie/selector4nix) (alias: selector4nix)
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)

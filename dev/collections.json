@@ -58,8 +58,8 @@
     "inputName": "filmcraft",
     "repo": "https://github.com/storytold/filmcraft",
     "systems": [ "aarch64-linux", "x86_64-linux" ],
-    "group": "artcraft",
-    "tags": true,
-    "single_build": true
+    "namespace": "artcraft",
+    "build_group": "artcraft",
+    "tags": true
   }
 }

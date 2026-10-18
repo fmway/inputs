@@ -70,19 +70,33 @@ jobs:
       run: |
         nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
-        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .group != null) and ((.inputName | IN($updated[])) or .group != null))) | length > 0' dev/collections.json)"
+        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .build_group != null) and ((.inputName | IN($updated[])) or .build_group != null))) | length > 0' dev/collections.json)"
         matrix="$(jq -c "$updated"' as $updated
           | . | to_entries | [
-              (map(select(.value.single_build != true)) | from_entries),
-              (map(select(.value.single_build == true))[] | {(.key): .value})
+              (map(select(.value.build_group == null)) | from_entries),
+              (map(select(.value.build_group == "single"))[] | {(.key): .value}),
+              (map(select(.value.build_group != "single")) | group_by(.value.build_group)[] | from_entries)
             ]
           | map (. as $collections | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
               system: $sys,
               runner: (if $sys == "aarch64-linux" then "ubuntu-24.04-arm" else "ubuntu-latest" end),
-              inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .group != null)
+              inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .build_group != null)
                                     and (.systems // [] | index($sys))
                                     and (.inputName | IN($updated[])))
-                          | { inputName: (.group // .inputName), packages: (if .group != null then .inputName elif .build == true then "all" else (.build | join (" ")) end) }])
+                        | {
+                            inputName: (.namespace // .inputName),
+                            packages: (if .namespace != null then .inputName elif .build == true then "all" else (.build | join (" ")) end)
+                          }
+                      ])
+            } as $out | $out + {
+              title: ("build " + (
+                $out.inputs | group_by(.inputName) | map({ inputName: .[0].inputName, packages: [.[].packages] }) | map(
+                  .inputName + "::" + (
+                    .packages | map(split(" ")) | flatten
+                    | (if length > 1 then "{" else "" end) + (join(",")) + (if length > 1 then "}" else "" end)
+                  )
+                ) | join(" ")
+              ) + " on " + $out.system)
             } | select(.inputs | length > 0))) | flatten' dev/collections.json)"
         echo "updated=$updated" | tee --append "$GITHUB_OUTPUT"
         echo "build=$build" | tee --append "$GITHUB_OUTPUT"
@@ -95,6 +109,7 @@ jobs:
           ./dev/flake.lock
           ./dev/flake.nix
   build:
+    name: ${{ matrix.title }}
     permissions:
       contents: read
       id-token: write

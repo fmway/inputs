@@ -69,13 +69,13 @@ let
       ];
     };
   _collections = builtins.fromJSON (builtins.readFile ./dev/collections.json);
-  _keys= builtins.partition (x: _collections.${x} ? group) (builtins.attrNames _collections);
-  _groups = builtins.groupBy (x: x.group) (map (x: _collections.${x} // { name = x; }) _keys.right);
-  collections = removeAttrs _collections _keys.right // builtins.mapAttrs (group: v: {
-    isGroup = true;
-    inputName = group;
+  _keys= builtins.partition (x: _collections.${x} ? namespace) (builtins.attrNames _collections);
+  _namespaces = builtins.groupBy (x: x.namespace) (map (x: _collections.${x} // { name = x; }) _keys.right);
+  collections = removeAttrs _collections _keys.right // builtins.mapAttrs (namespace: v: {
+    isNamespace = true;
+    inputName = namespace;
     systems = uniq (builtins.concatMap (x: x.systems) v);
-  }) _groups;
+  }) _namespaces;
   keys = builtins.attrNames collections;
   
   lock = builtins.fromJSON (builtins.readFile ./dev/flake.lock);
@@ -109,17 +109,17 @@ let
   flakes = genAttrs keys (key: let
     inherit (collections.${key}) systems inputName;
     flake = inputs.${inputName};
-    isGroup = collections.${key}.isGroup or false;
+    isNamespace = collections.${key}.isNamespace or false;
     packages = genAttrs systems (system:
       import ./lib/packages.nix {
         inherit system;
         dataFile = fetchData inputName system;
         original = inputs.${inputName}.packages.${system} or { };
       });
-    # Group entries are routed synthetically through `inputs.<group>` in
+    # Namespace entries are routed synthetically through `inputs.<namespace>` in
     # dev/flake.nix — no source tree, no lock to look up.
-    sourceInfo = if isGroup then null else getSource inputName;
-    r = if isGroup then {
+    sourceInfo = getSource inputName;
+    r = if isNamespace then {
       inherit packages;
     } else {
       inherit (flake) outputs;

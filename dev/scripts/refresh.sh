@@ -49,8 +49,8 @@ rm -rf data
 while IFS= read -r key; do
   input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
   ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
-  group="$(jq -r --arg k "$key" '.[$k].group // ""' "$collection_file")"
-  [ -z "$group" ] && name="$input" || name="$group"
+  namespace="$(jq -r --arg k "$key" '.[$k].namespace // ""' "$collection_file")"
+  [ -z "$namespace" ] && name="$input" || name="$namespace"
   
   fetch=1
   [ -n "$ref" ] || continue
@@ -80,8 +80,8 @@ while IFS= read -r key; do
       --meta
       --option accept-flake-config true
     )
-    [ -z "$group" ] && opts+=( --flake "./dev#inputs.$name.packages.$system" ) || opts+=( --flake "./dev#inputs.$name.packages.$system.$input" )
-    if [ -z "$group" ] && [ "$fetch" -eq 0 ]; then
+    [ -z "$namespace" ] && opts+=( --flake "./dev#inputs.$name.packages.$system" ) || opts+=( --flake "./dev#inputs.$name.packages.$system.$input" )
+    if [ -z "$namespace" ] && [ "$fetch" -eq 0 ]; then
       echo "skip: detected same resource, download the previous data"
       # TODO: auto url
       cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$name-$system.json" | jq -r .storePath)" "data/$name/$system.json"
@@ -89,7 +89,7 @@ while IFS= read -r key; do
       # nix-eval-jobs can report warnings but still exit 0; an empty snapshot
       # usually means the attribute does not exist upstream.
       if [ -s "$tmp" ]; then
-        if [ -z "$group" ]; then
+        if [ -z "$namespace" ]; then
           mv "$tmp" "$out"
         else
           jq -c --arg attr "$input" '. + { attr: $attr, attrPath: [ $attr ] }' "$tmp" >> "$out"
@@ -130,7 +130,7 @@ refine_leaves='
       })
     end)'
 
-jq -r '([(.[] | .group // .inputName)] | unique)[]' "$collection_file" | while IFS= read -r input; do
+jq -r '([(.[] | .namespace // .inputName)] | unique)[]' "$collection_file" | while IFS= read -r input; do
   for jsonl in data/"$input"/*.jsonl; do
     [ -e "$jsonl" ] || continue
     system="$(basename "$jsonl" .jsonl)"

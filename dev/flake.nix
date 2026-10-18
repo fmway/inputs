@@ -62,8 +62,8 @@
         "aarch64-darwin"
       ];
 
-      # { <groupName> = unique <systems>; }
-      groups = lib.select "(**(group)).*.**1.systems.**" collections;
+      # { <namespace> = unique <systems>; }
+      namespaces = lib.select "(**(namespace)).*.**1.systems.**" collections;
       forAllSystems = lib.genAttrs systems;
       collections = builtins.fromJSON (builtins.readFile ./collections.json);
       lib = nixpkgs.lib.extend inputs.fmway-lib.overlays.default;
@@ -88,18 +88,18 @@
           ]);
       };
     in {
-      inherit collections groups;
+      inherit collections namespaces;
       inputs =
         builtins.mapAttrs (k: v: v // (if overrideInput ? ${k} then overrideInput.${k} ({ self = v.sourceInfo // v.outputs; } // v.inputs) else {})) inputs
         //
-        builtins.mapAttrs (group: systems: {
+        builtins.mapAttrs (namespace: systems: {
           packages = lib.genAttrs systems (system:
             builtins.mapAttrs (name: x:
-              overrideBuilders.${group}.${name} or (x: x)
-                (builders.${group} system x)
-            ) (lib.filterAttrs (_: v: v.group or "" == group) collections)
+              overrideBuilders.${namespace}.${name} or (x: x)
+                (builders.${namespace} system x)
+            ) (lib.filterAttrs (_: v: v.namespace or "" == namespace) collections)
           );
-        }) groups
+        }) namespaces
         ;
       apps = forAllSystems (system: let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -123,7 +123,7 @@
         in "${pkg}/bin/publish";
 
         readme.type = "app";
-        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections groups lib; source = ../README.md; }}";
+        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections namespaces lib; source = ../README.md; }}";
 
         flake.type = "app";
         flake.program = "${lib.fmway.genNix.mkScript pkgs flake}";

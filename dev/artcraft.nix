@@ -94,7 +94,7 @@ in rustPlatform.buildRustPackage {
   ];
 
   runtimeDependencies = [
-    dbus
+    dbus.lib
     libGL
     vulkan-loader
     wayland

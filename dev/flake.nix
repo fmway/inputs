@@ -16,6 +16,8 @@
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
+    concat.url = "github:jub0t/concat/v0.2.7";
+    concat.inputs.nixpkgs.follows = "nixpkgs";
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.8.0";

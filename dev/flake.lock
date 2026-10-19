@@ -58,16 +58,37 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1792318934,
-        "narHash": "sha256-/kYDoP8cWOmkpNgQC0czN5Xv+fka9MoZMnaS4FnjdtM=",
+        "lastModified": 1792351560,
+        "narHash": "sha256-Sbrc+kSPMxoX3xpuPrWspCAOU5LdTTemjOatbZKpZOk=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "09e65e40e49d18cd1879f5658e7dd44aa14a8d11",
+        "rev": "3b93149d825d4a8b6cc775d281298b65883e784e",
         "type": "github"
       },
       "original": {
         "owner": "chaotic-cx",
         "repo": "nyx",
+        "type": "github"
+      }
+    },
+    "concat": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791909066,
+        "narHash": "sha256-eSy+JVuRRZ3LnCowNef0Iegn8lO4U16GZ4C2/XZoCJo=",
+        "owner": "jub0t",
+        "repo": "concat",
+        "rev": "14b5998d793d90858ac982926374044bba4bf39f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jub0t",
+        "ref": "v0.2.7",
+        "repo": "concat",
         "type": "github"
       }
     },
@@ -424,11 +445,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1792315957,
-        "narHash": "sha256-LzC5I1T+RoNzolKqp2xYk1x/SraHlmYnJzK27PU+ewg=",
+        "lastModified": 1792381975,
+        "narHash": "sha256-jXmORmL8tbeyDo7/FiPk68P+UBctz/vph2x8XMHg1uM=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "14f2728181ecf9f5da168b72799bc9f42ae51803",
+        "rev": "84a9f135716cbcdc1fa58ab3c52b85f9a1a0cd0f",
         "type": "github"
       },
       "original": {
@@ -587,6 +608,7 @@
       "inputs": {
         "cadcraft": "cadcraft",
         "chaotic": "chaotic",
+        "concat": "concat",
         "deckcraft": "deckcraft",
         "designcraft": "designcraft",
         "direnv-instant": "direnv-instant",
@@ -657,11 +679,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1792316374,
-        "narHash": "sha256-VKpDpWu8wbWcs2Y7hKEp4uiKbIn9vXZxaGrgWRVp0zw=",
+        "lastModified": 1792369366,
+        "narHash": "sha256-guhIUsj5y3kKMiR4lQOtO2wE7PetJ2xdQemYACu49xk=",
         "owner": "StarryReverie",
         "repo": "selector4nix",
-        "rev": "4b28dc831deebe3a6427f5fb2897dd975a018cf7",
+        "rev": "4784d3c597536942f38fd60536ea230d2e033f8a",
         "type": "github"
       },
       "original": {

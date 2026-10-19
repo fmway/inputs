@@ -157,5 +157,13 @@
     "namespace": "artcraft",
     "build_group": "single",
     "tags": true
+  },
+  "jub0t/concat": {
+    "inputName": "concat",
+    "aliases": [ "concat" ],
+    "repo": "https://github.com/jub0t/concat",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "tags": true,
+    "build": true
   }
 }

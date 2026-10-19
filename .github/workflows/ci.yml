@@ -24,7 +24,6 @@ jobs:
       substituters: ${{ steps.setup.outputs.substituters }}
       trusted-keys: ${{ steps.setup.outputs.trusted-keys }}
       inputs: ${{ steps.setup.outputs.inputs }}
-      build: ${{ steps.update.outputs.build }}
       updated: ${{ steps.update.outputs.updated }}
       matrix: ${{ steps.update.outputs.matrix }}
       nix-config: |
@@ -75,7 +74,7 @@ jobs:
           | . | to_entries | [
               (map(select(.value.build_group == null)) | from_entries),
               (map(select(.value.build_group == "single"))[] | {(.key): .value}),
-              (map(select(.value.build_group != "single")) | group_by(.value.build_group)[] | from_entries)
+              (map(select(.value.build_group | . != null and . != "single")) | group_by(.value.build_group)[] | from_entries)
             ]
           | map (. as $collections | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
               system: $sys,
@@ -99,7 +98,6 @@ jobs:
               ) + " on " + $out.system)
             } | select(.inputs | length > 0))) | flatten' dev/collections.json)"
         echo "updated=$updated" | tee --append "$GITHUB_OUTPUT"
-        echo "build=$build" | tee --append "$GITHUB_OUTPUT"
         echo "matrix=$matrix" | tee --append "$GITHUB_OUTPUT"
 
     - uses: actions/upload-artifact@v7
@@ -113,7 +111,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    if: ${{ needs.init.outputs.build == 'true' }}
+    if: ${{ needs.init.outputs.matrix != '[]' }}
     needs: [init]
     strategy:
       fail-fast: false

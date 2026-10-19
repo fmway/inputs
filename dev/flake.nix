@@ -55,46 +55,50 @@
         };
       };
 
-      overrideBuilders = {
-        artcraft.pdfcraft = system: self: let
-          r = # need latest rustc in x86_64-linux
-            if system == "x86_64-linux" then let
-              pkgs = nixpkgs.legacyPackages.${system};
-              rust-bin = rust-overlay.lib.mkRustBin {} pkgs;
-            in self.override {
-                rustPlatform = pkgs.makeRustPlatform rec {
-                  cargo = rust-bin.fromRustupToolchain { channel = "stable"; };
-                  rustc = cargo;
-                };
-              }
-            else self;
-        in r.overrideAttrs (old: let
-            attributions = fromTOML (builtins.readFile "${old.src}/ATTRIBUTION.toml");
-          in {
-            postInstall = old.postInstall or "" + lib.concatMapStrings (x: /* sh */ ''
-              install -Dm644 "${builtins.fetchurl { inherit (x) url sha256; }}" "$out/share/$pname/${x.file}"
-              install -Dm644 "${builtins.fetchurl {
-                url = x.license_url or x.licence_url;
-                sha256 = x.license_sha256 or x.licence_sha256;
-              }}" "$out/share/$pname/${x.file}.LICENSE.txt"
-            '') (builtins.filter (x: x.kind == "model") attributions.fetched);
-          });
-
-        # TODO: add driver support
-        artcraft.filmcraft = system: self:
-          self.overrideAttrs (o: {
-            patches = o.patches or [] ++ [
-              ./patches/no-ensure-desktop-filmcraft.patch
-            ];
-           });
-      };
-
       builders = {
-        artcraft = system: { inputName, ... }:
-          nixpkgs.legacyPackages.${system}.callPackage ./artcraft.nix {
-            name = inputName;
-            source = inputs.${inputName};
-          };
+        # default builder, only reroute to the regular packages
+        __functor = _: system: inputName:
+          (parseInput inputName inputs.${inputName}).packages.${system};
+
+        artcraft = {
+          __functor = _: system: { inputName, ... }:
+            nixpkgs.legacyPackages.${system}.callPackage ./artcraft.nix {
+              name = inputName;
+              source = inputs.${inputName};
+            };
+          pdfcraft = system: { inputName, ... }: let
+            self = builders.artcraft system { inherit inputName; };
+            r = # need latest rustc in x86_64-linux
+              if system == "x86_64-linux" then let
+                pkgs = nixpkgs.legacyPackages.${system};
+                rust-bin = rust-overlay.lib.mkRustBin {} pkgs;
+              in self.override {
+                  rustPlatform = pkgs.makeRustPlatform rec {
+                    cargo = rust-bin.fromRustupToolchain { channel = "stable"; };
+                    rustc = cargo;
+                  };
+                }
+              else self;
+          in r.overrideAttrs (old: let
+              attributions = fromTOML (builtins.readFile "${old.src}/ATTRIBUTION.toml");
+            in {
+              postInstall = old.postInstall or "" + lib.concatMapStrings (x: /* sh */ ''
+                install -Dm644 "${builtins.fetchurl { inherit (x) url sha256; }}" "$out/share/$pname/${x.file}"
+                install -Dm644 "${builtins.fetchurl {
+                  url = x.license_url or x.licence_url;
+                  sha256 = x.license_sha256 or x.licence_sha256;
+                }}" "$out/share/$pname/${x.file}.LICENSE.txt"
+              '') (builtins.filter (x: x.kind == "model") attributions.fetched);
+            });
+
+          # TODO: add driver support
+          filmcraft = system: { inputName, ... }:
+            (builders.artcraft system { inherit inputName; }).overrideAttrs (o: {
+              patches = o.patches or [] ++ [
+                ./patches/no-ensure-desktop-filmcraft.patch
+              ];
+             });
+        };
       };
       systems = [
         "x86_64-linux"
@@ -127,17 +131,21 @@
             }
           ]);
       };
+      parseInput = inputName: source:
+        lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; } // source.inputs));
     in {
       inherit collections namespaces;
       inputs =
-        builtins.mapAttrs (k: v: v // (if overrideInput ? ${k} then overrideInput.${k} ({ self = v.sourceInfo // v.outputs; } // v.inputs) else {})) inputs
+        builtins.mapAttrs parseInput inputs
         //
-        builtins.mapAttrs (namespace: systems: {
+        builtins.mapAttrs (namespace: systems: let
+          filteredCollections = lib.filterAttrs (_: v: v.namespace or "" == namespace) collections;
+          collect = if builders ? ${namespace} then builtins.mapAttrs else fn: lib.foldlAttrs (a: k: v: lib.recursiveUpdate a (fn k v)) {};
+        in {
           packages = lib.genAttrs systems (system:
-            builtins.mapAttrs (name: x:
-              overrideBuilders.${namespace}.${name} or (_: x: x) system
-                (builders.${namespace} system x)
-            ) (lib.filterAttrs (_: v: v.namespace or "" == namespace) collections)
+            collect (name: x:
+              builders.${namespace}.${name} or builders.${namespace} or builders system x
+            ) filteredCollections
           );
         }) namespaces
         ;

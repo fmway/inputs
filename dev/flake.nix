@@ -93,11 +93,13 @@
               '') (builtins.filter (x: x.kind == "model") attributions.fetched);
             });
 
-          # TODO: add driver support
           filmcraft = system: { inputName, ... }:
             (builders.artcraft system { inherit inputName; }).overrideAttrs (o: {
               patches = o.patches or [] ++ [
                 ./patches/no-ensure-desktop-filmcraft.patch
+              ];
+              runtimeDependencies = [
+                nixpkgs.legacyPackages.${system}.libva
               ];
              });
         };

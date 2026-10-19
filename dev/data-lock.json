@@ -1,9 +1,9 @@
 {
   "tag": "data-20261019",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-FXKl9mNwGiHsQ7d96/775/wbrzgqV9i9lan9sfju52k=",
-    "llm-agents-aarch64-linux": "sha256-gofPFLgtPuc3Hbis+IAz5oJVnfEBtDs5GCh8139pJtQ=",
-    "llm-agents-x86_64-linux": "sha256-mWW3H/IA8pCkXiEH++wpIaxEH6LJN++UhtQe4q0GzFE=",
+    "llm-agents-aarch64-darwin": "sha256-6Dg79qsnjJqp/oz09QxmFwZdrEIiWy6Xc/n9xqEvbFY=",
+    "llm-agents-aarch64-linux": "sha256-Uw5HudxAF/ZaijNHI4zFs5GcYqelRGNbev62QokYlds=",
+    "llm-agents-x86_64-linux": "sha256-+7XOcQr4sBrvvAKCkRqWme4c3oIEV5fFNoPbaeVJfYs=",
     "selector4nix-aarch64-darwin": "sha256-0cxdmAh+TL8Do7h7cbJqkP3iSknlEjSlgMr19qed+8w=",
     "selector4nix-aarch64-linux": "sha256-Nc+fx9eOPjF5S8At4l5sGIFCuVxuyMQRxoZmbPviQtc=",
     "selector4nix-x86_64-linux": "sha256-oKpHiyA4HIpoaRUcpQ9vgwmYKXMTHmQKDB5FlGdWpwQ=",
@@ -16,7 +16,7 @@
     "direnv-instant-x86_64-linux": "sha256-KS20ZNw7ZfbLCjazoedVbeqnZUsGe/9yF+GrlqoySwc=",
     "concat-aarch64-linux": "sha256-DFEetLr9Xu5yFfb10hc+kDgl1RCXlrSLt5o1hdrqmiw=",
     "concat-x86_64-linux": "sha256-YYxbTRGi6URk4UHPHp11tYIAaTOynGHSIQRgoV/qObI=",
-    "artcraft-aarch64-linux": "sha256-TLt9MpCENd9OHcSQN/8QCw/nymJlIu4GUbaDSZhxPnc=",
-    "artcraft-x86_64-linux": "sha256-QOmPkDtTlk5pP+bi4/saKpgOa5iTd7EZCo0EGfX4D1I="
+    "artcraft-aarch64-linux": "sha256-a9szHr02mDSscrvRxllTqBdePXuufAVL9Z3H182RHs8=",
+    "artcraft-x86_64-linux": "sha256-vuKC/0AxXW/e47nkyqTIPL9CCf+rB6V50NbTSlhBmNQ="
   }
 }

@@ -20,31 +20,31 @@
     concat.inputs.nixpkgs.follows = "nixpkgs";
 
     # artcraft
-    cadcraft.url = "github:storytold/cadcraft/v0.8.0";
+    cadcraft.url = "github:storytold/cadcraft/v0.10.0";
     cadcraft.flake = false;
-    deckcraft.url = "github:storytold/deckcraft/v0.8.0";
+    deckcraft.url = "github:storytold/deckcraft/v0.9.0";
     deckcraft.flake = false;
-    designcraft.url = "github:storytold/designcraft/v0.9.0";
+    designcraft.url = "github:storytold/designcraft/v0.11.0";
     designcraft.flake = false;
-    effectcraft.url = "github:storytold/effectcraft/v0.11.1";
+    effectcraft.url = "github:storytold/effectcraft/v0.14.0";
     effectcraft.flake = false;
-    figcraft.url = "github:storytold/figcraft/v0.7.0";
+    figcraft.url = "github:storytold/figcraft/v0.9.0";
     figcraft.flake = false;
-    filmcraft.url = "github:storytold/filmcraft/v0.9.0";
+    filmcraft.url = "github:storytold/filmcraft/v0.10.0";
     filmcraft.flake = false;
-    gridcraft.url = "github:storytold/gridcraft/v0.8.0";
+    gridcraft.url = "github:storytold/gridcraft/v0.10.0";
     gridcraft.flake = false;
-    lightcraft.url = "github:storytold/lightcraft/v0.9.1";
+    lightcraft.url = "github:storytold/lightcraft/v0.11.0";
     lightcraft.flake = false;
-    pdfcraft.url = "github:storytold/pdfcraft/v0.9.0";
+    pdfcraft.url = "github:storytold/pdfcraft/v0.11.0";
     pdfcraft.flake = false;
-    photocraft.url = "github:storytold/photocraft/v0.10.0";
+    photocraft.url = "github:storytold/photocraft/v0.12.0";
     photocraft.flake = false;
-    soundcraft.url = "github:storytold/soundcraft/v0.8.0";
+    soundcraft.url = "github:storytold/soundcraft/v0.11.0";
     soundcraft.flake = false;
-    vectorcraft.url = "github:storytold/vectorcraft/v0.13.1";
+    vectorcraft.url = "github:storytold/vectorcraft/v0.14.0";
     vectorcraft.flake = false;
-    wordcraft.url = "github:storytold/wordcraft/v0.8.0";
+    wordcraft.url = "github:storytold/wordcraft/v0.9.0";
     wordcraft.flake = false;
   };
 

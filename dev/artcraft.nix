@@ -120,7 +120,8 @@ in rustPlatform.buildRustPackage {
     substituteInPlace $out/share/applications/${appId}.desktop \
       --replace-fail "Exec=$pname" "Exec=$out/bin/$pname"
 
-    cp -R $src/assets/app-icon/hicolor $out/share/icons/hicolor
+    mkdir -p "$out/share/icons"
+    cp -r $src/assets/app-icon/hicolor $out/share/icons
 
     for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE; do
       [ ! -f "$src/$f" ] || install -Dm644 "$src/$f" "$out/share/doc/$pname/$f"

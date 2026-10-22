@@ -120,10 +120,6 @@ in rustPlatform.buildRustPackage {
     substituteInPlace $out/share/applications/${appId}.desktop \
       --replace-fail "Exec=$pname" "Exec=$out/bin/$pname"
 
-    desktop-file-validate $out/share/applications/${appId}.desktop
-    XDG_CACHE_HOME=$TMPDIR/.cache appstreamcli validate --no-net \
-      $out/share/metainfo/${appId}.metainfo.xml
-
     cp -R $src/assets/app-icon/hicolor $out/share/icons/hicolor
 
     for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE; do
@@ -137,6 +133,10 @@ in rustPlatform.buildRustPackage {
         install -Dm644 "$f" "$out/share/doc/$pname/OFL-$family.txt"
       done
     ''}
+
+    desktop-file-validate $out/share/applications/${appId}.desktop
+    XDG_CACHE_HOME=$TMPDIR/.cache appstreamcli validate --no-net \
+      $out/share/metainfo/${appId}.metainfo.xml
   '';
 
   meta = {

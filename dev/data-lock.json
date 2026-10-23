@@ -1,22 +1,22 @@
 {
-  "tag": "data-20261022",
+  "tag": "data-20261024",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-OpTQevmv+jV4STJ+GZ0yoFBWbUctEYt/p6LHJzBA1yQ=",
-    "llm-agents-aarch64-linux": "sha256-t2umB+MTVDo3xyKb1Q97HNwNB/OcgdaEtiSJPqcPOo8=",
-    "llm-agents-x86_64-linux": "sha256-DI7tH63NGkUNkKZjbww7opd7RmI5K3QY1JebPAFff88=",
+    "llm-agents-aarch64-darwin": "sha256-142pgNTXTk9GHkaiJAyIDd6KbUw1UCCmCkailPgtUOY=",
+    "llm-agents-aarch64-linux": "sha256-qd9hhDP12f9ret8AL5ftvzHxEHFzFqkZhdgYvrrXnes=",
+    "llm-agents-x86_64-linux": "sha256-oIo1t+zuvZXGE4dYfI4zL88gPNn4S3ucHjSv/mefPdQ=",
     "selector4nix-aarch64-darwin": "sha256-oepTZAgFCk40SWrwp8V2YML9Mc+Oa9qS6E176b/Y8rw=",
     "selector4nix-aarch64-linux": "sha256-XKO5btrRWMbOti8sdMwHnEhpj95pLjcirXGYlrGdqUc=",
     "selector4nix-x86_64-linux": "sha256-j36p1vf/NBKx9sRBJyQmVITyryTGOW/1FV2Z8jU74E0=",
-    "chaotic-aarch64-darwin": "sha256-Cygea0vFaMisncW1EIeTm7NzlYBBwyyVftM4iTCjQpA=",
-    "chaotic-aarch64-linux": "sha256-6PzbUW2Qxik7G2aOBmvNUhJrpJWru2T6akxFHf+IgAc=",
-    "chaotic-x86_64-linux": "sha256-1OVeRBW+NSzstzXGFBDryad1W6Bf7cZuNoPLpruAy0M=",
+    "chaotic-aarch64-darwin": "sha256-zV/w2I1P9Xkr8BoJo6tuHMl1ZPe45GCx8u5fNdqaa58=",
+    "chaotic-aarch64-linux": "sha256-Rmi7zm7ai6WMBbwTDdAk1pppb6m8sUhtNCYE08/cz08=",
+    "chaotic-x86_64-linux": "sha256-a1tvF57DlE2xKDFoFM0odKvFzfYU9VzVuVFL2Pey0YM=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-lTlhCXs2XB0L7qiYw1I8QQp9Jr9xiH/kbWU9tlESf3U=",
     "direnv-instant-x86_64-linux": "sha256-KS20ZNw7ZfbLCjazoedVbeqnZUsGe/9yF+GrlqoySwc=",
     "concat-aarch64-linux": "sha256-SeMEAFkpL9wSQD78fp42C7Bq/piiFwwJdApkOIvvo0I=",
     "concat-x86_64-linux": "sha256-6QfTS8OVa92mIlvBiJ6Gh1fklgnvpW4WDX1PKpn59Sw=",
-    "artcraft-aarch64-linux": "sha256-1n0wK5q0wRi2LKz9HVc50wEhwjZo3LJQiUeYaWV1N7o=",
-    "artcraft-x86_64-linux": "sha256-CNm8I/yGahC/Wb/dOyf/vD6tBfxIiAqyY9Gaoeb6nyQ="
+    "artcraft-aarch64-linux": "sha256-N5+l6Zsh6ZF6cpRz7FP14jLW6L3wGhZw979zgT1M318=",
+    "artcraft-x86_64-linux": "sha256-NY+UP+r3UV5G5FKHXaqtbV+y+05zIYShSa1RxFGAFk4="
   }
 }

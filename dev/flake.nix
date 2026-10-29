@@ -175,7 +175,23 @@
         in "${pkg}/bin/publish";
 
         readme.type = "app";
-        readme.program = "${lib.fmway.parse.mkScript pkgs { inherit collections namespaces lib; source = ../README.md; }}";
+        readme.program = "${lib.template.v2.mkScript pkgs {
+          file = ../README.md;
+          scope = rec {
+            inherit collections namespaces lib;
+            genListCustomPackage = namespace:
+              lib.concatMapStringsSep "\n" (k:
+                "- [${k}](${collections.${k}.repo})"
+              ) (builtins.filter (x: collections.${x}.namespace or "" == namespace) (builtins.attrNames collections));
+            custom_packages = lib.concatMapAttrsStringSep "" (namespace: _: ''
+              <details>
+                <summary>${namespace}</summary>
+
+                ${genListCustomPackage namespace}
+              </details>
+            '') namespaces;
+          };
+        }}";
 
         flake.type = "app";
         flake.program = "${lib.fmway.genNix.mkScript pkgs flake}";

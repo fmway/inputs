@@ -1,16 +1,3 @@
-<!--{=
-  genListCustomPackage = namespace:
-    lib.concatMapStringsSep "\n" (k:
-      "- [${k}](${collections.${k}.repo})"
-    ) (builtins.filter (x: collections.${x}.namespace or "" == namespace) (builtins.attrNames collections));
-  custom_packages = lib.concatMapAttrsStringSep "" (namespace: _: ''
-    <details>
-      <summary>${namespace}</summary>
-
-      ${genListCustomPackage namespace}
-    </details>
-  '') namespaces;
-}-->
 # fmway/inputs (AI Assisted)
 
 Personal collection of flake **inputs** rerouted through
@@ -18,7 +5,7 @@ fake derivations, so consuming their packages doesn't drag each upstream
 nixpkgs closure into your own flake.
 
 ## Current flakes:
-<!--{% (_: lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})" + lib.optionalString (v.aliases or [] != []) " (alias: ${builtins.concatStringsSep ", " v.aliases})") (lib.filterAttrs (_: v: !v?namespace) collections)) %}-->
+<!--{% lib.concatMapAttrsStringSep "\n" (k: v: "- [${k}](${v.repo})" + lib.optionalString (v.aliases or [] != []) " (alias: ${builtins.concatStringsSep ", " v.aliases})") (lib.filterAttrs (_: v: !v?namespace) collections) %}-->
 - [Mic92/direnv-instant](https://github.com/Mic92/direnv-instant) (alias: direnv-instant)
 - [StarryReverie/selector4nix](https://github.com/StarryReverie/selector4nix) (alias: selector4nix)
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)
@@ -28,7 +15,7 @@ nixpkgs closure into your own flake.
 <!--{% end %}-->
 
 ## Custom packages
-<!--{% (_: custom_packages) %}-->
+<!--{% custom_packages %}-->
 <details>
   <summary>artcraft</summary>
 

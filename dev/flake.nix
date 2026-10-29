@@ -10,6 +10,7 @@
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    crane.url = "github:ipetkov/crane/v0.24.0";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     selector4nix.url = "github:StarryReverie/selector4nix";
@@ -20,31 +21,31 @@
     concat.inputs.nixpkgs.follows = "nixpkgs";
 
     # artcraft
-    cadcraft.url = "github:storytold/cadcraft/v0.13.0";
+    cadcraft.url = "github:storytold/cadcraft/v0.14.0";
     cadcraft.flake = false;
-    deckcraft.url = "github:storytold/deckcraft/v0.11.1";
+    deckcraft.url = "github:storytold/deckcraft/v0.12.0";
     deckcraft.flake = false;
-    designcraft.url = "github:storytold/designcraft/v0.13.0";
+    designcraft.url = "github:storytold/designcraft/v0.14.0";
     designcraft.flake = false;
-    effectcraft.url = "github:storytold/effectcraft/v0.17.0";
+    effectcraft.url = "github:storytold/effectcraft/v0.18.0";
     effectcraft.flake = false;
-    figcraft.url = "github:storytold/figcraft/v0.11.2";
+    figcraft.url = "github:storytold/figcraft/v0.12.1";
     figcraft.flake = false;
-    filmcraft.url = "github:storytold/filmcraft/v0.13.0";
+    filmcraft.url = "github:storytold/filmcraft/v0.14.0";
     filmcraft.flake = false;
-    gridcraft.url = "github:storytold/gridcraft/v0.12.1";
+    gridcraft.url = "github:storytold/gridcraft/v0.13.0";
     gridcraft.flake = false;
-    lightcraft.url = "github:storytold/lightcraft/v0.14.0";
+    lightcraft.url = "github:storytold/lightcraft/v0.15.0";
     lightcraft.flake = false;
-    pdfcraft.url = "github:storytold/pdfcraft/v0.14.0";
+    pdfcraft.url = "github:storytold/pdfcraft/v0.15.0";
     pdfcraft.flake = false;
-    photocraft.url = "github:storytold/photocraft/v0.16.0";
+    photocraft.url = "github:storytold/photocraft/v0.17.0";
     photocraft.flake = false;
-    soundcraft.url = "github:storytold/soundcraft/v0.13.1";
+    soundcraft.url = "github:storytold/soundcraft/v0.14.0";
     soundcraft.flake = false;
-    vectorcraft.url = "github:storytold/vectorcraft/v0.17.0";
+    vectorcraft.url = "github:storytold/vectorcraft/v0.18.0";
     vectorcraft.flake = false;
-    wordcraft.url = "github:storytold/wordcraft/v0.11.0";
+    wordcraft.url = "github:storytold/wordcraft/v0.12.0";
     wordcraft.flake = false;
   };
 
@@ -57,31 +58,50 @@
         };
       };
 
-      builders = {
+      builders = let
+        parseYaml = file:
+          lib.yaml.parse {} (builtins.readFile file);
+      in {
         # default builder, only reroute to the regular packages
         __functor = _: system: inputName:
           (parseInput inputName inputs.${inputName}).packages.${system};
 
-        artcraft = {
-          __functor = _: system: { inputName, ... }:
+        artcraft = let
+          craneLibFor = system:
+            inputs.crane.mkLib nixpkgs.legacyPackages.${system};
+
+          mkArtcraft = craneLib: system: { inputName, ... }:
             nixpkgs.legacyPackages.${system}.callPackage ./artcraft.nix {
+              inherit craneLib parseYaml;
               name = inputName;
-              source = inputs.${inputName};
+              # temp fix: pin some deps until they update it
+              source = let
+                src = inputs.${inputName};
+                patched = nixpkgs.legacyPackages.${system}.runCommand "${inputName}-patched-source" {} ''
+                  cp -r ${src} $out
+                  chmod -R +w $out
+                  find "$out" -type f \( -name Cargo.toml -o -name Cargo.lock \) -print0 |
+                    while IFS= read -r -d "" f; do
+                      substituteInPlace "$f" \
+                        --replace-warn "${patches.craft-libs.old}" "${patches.craft-libs.new}" \
+                        --replace-warn "${patches.egui-git.old}" "${patches.egui-git.new}"
+                    done
+                '';
+              in patched // { inherit (src) lastModifiedDate; };
             };
+        in {
+          __functor = _: system:
+            mkArtcraft (craneLibFor system) system;
+
           pdfcraft = system: { inputName, ... }: let
-            self = builders.artcraft system { inherit inputName; };
-            r = # need latest rustc in x86_64-linux
-              if system == "x86_64-linux" then let
-                pkgs = nixpkgs.legacyPackages.${system};
-                rust-bin = rust-overlay.lib.mkRustBin {} pkgs;
-              in self.override {
-                  rustPlatform = pkgs.makeRustPlatform rec {
-                    cargo = rust-bin.fromRustupToolchain { channel = "stable"; };
-                    rustc = cargo;
-                  };
-                }
-              else self;
-          in r.overrideAttrs (old: let
+            pkgs = nixpkgs.legacyPackages.${system};
+            craneLib = # need latest rustc in x86_64-linux
+              if system == "x86_64-linux" then
+                (inputs.crane.mkLib pkgs).overrideToolchain (p:
+                  (rust-overlay.lib.mkRustBin {} p).fromRustupToolchain { channel = "stable"; })
+              else craneLibFor system;
+            self = mkArtcraft craneLib system { inherit inputName; };
+          in self.overrideAttrs (old: let
               attributions = fromTOML (builtins.readFile "${old.src}/ATTRIBUTION.toml");
             in {
               postInstall = old.postInstall or "" + lib.concatMapStrings (x: /* sh */ ''
@@ -94,7 +114,7 @@
             });
 
           filmcraft = system: { inputName, ... }:
-            (builders.artcraft system { inherit inputName; }).overrideAttrs (o: {
+            (mkArtcraft (craneLibFor system) system { inherit inputName; }).overrideAttrs (o: {
               patches = o.patches or [] ++ [
                 ./patches/no-ensure-desktop-filmcraft.patch
               ];
@@ -109,6 +129,11 @@
         "aarch64-linux"
         "aarch64-darwin"
       ];
+
+      patches = {
+        craft-libs = { old = "92d392cff132eaf53e13afff77f38b5c11b73aa0"; new = "1a11a4897865f7410c40d25ca6e452ce399a1a2c"; };
+        egui-git   = { old = "6d518fc799681571963842f95b55a6b68431b15a"; new = "310f43c5c003eee784b8a302a0c70c2985c04bfb"; };
+      };
 
       # { <namespace> = unique <systems>; }
       namespaces = lib.select "(**(namespace)).*.**1.systems.**" collections;

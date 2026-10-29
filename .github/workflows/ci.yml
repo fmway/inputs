@@ -139,7 +139,7 @@ jobs:
       with:
         use-flakehub: false
 
-    - uses: cachix/cachix-action@master
+    - uses: cachix/cachix-action@v17
       with:
         name: fmcachix
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
@@ -160,7 +160,14 @@ jobs:
           [[ "$package" != "all" ]] || package="$(nix eval ./dev#inputs.$name.packages.$system --apply 'x: builtins.concatStringsSep " " (builtins.attrNames x)' --raw)"
           package="$(awk "{for(i=1;i<=NF;i++) \$i=\"./dev#inputs.$name.packages.$system.\"\$i} 1" <<<"$package")"
 
-          nix build --out-link "result/$name" $package --verbose
+          LOGF="$(mktemp)"
+          if ! nix build --out-link "result/$name" $package --verbose 2> >(tee "$LOGF"); then
+            grep "nix log" "$LOGF" | while read _ _ drv; do
+              echo "Check log $drv"
+              nix log "$drv"
+            done
+            exit 1
+          fi
         done < <(jq -r '.[] | [.inputName, .packages] | @tsv' <<<"$inputs")
 
     - name: GC clean

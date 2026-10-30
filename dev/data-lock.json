@@ -1,22 +1,22 @@
 {
-  "tag": "data-20261030",
+  "tag": "data-20261031",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-OXMyQvV6xTBooU3mQcMOy7v+Ug5pkxyGqjUCkict/vg=",
-    "llm-agents-aarch64-linux": "sha256-N6HHSDnHVS2Wk/zWbO/174/kKVOuKbCggRN+QhDLapk=",
-    "llm-agents-x86_64-linux": "sha256-31RMueBbr+rRJepoRkmiwDzPwBJ/9F/0kpVUhzcTI7I=",
+    "llm-agents-aarch64-darwin": "sha256-3LOaNcGVJg99ELEvrF0lI6GwmKYUHKxrglFKNZw4Jc0=",
+    "llm-agents-aarch64-linux": "sha256-IZxHvNqCXUo1CgjYGEiVKWPPyxxvxoysJANPI1aoacM=",
+    "llm-agents-x86_64-linux": "sha256-iYn5qbujyrywNRkhHeYPv2JwmBbHozcni0MJjinfd1M=",
     "selector4nix-aarch64-darwin": "sha256-oepTZAgFCk40SWrwp8V2YML9Mc+Oa9qS6E176b/Y8rw=",
     "selector4nix-aarch64-linux": "sha256-XKO5btrRWMbOti8sdMwHnEhpj95pLjcirXGYlrGdqUc=",
     "selector4nix-x86_64-linux": "sha256-j36p1vf/NBKx9sRBJyQmVITyryTGOW/1FV2Z8jU74E0=",
-    "chaotic-aarch64-darwin": "sha256-acxB8juCqd22oDK6Wr5vLgFzuKknR1IiK3xc5sh2pLU=",
-    "chaotic-aarch64-linux": "sha256-mophcbbHmRjoefVHH4s7zKOpP9w7dmvycRWCWF1cAZg=",
-    "chaotic-x86_64-linux": "sha256-+U6DEFolmCQwMLyP9zQufqdE/Avqj4s+Y02z0yqiruE=",
+    "chaotic-aarch64-darwin": "sha256-5Moie9/jDeJy7bmq7Fz7OL5GhXr++qB6hhOvNvQ8G3c=",
+    "chaotic-aarch64-linux": "sha256-fR9yJd5u59K0Xb1u/aFX/03sQU2DjMe14X+6XaajUqM=",
+    "chaotic-x86_64-linux": "sha256-8A2gs8B2tAI/5UinKdNsY5p72zwScv7nxY81B6g+CaY=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-lTlhCXs2XB0L7qiYw1I8QQp9Jr9xiH/kbWU9tlESf3U=",
     "direnv-instant-x86_64-linux": "sha256-KS20ZNw7ZfbLCjazoedVbeqnZUsGe/9yF+GrlqoySwc=",
     "concat-aarch64-linux": "sha256-SeMEAFkpL9wSQD78fp42C7Bq/piiFwwJdApkOIvvo0I=",
     "concat-x86_64-linux": "sha256-6QfTS8OVa92mIlvBiJ6Gh1fklgnvpW4WDX1PKpn59Sw=",
-    "artcraft-aarch64-linux": "sha256-Ig6dl9iYRWRjTLg+R69ojSbmBTAvjrvoYY5Q5o44DqU=",
-    "artcraft-x86_64-linux": "sha256-ncUUJsUzGXD1GdKsWrO7FYb4EQySq++jFuZq26j2V6I="
+    "artcraft-aarch64-linux": "sha256-9HroZl7AvvkTOKzU50DK4hy7M+iok9ae8TrcDzSpWe8=",
+    "artcraft-x86_64-linux": "sha256-6MR6CGo5WJIw6Q8wW8s32tgtTXR29aewg0BDeaUzF60="
   }
 }

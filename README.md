@@ -12,6 +12,7 @@ nixpkgs closure into your own flake.
 - [jub0t/concat](https://github.com/jub0t/concat) (alias: concat)
 - [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
+- [tontinton/maki](https://github.com/tontinton/maki) (alias: maki)
 <!--{% end %}-->
 
 ## Custom packages

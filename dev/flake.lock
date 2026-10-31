@@ -58,11 +58,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793433068,
-        "narHash": "sha256-ZzRBzZ8CD0hQ5NzO5IC3gUau1seluXqOlqs3N2FdMOM=",
+        "lastModified": 1793443461,
+        "narHash": "sha256-7OAp5iaWdo474HRc6zpVeCQQW5zoXN2fv2tFwIc2Rhc=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "eb3ecd6ac358146b743f0266ace9620fa0375fdd",
+        "rev": "2cc4be877461da92a56819dadcc8e9049d8d2072",
         "type": "github"
       },
       "original": {
@@ -490,6 +490,33 @@
         "type": "github"
       }
     },
+    "maki": {
+      "inputs": {
+        "crane": [
+          "crane"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792789632,
+        "narHash": "sha256-xRpMH/0j7aiCFXKKoiDlVC4wm/TGGMCte7YEBuzdDgY=",
+        "owner": "tontinton",
+        "repo": "maki",
+        "rev": "d6500a760d6294ee9482a5a2d5b1627dcdd2e106",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tontinton",
+        "ref": "v0.6.5",
+        "repo": "maki",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1793341285,
@@ -654,6 +681,7 @@
         "lanzaboote": "lanzaboote",
         "lightcraft": "lightcraft",
         "llm-agents": "llm-agents",
+        "maki": "maki",
         "nixpkgs": "nixpkgs_5",
         "pdfcraft": "pdfcraft",
         "photocraft": "photocraft",

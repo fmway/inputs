@@ -76,11 +76,15 @@ jobs:
               (map(select(.value.build_group == "single"))[] | {(.key): .value}),
               (map(select(.value.build_group | . != null and . != "single")) | group_by(.value.build_group)[] | from_entries)
             ]
-          | map (. as $collections | ["x86_64-linux", "aarch64-linux"] | map(. as $sys | {
-              system: $sys,
-              runner: (if $sys == "aarch64-linux" then "ubuntu-24.04-arm" else "ubuntu-latest" end),
+          | map (. as $collections | {
+              "aarch64-darwin": "macos-latest",
+              "aarch64-linux": "ubuntu-24.04-arm",
+              "x86_64-linux": "ubuntu-latest"
+            } | to_entries | map(.key as $system | .value as $runner | {
+              system: $system,
+              runner: $runner,
               inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .build_group != null)
-                                    and (.systems // [] | index($sys))
+                                    and (.systems // [] | index($system))
                                     and (.inputName | IN($updated[])))
                         | {
                             inputName: (.namespace // .inputName),

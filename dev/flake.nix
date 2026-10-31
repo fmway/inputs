@@ -19,6 +19,10 @@
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
     concat.url = "github:jub0t/concat/v0.2.8";
     concat.inputs.nixpkgs.follows = "nixpkgs";
+    maki.url = "github:tontinton/maki/v0.6.5";
+    maki.inputs.nixpkgs.follows = "nixpkgs";
+    maki.inputs.crane.follows = "crane";
+    maki.inputs.rust-overlay.follows = "rust-overlay";
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.15.1";

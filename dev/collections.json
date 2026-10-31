@@ -165,5 +165,13 @@
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build": true
+  },
+  "tontinton/maki": {
+    "inputName": "maki",
+    "aliases": [ "maki" ],
+    "repo": "https://github.com/tontinton/maki",
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
+    "tags": true,
+    "build": true
   }
 }

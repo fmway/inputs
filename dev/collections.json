@@ -173,5 +173,11 @@
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build": true
+  },
+  "daeuniverse": {
+    "inputName": "daeuniverse",
+    "repo": "https://github.com/daeuniverse/flake.nix",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "build_group": "single"
   }
 }

@@ -12,9 +12,18 @@ let
       overlays.default = _: super: flake.packages.${super.stdenv.hostPlatform.system};
     };
 
+    "daeuniverse" = flake: let
+      withSystem = system: f:
+        f { config.packages = flake.packages.${system}; };
+    in {
+      nixosModules = genAttrs (name:
+        importApply "${flake}/${name}/module.nix" { inherit withSystem; }
+      ) [ "dae" "daed" "honk" ];
+    };
+
     "StarryReverie/selector4nix" = flake: let
-      withSystem = system: fn:
-        fn { config.packages = flake.packages.${system}; };
+      withSystem = system: f:
+        f { config.packages = flake.packages.${system}; };
       config = import "${flake}/nix/flake/module.nix" {
         inherit withSystem config; 
         inputs = {}; self = {};

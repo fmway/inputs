@@ -1,15 +1,15 @@
 {
-  "tag": "data-20261103",
+  "tag": "data-20261104",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-EpNCZPZOWFa7Szk+4Iu9XhgH4BDAiTEGxm5HzlqLGyI=",
-    "llm-agents-aarch64-linux": "sha256-p6IZyAQB6trVXjSk8ETCiK6i0FT4A93T26afdvVL+TA=",
-    "llm-agents-x86_64-linux": "sha256-a37Y1Pw5QgNY8IRixUriKvK4Wy15rLuiSb4i+m78j/U=",
-    "selector4nix-aarch64-darwin": "sha256-oepTZAgFCk40SWrwp8V2YML9Mc+Oa9qS6E176b/Y8rw=",
-    "selector4nix-aarch64-linux": "sha256-XKO5btrRWMbOti8sdMwHnEhpj95pLjcirXGYlrGdqUc=",
-    "selector4nix-x86_64-linux": "sha256-j36p1vf/NBKx9sRBJyQmVITyryTGOW/1FV2Z8jU74E0=",
-    "chaotic-aarch64-darwin": "sha256-br4GTOpHdHOnEsro62e2yuhGe2jLaKU5SCRy37KgJ+E=",
-    "chaotic-aarch64-linux": "sha256-MFZMlI1ktlsyDTr3M+LYvlG7MohABPqswWxMKuRwrf4=",
-    "chaotic-x86_64-linux": "sha256-aZRljvOcbJOpyoQiJoJCoB2LunP6VLjEuduXtmAUPLo=",
+    "llm-agents-aarch64-darwin": "sha256-yh+JZbaKbJHcyoGI5iIwC8O10I1X0k17babbxOGIa7I=",
+    "llm-agents-aarch64-linux": "sha256-+YlGS7Ncc6mX00MyFav5H8DXbal5JjoZCPs7eQUrZt4=",
+    "llm-agents-x86_64-linux": "sha256-SE7SZS+sd+wxx0srEpYGqIj5NljqHwX+m8wH37jpdB0=",
+    "selector4nix-aarch64-darwin": "sha256-k1rSpekUBqbnUUe76CwwqFQTF1jBXGpAkSzKMC2vdjM=",
+    "selector4nix-aarch64-linux": "sha256-ArGbjPUecYUvac/f7QP/Ydl+uF1YVi1AAC/+7zk81UM=",
+    "selector4nix-x86_64-linux": "sha256-+aWywaXn7UMT/BBrI/xhPXf87vhx0N0VeOOe3e40mYs=",
+    "chaotic-aarch64-darwin": "sha256-c35tt8H89/hyjR4WFmcjRiLNEdwLNG4pduy+ez1B4NU=",
+    "chaotic-aarch64-linux": "sha256-m3GusD3vnFWK9njNUQvKsgcTOMsy5hryrlRGXJijGms=",
+    "chaotic-x86_64-linux": "sha256-zeCFqYpnA1TayrQ8Y4jGycTu26SvvetrkY948+aqb+Y=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-lTlhCXs2XB0L7qiYw1I8QQp9Jr9xiH/kbWU9tlESf3U=",
@@ -19,7 +19,9 @@
     "maki-aarch64-darwin": "sha256-7ogkaZ3j3tUoq9HOFbWujBP/KWmezo13uIMB1CLEcBQ=",
     "maki-aarch64-linux": "sha256-jn7hHXgcSOfn9WlzeOvNnCqN+Dk69XID5q3XEE7iWmo=",
     "maki-x86_64-linux": "sha256-4aN66OmQSEkcnCOLcSYoEhkCTt6OO/YOqnxCf3hgL2k=",
-    "artcraft-aarch64-linux": "sha256-BZ5fq3Tjdo+ow80Ltnh9f9nNpGoZ24KWjKqeCxy7V7I=",
-    "artcraft-x86_64-linux": "sha256-ZWvpakucDEPdB2ffQg1jnHdPs3a4eVYcLll0LTtuKN8="
+    "daeuniverse-aarch64-linux": "sha256-yqE7FraShSKMCXJXjrY4fudWrPbCB8rUS2CvIHpB6WQ=",
+    "daeuniverse-x86_64-linux": "sha256-sqCrnZxuWpB/nytVRphnTzu59KLl6H18YPkXb4P6/W4=",
+    "artcraft-aarch64-linux": "sha256-xfwOknmLArPluAuAl9hoAPliHsHDFPrl60BG1FFg+rI=",
+    "artcraft-x86_64-linux": "sha256-BhNVe4Np05CDd0AGQOwSUV5cY3QRDeo6RkHq4J2n3N8="
   }
 }

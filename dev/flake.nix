@@ -23,6 +23,7 @@
     maki.inputs.nixpkgs.follows = "nixpkgs";
     maki.inputs.crane.follows = "crane";
     maki.inputs.rust-overlay.follows = "rust-overlay";
+    daeuniverse.url = "github:daeuniverse/flake.nix";
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.17.0";
@@ -41,7 +42,7 @@
     gridcraft.flake = false;
     lightcraft.url = "github:storytold/lightcraft/v0.18.0";
     lightcraft.flake = false;
-    pdfcraft.url = "github:storytold/pdfcraft/v0.18.0";
+    pdfcraft.url = "github:storytold/pdfcraft/v0.18.1";
     pdfcraft.flake = false;
     photocraft.url = "github:storytold/photocraft/v0.20.1";
     photocraft.flake = false;
@@ -49,7 +50,7 @@
     soundcraft.flake = false;
     vectorcraft.url = "github:storytold/vectorcraft/v0.21.0";
     vectorcraft.flake = false;
-    wordcraft.url = "github:storytold/wordcraft/v0.15.0";
+    wordcraft.url = "github:storytold/wordcraft/v0.15.1";
     wordcraft.flake = false;
   };
 
@@ -59,6 +60,31 @@
       overrideInput = {
         chaotic = { self, ... }: {
           packages = self.unrestrictedPackages;
+        };
+
+        daeuniverse = { orig, ... }:
+        {
+          packages = builtins.mapAttrs (system: builtins.mapAttrs (packageName: pkg:
+            if lib.hasPrefix "honk" packageName then
+              # just want to add --features native-ui
+              pkg.override (o: {
+                craneLib = o.craneLib // {
+                  overrideToolChain = x: let c = o.overrideToolChain x; in c // {
+                    buildPackage = { pname, ... } @ args:
+                      if pname == "honk" then
+                        c.buildPackage (args // {
+                          cargoExtraArgs = args.cargoExtraArgs + " --features native-ui";
+                          HONK_DONA_DIR = "${lib.cleanSourceWith {
+                            src = "${nixpkgs.legacyPackages.${system}.callPackage pins.doona-package {}}/share/doona";
+                            filter = p: t: t != "directory" || baseNameOf p != "fonts";
+                          }}";
+                        })
+                      else c.buildPackage args;
+                  };
+                };
+              })
+            else pkg
+          )) orig.packages;
         };
       };
 
@@ -165,7 +191,9 @@
           ]);
       };
       parseInput = inputName: source:
-        lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; } // source.inputs));
+        lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; orig = source; } // source.inputs));
+
+      pins = import "${inputs.fmway-lib}/sources/mkSource.nix" (builtins.fromJSON (builtins.readFile ./pin.json));
     in {
       inherit collections namespaces;
       inputs =
@@ -183,8 +211,21 @@
         }) namespaces
         ;
       apps = forAllSystems (system: let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ inputs.fmway-lib.overlays.updater ];
+        };
       in {
+        update-pin.type = "app";
+        update-pin.program = "${pkgs.writeShellApplication {
+          name = "update-pin";
+          runtimeInputs = [ pkgs.fetch-sources ];
+          text = /* sh */ ''
+            out="''${1:-/dev/stdout}"
+            fetch-sources "${./pin.json}" > "$out"
+          '';
+        }}/bin/update-pin";
+
         refresh.type = "app";
         refresh.program = let
           pkg = pkgs.writeShellApplication {

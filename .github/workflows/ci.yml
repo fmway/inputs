@@ -68,6 +68,7 @@ jobs:
       id: update
       run: |
         nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
+        nix run ./dev#update-pin
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
         build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .build_group != null) and ((.inputName | IN($updated[])) or .build_group != null))) | length > 0' dev/collections.json)"
         matrix="$(jq -c "$updated"' as $updated
@@ -88,7 +89,7 @@ jobs:
                                     and (.inputName | IN($updated[])))
                         | {
                             inputName: (.namespace // .inputName),
-                            packages: (if .namespace != null then .inputName elif .build == true then "all" else (.build | join (" ")) end)
+                            packages: (if .namespace != null then .inputName elif .build == true or .build == null then "all" else (.build | join (" ")) end)
                           }
                       ])
             } as $out | $out + {
@@ -110,6 +111,7 @@ jobs:
         path: |
           ./dev/flake.lock
           ./dev/flake.nix
+          ./dev/pin.json
   build:
     name: ${{ matrix.title }}
     permissions:

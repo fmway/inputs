@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "android-translation-layer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793726015,
+        "narHash": "sha256-fgRoIiMCkIdRtPwIl47BviJX8L9VBd/xIS9gz7IDne8=",
+        "owner": "android_translation_layer",
+        "repo": "android_translation_layer",
+        "rev": "bbb4d469405cdaea585475b17daef13202bc7e23",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "android_translation_layer",
+        "repo": "android_translation_layer",
+        "type": "gitlab"
+      }
+    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -580,11 +596,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1792116957,
-        "narHash": "sha256-MTJCMrhDFb+GRbLxBPTp8kB4dDlO+egmQ5qsJgYuaWw=",
-        "rev": "f20cd90e28fe0403873f473b29e42662cd86e8c4",
+        "lastModified": 1793706278,
+        "narHash": "sha256-iCbwhLa+h23/rxGQD9YJJ+BrMYHCPKB6au/BsobNWB4=",
+        "rev": "ea9e3ef341e11c193537f674f821a99f9f436729",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1093421.f20cd90e28fe/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1107593.ea9e3ef341e1/nixexprs.tar.xz"
       },
       "original": {
         "type": "tarball",
@@ -665,6 +681,7 @@
     },
     "root": {
       "inputs": {
+        "android-translation-layer": "android-translation-layer",
         "cadcraft": "cadcraft",
         "chaotic": "chaotic",
         "concat": "concat",

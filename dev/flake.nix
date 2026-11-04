@@ -245,21 +245,12 @@
         in "${pkg}/bin/publish";
 
         readme.type = "app";
-        readme.program = "${lib.template.v2.mkScript pkgs {
+        readme.program = "${lib.template.v2.mkScript pkgs rec {
           file = ../README.md;
-          scope = rec {
-            inherit collections namespaces lib;
-            genListCustomPackage = namespace:
-              lib.concatMapStringsSep "\n" (k:
-                "- [${k}](${collections.${k}.repo})"
-              ) (builtins.filter (x: collections.${x}.namespace or "" == namespace) (builtins.attrNames collections));
-            custom_packages = lib.concatMapAttrsStringSep "" (namespace: _: ''
-              <details>
-                <summary>${namespace}</summary>
-
-                ${genListCustomPackage namespace}
-              </details>
-            '') namespaces;
+          scope = {
+            inherit collections namespaces lib systems;
+            inputs = self.outputs.inputs;
+            markdowns = import ./markdowns.nix scope;
           };
         }}";
 

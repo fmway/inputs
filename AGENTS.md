@@ -160,7 +160,7 @@ via `fmway-lib`'s `parse` (template markers `<!--{% ... %}-->`); `flake`
 regenerates the main `flake.nix` via `lib.fmway.genNix` on the `flake` spec in
 `dev/flake.nix`.
 
-CI (`.github/workflows/update.yml`) runs daily: bump tagged inputs → `nix flake
+CI (`.github/workflows/ci.yml`) runs daily: bump tagged inputs → `nix flake
 update` (only the collected input names) → `refresh` → `publish` → `readme` →
 `flake` → auto-commit (commits `dev/data-lock.json`, the pins, and generated
 README/flake.nix — never `data/`). It also triggers on pushes touching

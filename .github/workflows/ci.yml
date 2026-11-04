@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   init:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04-arm
     outputs:
       substituters: ${{ steps.setup.outputs.substituters }}
       trusted-keys: ${{ steps.setup.outputs.trusted-keys }}
@@ -68,7 +68,7 @@ jobs:
       id: update
       run: |
         nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
-        nix run ./dev#update-pin
+        nix run ./dev#update-pin ./dev/pin.json
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
         build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .build_group != null) and ((.inputName | IN($updated[])) or .build_group != null))) | length > 0' dev/collections.json)"
         matrix="$(jq -c "$updated"' as $updated
@@ -79,8 +79,8 @@ jobs:
             ]
           | map (. as $collections | {
               "aarch64-darwin": "macos-latest",
-              "aarch64-linux": "ubuntu-24.04-arm",
-              "x86_64-linux": "ubuntu-latest"
+              "aarch64-linux": "ubuntu-26.04-arm",
+              "x86_64-linux": "ubuntu-26.04"
             } | to_entries | map(.key as $system | .value as $runner | {
               system: $system,
               runner: $runner,

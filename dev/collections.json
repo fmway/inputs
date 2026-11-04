@@ -173,5 +173,12 @@
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build": true
+  },
+  "android-translation-layer": {
+    "inputName": "android-translation-layer",
+    "repo": "https://gitlab.com/android_translation_layer/android_translation_layer",
+    "systems": [ "x86_64-linux" ],
+    "namespace": "virtualisation",
+    "build": true
   }
 }

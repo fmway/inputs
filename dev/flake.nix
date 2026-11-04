@@ -23,6 +23,8 @@
     maki.inputs.nixpkgs.follows = "nixpkgs";
     maki.inputs.crane.follows = "crane";
     maki.inputs.rust-overlay.follows = "rust-overlay";
+    android-translation-layer.url = "gitlab:android_translation_layer/android_translation_layer";
+    android-translation-layer.flake = false;
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.17.0";
@@ -69,6 +71,13 @@
         # default builder, only reroute to the regular packages
         __functor = _: system: inputName:
           (parseInput inputName inputs.${inputName}).packages.${system};
+
+        virtualisation.android-translation-layer = system: { inputName, ... }:
+          (import nixpkgs { inherit system; config.allowUnfree = true; }).android-translation-layer.overrideAttrs {
+            version = let s = x: y: builtins.substring x y inputs.${inputName}.lastModifiedDate; in
+              "0-unstable-${s 0 4}-${s 4 2}-${s 6 2}";
+            src = inputs.${inputName};
+          };
 
         artcraft = let
           craneLibFor = system:

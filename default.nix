@@ -21,6 +21,20 @@ let
       ) [ "dae" "daed" "honk" ];
     };
 
+    "numtide/iets" = flake: {
+      lib.mkClassic = pkgs: iets: nix: pkgs.callPackage "${flake}/nix/classic.nix" { inherit iets nix; };
+      nixosModules.default = import "${flake}/nix/module.nix" flake;
+    };
+
+    "psyclyx/fix" = flake:
+      genAttrs (class: { lib, pkgs, ... }:
+      {
+        imports = [
+          (if class == "homeManager" then "${flake}/nix/modules/home-manager.nix" else "${flake}/nix/modules/${class}.nix")
+        ];
+        programs.fix.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.fix;
+      }) [ "nixos" "darwin" "homeManager" ];
+
     "StarryReverie/selector4nix" = flake: let
       withSystem = system: f:
         f { config.packages = flake.packages.${system}; };

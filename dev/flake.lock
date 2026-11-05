@@ -58,11 +58,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793853612,
-        "narHash": "sha256-AEoQocOG7J2AQshWOQ0fXstiuIUYvJKYST5C3BVV0Ow=",
+        "lastModified": 1793866887,
+        "narHash": "sha256-X4B++RCAUTxoJOBxoJGgC15Sq+eGqba1A3KWuy3drMY=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "d3a7dfa2f575c9a54214f4c94ed1ee7af14c0b17",
+        "rev": "4adb3445ddf9d551a1f14e74d99e0e25e9271a26",
         "type": "github"
       },
       "original": {
@@ -125,6 +125,21 @@
     },
     "crane_3": {
       "locked": {
+        "lastModified": 1792350552,
+        "narHash": "sha256-292lvpvxTGKryKxh3/3tcIVi85CwYGdl4oOi113Sob8=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "e675a36b7377bebe41d548388a2501cbb16d380d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "crane_4": {
+      "locked": {
         "lastModified": 1789760033,
         "narHash": "sha256-jtT4yxZpR8seYnlCMMWSSPlFN92zO6ICuZ8pJrmi86k=",
         "owner": "ipetkov",
@@ -138,7 +153,7 @@
         "type": "github"
       }
     },
-    "crane_4": {
+    "crane_5": {
       "locked": {
         "lastModified": 1791754810,
         "narHash": "sha256-cN0Mgk+sQtCJcGWs9H4M0CnLRAuC4I8aCwiBTcBJs6E=",
@@ -278,6 +293,22 @@
         "owner": "storytold",
         "ref": "v0.17.1",
         "repo": "filmcraft",
+        "type": "github"
+      }
+    },
+    "fix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791233298,
+        "narHash": "sha256-z5nkv0cKEebjRzgxuAJOJPVluipibhk406FT0BMtiKo=",
+        "owner": "psyclyx",
+        "repo": "fix",
+        "rev": "e0c1f6d699894e3fcbb480c8e7445ddd3b9467fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "psyclyx",
+        "repo": "fix",
         "type": "github"
       }
     },
@@ -483,10 +514,29 @@
         "type": "github"
       }
     },
-    "lanzaboote": {
+    "iets": {
       "inputs": {
         "crane": "crane_3",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1793866835,
+        "narHash": "sha256-gCGlKM50sEWiMZm1hARqR6gzbsbP5vNR1G7ygZwGgMY=",
+        "owner": "numtide",
+        "repo": "iets",
+        "rev": "df61288729b3b449dbe680f4819d18e0179e29e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "iets",
+        "type": "github"
+      }
+    },
+    "lanzaboote": {
+      "inputs": {
+        "crane": "crane_4",
+        "nixpkgs": "nixpkgs_5",
         "pre-commit": "pre-commit",
         "rust-overlay": "rust-overlay_2"
       },
@@ -526,7 +576,7 @@
       "inputs": {
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix_2"
       },
@@ -633,6 +683,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1793110635,
+        "narHash": "sha256-dhoW6VgFWlaodSY5jrBn+CF2FLmaUvDVgM7+C7T2+NM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "31ecbaca1bdefa45dffc409f0250bd8039ea0010",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1789785513,
         "narHash": "sha256-B44WL6h0XoLjJ41bUPJk0X5SDinLCII//6EcBLXKiJ0=",
         "owner": "NixOS",
@@ -647,7 +713,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1793795574,
         "narHash": "sha256-pgG/CO+txdf2sA2z6DsM+2G3F9ajfIp/3BMC4wfKMDY=",
@@ -663,7 +729,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1793706278,
         "narHash": "sha256-iCbwhLa+h23/rxGQD9YJJ+BrMYHCPKB6au/BsobNWB4=",
@@ -676,7 +742,7 @@
         "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1792094642,
         "narHash": "sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I=",
@@ -761,14 +827,16 @@
         "effectcraft": "effectcraft",
         "figcraft": "figcraft",
         "filmcraft": "filmcraft",
+        "fix": "fix",
         "flake-compat": "flake-compat",
         "fmway-lib": "fmway-lib",
         "gridcraft": "gridcraft",
+        "iets": "iets",
         "lanzaboote": "lanzaboote",
         "lightcraft": "lightcraft",
         "llm-agents": "llm-agents",
         "maki": "maki",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "pdfcraft": "pdfcraft",
         "photocraft": "photocraft",
         "rust-overlay": "rust-overlay_3",
@@ -842,9 +910,9 @@
     },
     "selector4nix": {
       "inputs": {
-        "crane": "crane_4",
+        "crane": "crane_5",
         "flake-parts": "flake-parts_4",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1793772647,

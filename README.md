@@ -11,7 +11,9 @@ nixpkgs closure into your own flake.
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)
 - [daeuniverse](https://github.com/daeuniverse/flake.nix)
 - [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
+- [numtide/iets](https://github.com/numtide/iets) (alias: iets)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
+- [psyclyx/fix](https://github.com/psyclyx/fix) (alias: fix)
 <!--{% end %}-->
 
 <!--{% markdowns.custom-namespace-section %}-->

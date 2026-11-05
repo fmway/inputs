@@ -179,5 +179,22 @@
     "repo": "https://github.com/daeuniverse/flake.nix",
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "build_group": "single"
+  },
+  "numtide/iets": {
+    "inputName": "iets",
+    "aliases": [ "iets" ],
+    "repo": "https://github.com/numtide/iets",
+    "extraCaches": {
+      "substituters": [ "https://cache.numtide.com" ],
+      "trusted-public-keys": [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ]
+    },
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ]
+  },
+  "psyclyx/fix": {
+    "inputName": "fix",
+    "aliases": [ "fix" ],
+    "repo": "https://github.com/psyclyx/fix",
+    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
+    "build_group": "runtime"
   }
 }

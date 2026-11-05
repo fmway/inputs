@@ -24,6 +24,9 @@
     maki.inputs.crane.follows = "crane";
     maki.inputs.rust-overlay.follows = "rust-overlay";
     daeuniverse.url = "github:daeuniverse/flake.nix";
+    iets.url = "github:numtide/iets";
+    fix.url = "github:psyclyx/fix";
+    fix.flake = false;
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.17.1";
@@ -65,6 +68,13 @@
         maki = { orig, ... }:
         {
           packages = builtins.mapAttrs (system: pkgs: { maki = pkgs.default; }) orig.packages;
+        };
+
+        fix = { orig, ... }:
+        {
+          packages = lib.genAttrs collectionsByInput.fix.systems (system: {
+            fix = nixpkgs.legacyPackages.${system}.callPackage "${orig}/nix/fix.nix" {};
+          });
         };
 
         daeuniverse = { orig, ... }:
@@ -174,6 +184,10 @@
       namespaces = lib.select "(**(namespace)).*.**1.systems.**" collections;
       forAllSystems = lib.genAttrs systems;
       collections = builtins.fromJSON (builtins.readFile ./collections.json);
+      collectionsByInput = lib.mapAttrs' (name: v: {
+        name = v.inputName;
+        value = v // { inherit name; };
+      }) collections;
       lib = nixpkgs.lib.extend inputs.fmway-lib.overlays.default;
       flake = {
         description = "fmway/inputs — clean, input-less flake rerouting collected flake inputs through fake derivations";
@@ -196,7 +210,7 @@
           ]);
       };
       parseInput = inputName: source:
-        lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; orig = source; } // source.inputs));
+        lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; orig = source; } // (source.inputs or {})));
 
       pins = import "${inputs.fmway-lib}/sources/mkSource.nix" (builtins.fromJSON (builtins.readFile ./pin.json));
     in {

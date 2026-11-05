@@ -13,8 +13,9 @@ in {
             "- **Homepage**: ${pkg.meta.homepage}"
           ++ lib.optional (pkg ? meta.description)
             "- **Description**: ${pkg.meta.description}"
-          ++ [
+          ++ lib.optional (pkg ? meta.license)
             "- **License**: ${lib.concatMapStringsSep ", " (l: l.spdxId) (lib.fmway.flat pkg.meta.license)}"
+          ++ [
             "- **Supported Systems**: ${builtins.concatStringsSep ", " (getSupportedSystems ns name)}"
             "- **Usage**: `nix run github:fmway/inputs#${ns}.${name} -- [...]`"
           ])}

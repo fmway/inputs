@@ -10,14 +10,18 @@ nixpkgs closure into your own flake.
 - [StarryReverie/selector4nix](https://github.com/StarryReverie/selector4nix) (alias: selector4nix)
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)
 - [daeuniverse](https://github.com/daeuniverse/flake.nix)
-- [jub0t/concat](https://github.com/jub0t/concat) (alias: concat)
 - [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)
-- [tontinton/maki](https://github.com/tontinton/maki) (alias: maki)
 <!--{% end %}-->
 
 <!--{% markdowns.custom-namespace-section %}-->
 ### Custom namespaces
+<details>
+  <summary>agents.maki</summary>
+
+  - **Supported Systems**: x86_64-linux, aarch64-linux, aarch64-darwin
+  - **Usage**: `nix run github:fmway/inputs#agents.maki -- [...]`
+</details>
 <details>
   <summary>artcraft.cadcraft</summary>
 
@@ -176,6 +180,15 @@ Includes wordcraft-cli, a headless converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
   - **Usage**: `nix run github:fmway/inputs#artcraft.wordcraft -- [...]`
+</details>
+<details>
+  <summary>editors.concat</summary>
+
+  - **Homepage**: https://github.com/jub0t/Concat
+  - **Description**: Free and open source video editor
+  - **License**: AGPL-3.0-or-later
+  - **Supported Systems**: x86_64-linux, aarch64-linux
+  - **Usage**: `nix run github:fmway/inputs#editors.concat -- [...]`
 </details>
 
 <!--{% end %}-->

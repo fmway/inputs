@@ -158,17 +158,17 @@
     "build_group": "single",
     "tags": true
   },
-  "jub0t/concat": {
+  "concat": {
     "inputName": "concat",
-    "aliases": [ "concat" ],
+    "namespace": "editors",
     "repo": "https://github.com/jub0t/concat",
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build": true
   },
-  "tontinton/maki": {
+  "maki": {
     "inputName": "maki",
-    "aliases": [ "maki" ],
+    "namespace": "agents",
     "repo": "https://github.com/tontinton/maki",
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
     "tags": true,

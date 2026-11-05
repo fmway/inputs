@@ -26,31 +26,31 @@
     daeuniverse.url = "github:daeuniverse/flake.nix";
 
     # artcraft
-    cadcraft.url = "github:storytold/cadcraft/v0.17.0";
+    cadcraft.url = "github:storytold/cadcraft/v0.17.1";
     cadcraft.flake = false;
-    deckcraft.url = "github:storytold/deckcraft/v0.15.0";
+    deckcraft.url = "github:storytold/deckcraft/v0.15.1";
     deckcraft.flake = false;
-    designcraft.url = "github:storytold/designcraft/v0.17.0";
+    designcraft.url = "github:storytold/designcraft/v0.17.2";
     designcraft.flake = false;
-    effectcraft.url = "github:storytold/effectcraft/v0.21.0";
+    effectcraft.url = "github:storytold/effectcraft/v0.21.1";
     effectcraft.flake = false;
-    figcraft.url = "github:storytold/figcraft/v0.15.0";
+    figcraft.url = "github:storytold/figcraft/v0.15.1";
     figcraft.flake = false;
-    filmcraft.url = "github:storytold/filmcraft/v0.17.0";
+    filmcraft.url = "github:storytold/filmcraft/v0.17.1";
     filmcraft.flake = false;
-    gridcraft.url = "github:storytold/gridcraft/v0.16.0";
+    gridcraft.url = "github:storytold/gridcraft/v0.16.1";
     gridcraft.flake = false;
-    lightcraft.url = "github:storytold/lightcraft/v0.18.0";
+    lightcraft.url = "github:storytold/lightcraft/v0.18.1";
     lightcraft.flake = false;
-    pdfcraft.url = "github:storytold/pdfcraft/v0.18.1";
+    pdfcraft.url = "github:storytold/pdfcraft/v0.18.2";
     pdfcraft.flake = false;
-    photocraft.url = "github:storytold/photocraft/v0.20.1";
+    photocraft.url = "github:storytold/photocraft/v0.20.2";
     photocraft.flake = false;
-    soundcraft.url = "github:storytold/soundcraft/v0.17.0";
+    soundcraft.url = "github:storytold/soundcraft/v0.17.1";
     soundcraft.flake = false;
-    vectorcraft.url = "github:storytold/vectorcraft/v0.21.0";
+    vectorcraft.url = "github:storytold/vectorcraft/v0.21.1";
     vectorcraft.flake = false;
-    wordcraft.url = "github:storytold/wordcraft/v0.15.1";
+    wordcraft.url = "github:storytold/wordcraft/v0.15.2";
     wordcraft.flake = false;
   };
 
@@ -60,6 +60,11 @@
       overrideInput = {
         chaotic = { self, ... }: {
           packages = self.unrestrictedPackages;
+        };
+
+        maki = { orig, ... }:
+        {
+          packages = builtins.mapAttrs (system: pkgs: { maki = pkgs.default; }) orig.packages;
         };
 
         daeuniverse = { orig, ... }:
@@ -93,8 +98,8 @@
           lib.yaml.parse {} (builtins.readFile file);
       in {
         # default builder, only reroute to the regular packages
-        __functor = _: system: inputName:
-          (parseInput inputName inputs.${inputName}).packages.${system};
+        __functor = _: system: { inputName, ... }:
+          removeAttrs (parseInput inputName inputs.${inputName}).packages.${system} [ "default" ];
 
         artcraft = let
           craneLibFor = system:
@@ -201,7 +206,9 @@
         //
         builtins.mapAttrs (namespace: systems: let
           filteredCollections = lib.filterAttrs (_: v: v.namespace or "" == namespace) collections;
-          collect = if builders ? ${namespace} then builtins.mapAttrs else fn: lib.foldlAttrs (a: k: v: lib.recursiveUpdate a (fn k v)) {};
+          collect = fn:
+            lib.foldlAttrs (a: k: v: let r = fn k v; in
+              lib.recursiveUpdate a (if lib.types.package.check r then { ${k} = r; } else r)) {};
         in {
           packages = lib.genAttrs systems (system:
             collect (name: x:

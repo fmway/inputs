@@ -36,31 +36,36 @@ mkdir -p "$GCROOTS"
 # list.
 collection_file="$PWD/dev/collections.json"
 inputs="$(nix eval --json --impure --expr '(import ./dev/flake.nix).inputs')"
+namespaces="$(jq -r '[.[]] | map(select(.namespace != null) | .namespace) | unique | join(",")' "$collection_file")"
+echo "inputs: $inputs"
+echo "namespaces: $namespaces"
 
 failed=0
 
 keys_tmp="$(mktemp)"
 trap 'rm -f "$keys_tmp"' EXIT HUP INT TERM
-jq -r 'keys[]' "$collection_file" >"$keys_tmp"
+jq -r 'to_entries | [
+  (map(select(.value.namespace == null) | [.value.inputName, (.value.systems | join(" "))] | @tsv))[],
+  (map(select(.value.namespace != null) | [.value.namespace, .value.systems]) | group_by(.[0]) | map([.[0][0], (map(.[1]) | flatten | unique | join(" "))] | @tsv))[]
+] | .[]' "$collection_file" >"$keys_tmp"
 
 rm -rf data
 
 #### Collect
-while IFS= read -r key; do
-  input="$(jq -r --arg k "$key" '.[$k].inputName' "$collection_file")"
+while IFS=$'\t' read -r input systems; do
   ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
-  namespace="$(jq -r --arg k "$key" '.[$k].namespace // ""' "$collection_file")"
-  [ -z "$namespace" ] && name="$input" || name="$namespace"
   
   fetch=1
   [ -n "$ref" ] || continue
-  [ -z "$UPDATED" ] || [[ "$(jq -r --arg input "$input" '. as $up | $input | IN($up[])' <<<"$UPDATED")" = "true" ]] || fetch=0
+  [ -z "$UPDATED" ] ||
+    [[ "$(jq -r --arg input "$input" '. as $up | $input | IN($up[])' <<<"$UPDATED")" = "true" ]] ||
+    [[ ",$namespaces," == *,$input,* ]] ||
+    fetch=0
 
-  echo "collecting $input ($key)"
+  echo "collecting $input"
   echo "  flake: $ref"
-  mkdir -pv "data/$name"
+  mkdir -pv "data/$input"
 
-  systems="$(jq -r --arg k "$key" '.[$k].systems[]' "$collection_file" | tr '\n' ' ')" || true
   if [ -z "${systems%% }" ]; then
       echo "  skip: no \`packages\` output upstream (attribute absent?)" >&2
       continue
@@ -68,7 +73,7 @@ while IFS= read -r key; do
   printf '  systems: %s\n' "$systems"
 
   for system in $systems; do
-    out="data/$name/$system.jsonl"
+    out="data/$input/$system.jsonl"
     tmp="$out.tmp"
     errs="$GCROOTS/refresh.err"
 
@@ -79,21 +84,17 @@ while IFS= read -r key; do
       --check-cache-status
       --meta
       --option accept-flake-config true
+      --flake "./dev#inputs.$input.packages.$system"
     )
-    [ -z "$namespace" ] && opts+=( --flake "./dev#inputs.$name.packages.$system" ) || opts+=( --flake "./dev#inputs.$name.packages.$system.$input" )
-    if [ -z "$namespace" ] && [ "$fetch" -eq 0 ]; then
+    if [ "$fetch" -eq 0 ]; then
       echo "skip: detected same resource, download the previous data"
       # TODO: auto url
-      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$name-$system.json" | jq -r .storePath)" "data/$name/$system.json"
+      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$input-$system.json" | jq -r .storePath)" "data/$input/$system.json"
     elif nix-eval-jobs "${opts[@]}" >"$tmp" 2>"$errs"; then
       # nix-eval-jobs can report warnings but still exit 0; an empty snapshot
       # usually means the attribute does not exist upstream.
       if [ -s "$tmp" ]; then
-        if [ -z "$namespace" ]; then
-          mv "$tmp" "$out"
-        else
-          jq -c --arg attr "$input" '. + { attr: $attr, attrPath: [ $attr ] }' "$tmp" >> "$out"
-        fi
+        mv "$tmp" "$out"
         echo "    ok: $(wc -l <"$out") records"
       else
         rm -f "$tmp"

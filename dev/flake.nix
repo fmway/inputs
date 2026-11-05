@@ -27,6 +27,8 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
+    noctalia-shell.url = "github:noctalia-dev/noctalia/316b4ee37014fa6891a49d3611a63dfc7a9aa813";
+    umbriel.url = "github:noctalia-dev/umbriel/aa3b6b3e7b33cd40f33f83b6db2d5a7ef50096d6";
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.17.1";
@@ -63,6 +65,17 @@
       overrideInput = {
         chaotic = { self, ... }: {
           packages = self.unrestrictedPackages;
+        };
+
+        noctalia-shell = { orig, ... }: {
+          packages = builtins.mapAttrs (_: p: { shell = p.default; }) orig.packages;
+        };
+
+        umbriel = { orig, ... }: {
+          packages = builtins.mapAttrs (_: lib.mapAttrs' (pkgName: pkg: {
+            name = if pkgName == "default" then "umbriel" else pkgName;
+            value = pkg;
+          })) orig.packages;
         };
 
         maki = { orig, ... }:
@@ -109,7 +122,7 @@
       in {
         # default builder, only reroute to the regular packages
         __functor = _: system: { inputName, ... }:
-          removeAttrs (parseInput inputName inputs.${inputName}).packages.${system} [ "default" ];
+          removeAttrs patchedInput.${inputName}.packages.${system} [ "default" ];
 
         artcraft = let
           craneLibFor = system:
@@ -213,10 +226,11 @@
         lib.fix (self: source // overrideInput.${inputName} or (_: {}) ({ inherit self; orig = source; } // (source.inputs or {})));
 
       pins = import "${inputs.fmway-lib}/sources/mkSource.nix" (builtins.fromJSON (builtins.readFile ./pin.json));
+      patchedInput = builtins.mapAttrs parseInput inputs;
     in {
       inherit collections namespaces;
       inputs =
-        builtins.mapAttrs parseInput inputs
+        patchedInput
         //
         builtins.mapAttrs (namespace: systems: let
           filteredCollections = lib.filterAttrs (_: v: v.namespace or "" == namespace) collections;

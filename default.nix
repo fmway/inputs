@@ -1,5 +1,34 @@
 let
   extraOutput = {
+    "noctalia" = flake: let
+      umbriel-input = getSource "umbriel";
+      noctalia-input = getSource "noctalia-shell";
+      withDefaultPackage = name: pkgName: module:
+      { pkgs, lib, ... }:
+      {
+        imports = [ module ];
+        programs.${name}.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.${pkgName};
+      };
+      moduleUmbrielFor = f:
+        { pkgs, ... }: {
+          imports = [ (f {
+            xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default = flake.packages.${pkgs.stdenv.hostPlatform.system}.umbriel;
+          }) ];
+        };
+    in {
+      overlays.default = _: super: let ps = flake.packages.${super.stdenv.hostPlatform.system}; in {
+        inherit (ps) umbriel;
+        noctalia = ps.shell;
+        noctalia-shell = ps.shell;
+      };
+    } // builtins.listToAttrs (map (class: {
+      name = "${class}Modules";
+      value = rec {
+        umbriel = (withDefaultPackage "umbriel" "umbriel" ((m: if class == "nixos" then moduleUmbrielFor m else m) "${umbriel-input}/nix/${class}-module.nix"));
+        noctalia = withDefaultPackage "noctalia" "shell" "${noctalia-input}/nix/${class}-module.nix";
+        default.imports = [ umbriel noctalia ];
+      };
+    }) [ "home" "hjem" "nixos" ]);
     "chaotic-cx/nyx" = flake: {
       legacyPackages = flake.outputs.legacyPackages;
       vendored = import "${flake}/vendor";
@@ -16,9 +45,9 @@ let
       withSystem = system: f:
         f { config.packages = flake.packages.${system}; };
     in {
-      nixosModules = genAttrs (name:
+      nixosModules = genAttrs [ "dae" "daed" "honk" ] (name:
         importApply "${flake}/${name}/module.nix" { inherit withSystem; }
-      ) [ "dae" "daed" "honk" ];
+      );
     };
 
     "numtide/iets" = flake: {
@@ -27,13 +56,15 @@ let
     };
 
     "psyclyx/fix" = flake:
-      genAttrs (class: { lib, pkgs, ... }:
-      {
-        imports = [
-          (if class == "homeManager" then "${flake}/nix/modules/home-manager.nix" else "${flake}/nix/modules/${class}.nix")
-        ];
-        programs.fix.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.fix;
-      }) [ "nixos" "darwin" "homeManager" ];
+      builtins.listToAttrs (map (class: {
+        name = "${class}Modules";
+        value.default = { lib, pkgs, ... }: {
+          imports = [
+            (if class == "homeManager" then "${flake}/nix/modules/home-manager.nix" else "${flake}/nix/modules/${class}.nix")
+          ];
+          programs.fix.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.fix;
+        };
+      }) [ "nixos" "darwin" "homeManager" ]);
 
     "StarryReverie/selector4nix" = flake: let
       withSystem = system: f:

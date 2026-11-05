@@ -196,5 +196,33 @@
     "repo": "https://github.com/psyclyx/fix",
     "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
     "build_group": "runtime"
+  },
+  "noctalia": {
+    "inputName": "noctalia-shell",
+    "namespace": "noctalia",
+    "repo": "https://github.com/noctalia-dev/noctalia",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "trigger_workflow": {
+      "id": "cachix.yml",
+      "branch": "main"
+    },
+    "extraCaches": {
+      "substituters": [ "https://noctalia.cachix.org" ],
+      "trusted-public-keys": [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ]
+    }
+  },
+  "umbriel": {
+    "inputName": "umbriel",
+    "namespace": "noctalia",
+    "repo": "https://github.com/noctalia-dev/umbriel",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "trigger_workflow": {
+      "id": "cachix.yml",
+      "branch": "main"
+    },
+    "extraCaches": {
+      "substituters": [ "https://umbriel.cachix.org" ],
+      "trusted-public-keys": [ "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw=" ]
+    }
   }
 }

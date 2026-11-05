@@ -192,6 +192,32 @@ Includes wordcraft-cli, a headless converter and command runner.
   - **Supported Systems**: x86_64-linux, aarch64-linux
   - **Usage**: `nix run github:fmway/inputs#editors.concat -- [...]`
 </details>
+<details>
+  <summary>noctalia.shell</summary>
+
+  - **Homepage**: https://github.com/noctalia-dev/noctalia
+  - **Description**: A sleek, customizable desktop shell crafted for Wayland.
+  - **License**: MIT
+  - **Supported Systems**: x86_64-linux, aarch64-linux
+  - **Usage**: `nix run github:fmway/inputs#noctalia.shell -- [...]`
+</details>
+<details>
+  <summary>noctalia.umbriel</summary>
+
+  - **Homepage**: https://github.com/noctalia-dev/umbriel
+  - **Description**: A Wayland compositor built on wlroots
+  - **License**: MIT
+  - **Supported Systems**: x86_64-linux, aarch64-linux
+  - **Usage**: `nix run github:fmway/inputs#noctalia.umbriel -- [...]`
+</details>
+<details>
+  <summary>noctalia.xdg-desktop-portal-umbriel</summary>
+
+  - **Description**: xdg-desktop-portal backend for the Umbriel compositor
+  - **License**: MIT
+  - **Supported Systems**: x86_64-linux, aarch64-linux
+  - **Usage**: `nix run github:fmway/inputs#noctalia.xdg-desktop-portal-umbriel -- [...]`
+</details>
 
 <!--{% end %}-->
 

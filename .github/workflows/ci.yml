@@ -52,7 +52,7 @@ jobs:
         github_access_token: ${{ secrets.GITHUB_TOKEN }}
         extra_nix_config: ${{ needs.init.outputs.nix-config }}
 
-    - name: Bump tagged inputs to their newest release
+    - name: Bump some inputs to latest tag / latest succeeded commit
       run: |
         # TODO: support another platform
         while IFS=$'\t' read -r name repo; do
@@ -61,6 +61,13 @@ jobs:
           echo "$ghrepo/$latest (latest)"
           sed -i -E "s|(${name}\\.url *= *\"github:${ghrepo})(/[^\"]*)?\"|\1/${latest}\"|" dev/flake.nix
         done < <(jq -r '.[] | select(.tags == true) | [.inputName, .repo] | @tsv' dev/collections.json)
+        
+        while IFS=$'\t' read -r name id branch repo; do
+          ghrepo="${repo#https://github.com/}"
+          latest="$(gh api "repos/${ghrepo}/actions/workflows/${id}/runs?status=success&per_page=1&branch=${branch}" -q '.workflow_runs[0].head_sha')"
+          echo "$ghrepo/$latest (latest succeeded commit)"
+          sed -i -E "s|(${name}\\.url *= *\"github:${ghrepo})(/[^\"]*)?\"|\1/${latest}\"|" dev/flake.nix
+        done < <(jq -r '.[] | select(.trigger_workflow != null) | [.inputName, .trigger_workflow.id, .trigger_workflow.branch, .repo] | @tsv' dev/collections.json)
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

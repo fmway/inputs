@@ -139,7 +139,7 @@ jobs:
 
     - uses: wimpysworld/nothing-but-nix@main
       with:
-        hatchet-protocol: 'rampage'
+        hatchet-protocol: ${{ matrix.system == 'aarch64-darwin' && 'cleave' || 'rampage' }}
         root-safe-haven: '3072'
         mnt-safe-haven: '2048'
 

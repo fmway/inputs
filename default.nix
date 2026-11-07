@@ -1,6 +1,6 @@
 let
   extraOutput = {
-    "noctalia" = flake: let
+    "noctalia" = super: flake: let
       umbriel-input = getSource "umbriel";
       noctalia-input = getSource "noctalia-shell";
       withDefaultPackage = name: pkgName: module:
@@ -9,13 +9,14 @@ let
         imports = [ module ];
         programs.${name}.package = lib.mkDefault flake.packages.${pkgs.stdenv.hostPlatform.system}.${pkgName};
       };
-      moduleUmbrielFor = f:
+      moduleUmbrielFor = m:
         { pkgs, ... }: {
-          imports = [ (f {
+          imports = [ (import m {
             xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default = flake.packages.${pkgs.stdenv.hostPlatform.system}.umbriel;
           }) ];
         };
     in {
+      packages = builtins.mapAttrs (_: v: v // { umbriel = v.umbriel // { providedSessions = [ "umbriel" ]; }; }) super.packages;
       overlays.default = _: super: let ps = flake.packages.${super.stdenv.hostPlatform.system}; in {
         inherit (ps) umbriel;
         noctalia = ps.shell;
@@ -180,10 +181,11 @@ let
       inherit packages sourceInfo;
       inherit (sourceInfo) outPath lastModified lastModifiedDate narHash rev shortRev;
     };
-    extras = extraOutput.${key} or (_: {}) r;
-  in r // {
-    ${optKey (collections?${key}.extraCaches) "extraCaches"} = collections.${key}.extraCaches;
-  } // extras);
+    extras = (x: if builtins.isFunction x then x r' else x) (extraOutput.${key} or (_: {}) r);
+    r' = r // {
+      ${optKey (collections?${key}.extraCaches) "extraCaches"} = collections.${key}.extraCaches;
+    } // extras;
+  in r');
   aliases = builtins.listToAttrs (builtins.concatMap (key: map (name: {
     inherit name;
     value = self.${key};

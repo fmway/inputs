@@ -55,7 +55,7 @@ let
       );
     };
 
-    "numtide/iets" = flake: {
+    "numtide/iets" = _: flake: {
       lib.mkClassic = pkgs: iets: nix: pkgs.callPackage "${flake}/nix/classic.nix" { inherit iets nix; };
       nixosModules.default = import "${flake}/nix/module.nix" flake;
     };

@@ -1,5 +1,9 @@
 let
   extraOutput = {
+    "manic-systems/evix" = flake: rec {
+      nixosModules.evix = import "${flake}/nix/module.nix" flake;
+      nixosModules.default = nixosModules.evix;
+    };
     "noctalia" = super: flake: let
       umbriel-input = getSource "umbriel";
       noctalia-input = getSource "noctalia-shell";

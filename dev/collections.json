@@ -224,5 +224,13 @@
       "substituters": [ "https://umbriel.cachix.org" ],
       "trusted-public-keys": [ "umbriel.cachix.org-1:JfNq/2yg2S6D6z4Z2dVSZrZlDPQTKtexB6GAVLD98nw=" ]
     }
+  },
+  "manic-systems/evix": {
+    "inputName": "evix",
+    "aliases": ["evix"],
+    "repo": "https://github.com/manic-systems/evix",
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
+    "tags": true,
+    "build_group": "runtime"
   }
 }

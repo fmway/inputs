@@ -10,6 +10,7 @@ nixpkgs closure into your own flake.
 - [StarryReverie/selector4nix](https://github.com/StarryReverie/selector4nix) (alias: selector4nix)
 - [chaotic-cx/nyx](https://github.com/chaotic-cx/nyx) (alias: chaotic)
 - [daeuniverse](https://github.com/daeuniverse/flake.nix)
+- [manic-systems/evix](https://github.com/manic-systems/evix) (alias: evix)
 - [nix-community/lanzaboote](https://github.com/nix-community/lanzaboote) (alias: lanzaboote)
 - [numtide/iets](https://github.com/numtide/iets) (alias: iets)
 - [numtide/llm-agents.nix](https://github.com/numtide/llm-agents.nix) (alias: llm-agents)

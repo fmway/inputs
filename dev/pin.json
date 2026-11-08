@@ -1,7 +1,7 @@
 {
   "doona-package": {
     "url": "https://raw.githubusercontent.com/Zakkaus/doona/refs/heads/main/install/nix/package.nix",
-    "hash": "sha256-cDrqL75G6a2lJq+aGwXfC7nVHl+IGpNR8evXUohJHHc=",
+    "hash": "sha256-4I58bbj0dD4ZYW/Wrsj/LTlIXB386hJZi3dvVvS0ghk=",
     "type": "file"
   }
 }

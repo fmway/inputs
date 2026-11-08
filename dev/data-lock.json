@@ -1,15 +1,15 @@
 {
   "tag": "data-20261108",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-utsx3CF2rD0ZfDuSgd+S19jVmf5U95s9eX8jw9gcXtw=",
-    "llm-agents-aarch64-linux": "sha256-yiQ2S8H9gfwsJRDdZT9oBg4vaIiPwRqm1mJcaLdr43I=",
-    "llm-agents-x86_64-linux": "sha256-ZxzO0tyeJTlm/NgDQqDXXA9r2aDelvYbnI1VdMiDnag=",
+    "llm-agents-aarch64-darwin": "sha256-FHQFVMNp4c8neBO01dCGPXAxXrGQxu5DY+YyrSZKfhM=",
+    "llm-agents-aarch64-linux": "sha256-HIKEJjeqSm031Uw7dmzB0Tq1W9B7G5mTh7dMDY041yU=",
+    "llm-agents-x86_64-linux": "sha256-Mp0j6Y0KXXe47SEz80bUzQtNTftp/pDlONdHIFTRYsI=",
     "selector4nix-aarch64-darwin": "sha256-ayaH3vvEJ7pC8dGLYqXTtSV5iPc29gBDJqCAUPLmYfQ=",
     "selector4nix-aarch64-linux": "sha256-WDmOTYDQL1YhyW1jxZXHQx85XDBXlpJjO1eePOSwCcU=",
     "selector4nix-x86_64-linux": "sha256-glqFm+OS0R8/unsaFK9PYOobKVug6EFHP8f7jQq4IZ4=",
-    "chaotic-aarch64-darwin": "sha256-IQJ5HSFeDKoAzfUA1LfBjerOEHjf5wP06pMNerPA240=",
-    "chaotic-aarch64-linux": "sha256-0nObJxP+fckiBgOjUvgB2vn5603cOt/0jk0JM2OHJ8A=",
-    "chaotic-x86_64-linux": "sha256-kcEtFosreRp+KeTWjP+wo1D4PxBpI1qiOdz3Asxlg+U=",
+    "chaotic-aarch64-darwin": "sha256-9Ok69Xc1WYrWOS42ZL7iTHKBP4bw8x03yRb+1ij8Bkw=",
+    "chaotic-aarch64-linux": "sha256-hr695v5iY8ik3/F/0DscNBHbrOJDwByvR5HIdiSr/Rs=",
+    "chaotic-x86_64-linux": "sha256-SOtyfeB2eLofhvxnDGLwodSAKUZIT7wdzJ3KHbX1vhU=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-lTlhCXs2XB0L7qiYw1I8QQp9Jr9xiH/kbWU9tlESf3U=",
@@ -29,9 +29,9 @@
     "agents-x86_64-linux": "sha256-PotSKsZvntoGJfnXDCol/uMQT3/BAiBpDUAzfGWPw+k=",
     "artcraft-aarch64-linux": "sha256-FM2XhbPOVgrI02Dvw6MsV7QfSS+/ZgtLzrY0t+Ra8sQ=",
     "artcraft-x86_64-linux": "sha256-R3d1cprl+gR5AwDjttqQEc8P0dH/lz0kKcUVt30bQcQ=",
-    "editors-aarch64-linux": "sha256-VV2dkIotda3K6luNFcfVRWelLelcuNZMaPBjJcBCVnk=",
-    "editors-x86_64-linux": "sha256-7Zwtx08A2pJuG3oIxCBGUjuNXK5u/ZJWHx5NiiB0lrc=",
-    "noctalia-aarch64-linux": "sha256-+JeVY7ocCJNXYoyhf/B/kOjN54C7s5pK7YNBUe5uVpo=",
-    "noctalia-x86_64-linux": "sha256-eKstTcUbMiWtsNS/Y61E6X14eG1RVBk7gMnPuerpxUo="
+    "editors-aarch64-linux": "sha256-SFKWNy/tHcozGUciF6IO488kvwGwsSCGPy2gpxvqDwQ=",
+    "editors-x86_64-linux": "sha256-JgbO4+EkFLBcNK3qrkh+f6qWWiuTrF2ram7aG6AwleY=",
+    "noctalia-aarch64-linux": "sha256-qMzAGskJPMwHRKavFjcGWqprMxUxRGWfHDO+b0dPmoU=",
+    "noctalia-x86_64-linux": "sha256-LOQBf3i83S3Tf6/b6LlSyH7dog1Bjyyo1jrWVkuveWk="
   }
 }

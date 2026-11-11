@@ -25,6 +25,7 @@ jobs:
       trusted-keys: ${{ steps.setup.outputs.trusted-keys }}
       inputs: ${{ steps.setup.outputs.inputs }}
       updated: ${{ steps.update.outputs.updated }}
+      build_inputs: ${{ steps.update.outputs.build_inputs }}
       matrix: ${{ steps.update.outputs.matrix }}
       nix-config: |
         experimental-features = nix-command flakes
@@ -77,9 +78,8 @@ jobs:
         nix flake update --flake path:./dev ${{ steps.setup.outputs.inputs }}
         nix run ./dev#update-pin ./dev/pin.json
         updated="$(jq -c --slurpfile old <(git show -r HEAD:dev/flake.lock) '. as $current | .nodes.root.inputs | to_entries | map(.key as $name | .value as $target | if $old[0].nodes[$target].locked != $current.nodes[$target].locked then $name else empty end)' ./dev/flake.lock)"
-        build="$(jq -r "$updated"' as $updated | map(select((.build == true or (.build | type) == "array" or .build_group != null) and ((.inputName | IN($updated[])) or .build_group != null))) | length > 0' dev/collections.json)"
-        matrix="$(jq -c "$updated"' as $updated
-          | . | to_entries | [
+        build_inputs="$(jq -c '[.[]] | map(select(.build == true or (.build | type) == "array" or .build_group != null) | .inputName)' dev/collections.json)"
+        matrix="$(jq -c 'to_entries | [
               (map(select(.value.build_group == null)) | from_entries),
               (map(select(.value.build_group == "single"))[] | {(.key): .value}),
               (map(select(.value.build_group | . != null and . != "single")) | group_by(.value.build_group)[] | from_entries)
@@ -91,9 +91,7 @@ jobs:
             } | to_entries | map(.key as $system | .value as $runner | {
               system: $system,
               runner: $runner,
-              inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .build_group != null)
-                                    and (.systems // [] | index($system))
-                                    and (.inputName | IN($updated[])))
+              inputs: ([$collections[] | select((.build == true or (.build | type) == "array" or .build_group != null) and (.systems // [] | index($system)))
                         | {
                             inputName: (.namespace // .inputName),
                             packages: (if .namespace != null then .inputName elif .build == true or .build == null then "all" else (.build | join (" ")) end)
@@ -210,6 +208,7 @@ jobs:
     - name: Refresh derivation data
       run: nix run ./dev#refresh
       env:
+        BUILD_INPUTS: ${{ needs.init.outputs.build_inputs }}
         UPDATED: ${{ needs.init.outputs.updated }}
 
     - name: Update Readme

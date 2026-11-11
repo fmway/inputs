@@ -26,6 +26,7 @@ export NIX_CONFIG
 WORKERS="${WORKERS:-4}"
 GCROOTS="$PWD/.gcroots"
 UPDATED="${UPDATED:-""}"
+BUILD_INPUTS="${BUILD_INPUTS:-"[]"}"
 mkdir -p "$GCROOTS"
 
 # Inputs are declared in ./dev/flake.nix and pinned in ./dev/flake.lock;
@@ -58,7 +59,7 @@ while IFS=$'\t' read -r input systems; do
   fetch=1
   [ -n "$ref" ] || continue
   [ -z "$UPDATED" ] ||
-    [[ "$(jq -r --arg input "$input" '. as $up | $input | IN($up[])' <<<"$UPDATED")" = "true" ]] ||
+    [[ "$(jq -r --arg input "$input" --argjson b "$BUILD_INPUTS" '. as $up | $input | IN($up[], $b[])' <<<"$UPDATED")" = "true" ]] ||
     [[ ",$namespaces," == *,$input,* ]] ||
     fetch=0
 

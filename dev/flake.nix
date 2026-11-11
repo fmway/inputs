@@ -6,8 +6,10 @@
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     flake-compat.url = "github:nixos/flake-compat";
     flake-compat.flake = false;
+    fmway-parser.url = "github:fmway/parser";
     fmway-lib.url = "github:fmway/lib";
     fmway-lib.inputs.nixpkgs.follows = "nixpkgs";
+    fmway-lib.inputs.fmway-parser.follows = "fmway-parser";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     crane.url = "github:ipetkov/crane/v0.24.0";
@@ -27,8 +29,8 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/2d3545609f4d2d0952ae169cebac6bb658c3a7b2";
-    umbriel.url = "github:noctalia-dev/umbriel/8e13926aeb744db323cc78cb7ceb3dce6ad16442";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/ae0dc73381d7572310557e2e8e1085993ad96abc";
+    umbriel.url = "github:noctalia-dev/umbriel/49b29701a82526e92711abd63109f245638215fa";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
 

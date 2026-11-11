@@ -20,204 +20,163 @@ nixpkgs closure into your own flake.
 <!--{% markdowns.custom-namespace-section %}-->
 ### Custom namespaces
 <details>
-  <summary>agents.maki</summary>
+  <summary><strong>agents.maki</strong></summary>
 
+  - **Version**: 0.7.1
   - **Supported Systems**: x86_64-linux, aarch64-linux, aarch64-darwin
-  - **Usage**: `nix run github:fmway/inputs#agents.maki -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#agents.maki.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.cadcraft</summary>
+  <summary><strong>artcraft.cadcraft</strong> - Open-source computer-aided design and drafting: draft, dimension and plot 2D</summary>
 
+  - **Version**: 0.19.0
   - **Homepage**: https://getartcraft.com/apps/cadcraft
-  - **Description**: Open-source computer-aided design and drafting: draft, dimension and plot 2D
-drawings with a familiar command line, object snaps, layers, dimensions, hatches
-and blocks. Opens and saves DXF and DWG; exports SVG and PNG.
-Includes cadcraft-cli, a headless converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.cadcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.cadcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.deckcraft</summary>
+  <summary><strong>artcraft.deckcraft</strong> - Open-source, native presentation app that works the way PowerPoint users</summary>
 
+  - **Version**: 0.17.0
   - **Homepage**: https://getartcraft.com/apps/deckcraft
-  - **Description**: Open-source, native presentation app that works the way PowerPoint users
-expect. Themes, layouts, shapes, pictures, tables, charts, transitions and
-animations; opens and saves PowerPoint (.pptx) files; full-screen slide show
-with presenter view; GPU rendering (wgpu).
-Includes deckcraft-cli, a headless renderer and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.deckcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.deckcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.designcraft</summary>
+  <summary><strong>artcraft.designcraft</strong> - Open-source, native page layout and publishing that works the way InDesign users expect</summary>
 
+  - **Version**: 0.19.0
   - **Homepage**: https://getartcraft.com/apps/designcraft
-  - **Description**: Open-source, native page layout and publishing that works the way InDesign users expect.
-Spreads and parent pages, threaded text frames, paragraph and character styles, swatches,
-text wrap and a Knuth-Plass paragraph composer; IDML import and export.
-Includes designcraft-cli, a headless renderer and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.designcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.designcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.effectcraft</summary>
+  <summary><strong>artcraft.effectcraft</strong> - Open-source motion graphics and visual effects compositor</summary>
 
+  - **Version**: 0.23.1
   - **Homepage**: https://getartcraft.com/apps/effectcraft
-  - **Description**: Open-source motion graphics and visual effects compositor.
-Layers with keyframes and a graph editor, masks and shapes, text animators,
-expressions, 3D cameras and lights, over 300 effects and a render queue
-(H.264, HEVC, AV1, ProRes, WebM, image sequences); GPU compositing (wgpu).
-Includes effectcraft-cli, a headless renderer, command runner and MCP server.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.effectcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.effectcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.figcraft</summary>
+  <summary><strong>artcraft.figcraft</strong> - Open-source, native interface design and prototyping tool</summary>
 
+  - **Version**: 0.17.0
   - **Homepage**: https://getartcraft.com/apps/figcraft
-  - **Description**: Open-source, native interface design and prototyping tool.
-Frames, vector shapes and text on an infinite canvas; auto layout and
-constraints; components, variants, styles and variables; interactive
-prototypes with a presentation mode; SVG and PNG export; GPU rendering (wgpu).
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.figcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.figcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.filmcraft</summary>
+  <summary><strong>artcraft.filmcraft</strong> - Open-source, native video editor: edit video, color and sound</summary>
 
+  - **Version**: 0.19.0
   - **Homepage**: https://getartcraft.com/apps/filmcraft
-  - **Description**: Open-source, native video editor: edit video, color and sound.
-Timeline editing with source and program monitors, color grading and scopes,
-effects and keyframes, titles and captions, audio mixing with loudness meters,
-and export; GPU compositing (wgpu).
-Includes filmcraft-cli, a headless command runner, MCP server and exporter.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.filmcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.filmcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.gridcraft</summary>
+  <summary><strong>artcraft.gridcraft</strong> - Open-source, native spreadsheet that works the way Excel users expect</summary>
 
+  - **Version**: 0.18.0
   - **Homepage**: https://getartcraft.com/apps/gridcraft
-  - **Description**: Open-source, native spreadsheet that works the way Excel users expect.
-Opens and saves .xlsx workbooks and CSV/TSV files; hundreds of worksheet
-functions; formatting, sorting, filtering and charts.
-Includes gridcraft-cli, a headless evaluator, converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.gridcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.gridcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.lightcraft</summary>
+  <summary><strong>artcraft.lightcraft</strong> - Open-source, native photo library and raw developer that works the way</summary>
 
+  - **Version**: 0.20.0
   - **Homepage**: https://getartcraft.com/apps/lightcraft
-  - **Description**: Open-source, native photo library and raw developer that works the way
-Lightroom users expect. Import, rate, keyword and organise photos; develop
-raw files non-destructively with exposure, tone, color grading, masks and
-presets; GPU processing (wgpu). Includes lightcraft-cli, a headless renderer
-and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.lightcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.lightcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.pdfcraft</summary>
+  <summary><strong>artcraft.pdfcraft</strong> - Open-source, native PDF workbench: read, comment, fill and sign forms,</summary>
 
+  - **Version**: 0.20.0
   - **Homepage**: https://getartcraft.com/apps/pdfcraft
-  - **Description**: Open-source, native PDF workbench: read, comment, fill and sign forms,
-organize, combine, split, edit, redact, protect and export PDFs.
-Includes pdfcraft-cli, a headless command runner and opt-in MCP server.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.pdfcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.pdfcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.photocraft</summary>
+  <summary><strong>artcraft.photocraft</strong> - Open-source, native image editor with familiar, professional tools</summary>
 
+  - **Version**: 0.22.0
   - **Homepage**: https://getartcraft.com/apps/photocraft
-  - **Description**: Open-source, native image editor with familiar, professional tools.
-Layers, masks, adjustment layers, layer styles, type and brushes; opens and
-saves layered PSD/PSB files; 8/16/32-bit documents; GPU compositing (wgpu).
-Includes photocraft-cli, a headless converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.photocraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.photocraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.soundcraft</summary>
+  <summary><strong>artcraft.soundcraft</strong> - Open-source, native digital audio workstation</summary>
 
+  - **Version**: 0.19.0
   - **Homepage**: https://getartcraft.com/apps/soundcraft
-  - **Description**: Open-source, native digital audio workstation. Record, edit and mix
-multitrack audio and MIDI in Edit and Mix windows; built-in EQ, dynamics,
-reverb, delay and instruments; imports WAV, AIFF, FLAC, MP3 and MIDI.
-Includes soundcraft-cli, a headless editor, bounce tool and MCP server.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.soundcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.soundcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.vectorcraft</summary>
+  <summary><strong>artcraft.vectorcraft</strong> - Open-source, native vector illustration app</summary>
 
+  - **Version**: 0.23.0
   - **Homepage**: https://getartcraft.com/apps/vectorcraft
-  - **Description**: Open-source, native vector illustration app.
-Pen, shape and brush tools, artboards, type, gradients, symbols and live
-effects; opens and saves SVG and PDF.
-Includes vectorcraft-cli, a headless converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.vectorcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.vectorcraft.out -c [...]`
 </details>
 <details>
-  <summary>artcraft.wordcraft</summary>
+  <summary><strong>artcraft.wordcraft</strong> - Open-source, native word processor that works the way Word users expect</summary>
 
+  - **Version**: 0.17.0
   - **Homepage**: https://getartcraft.com/apps/wordcraft
-  - **Description**: Open-source, native word processor that works the way Word users expect.
-The ribbon, styles, tables, track changes, references and mail merge; reads
-and writes .docx, opens .odt, .rtf, .html, .md and .txt, and exports PDF.
-Includes wordcraft-cli, a headless converter and command runner.
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#artcraft.wordcraft -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#artcraft.wordcraft.out -c [...]`
 </details>
 <details>
-  <summary>editors.concat</summary>
+  <summary><strong>editors.concat</strong> - Free and open source video editor</summary>
 
+  - **Version**: 0.2.9
   - **Homepage**: https://github.com/jub0t/Concat
-  - **Description**: Free and open source video editor
   - **License**: AGPL-3.0-or-later
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#editors.concat -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#editors.concat.out -c [...]`
 </details>
 <details>
-  <summary>noctalia.shell</summary>
+  <summary><strong>noctalia.shell</strong> - A sleek, customizable desktop shell crafted for Wayland</summary>
 
+  - **Version**: 5.4.1
   - **Homepage**: https://github.com/noctalia-dev/noctalia
-  - **Description**: A sleek, customizable desktop shell crafted for Wayland.
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#noctalia.shell -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#noctalia.shell.out -c [...]`
 </details>
 <details>
-  <summary>noctalia.umbriel</summary>
+  <summary><strong>noctalia.umbriel</strong> - A Wayland compositor built on wlroots</summary>
 
+  - **Version**: 0.1.0
   - **Homepage**: https://github.com/noctalia-dev/umbriel
-  - **Description**: A Wayland compositor built on wlroots
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#noctalia.umbriel -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#noctalia.umbriel.out -c [...]`
 </details>
 <details>
-  <summary>noctalia.xdg-desktop-portal-umbriel</summary>
+  <summary><strong>noctalia.xdg-desktop-portal-umbriel</strong> - xdg-desktop-portal backend for the Umbriel compositor</summary>
 
-  - **Description**: xdg-desktop-portal backend for the Umbriel compositor
+  - **Version**: 0.1.0
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix run github:fmway/inputs#noctalia.xdg-desktop-portal-umbriel -- [...]`
+  - **Usage**: `nix shell github:fmway/inputs#noctalia.xdg-desktop-portal-umbriel.out -c [...]`
 </details>
 
 <!--{% end %}-->

@@ -158,14 +158,6 @@
     "build_group": "single",
     "tags": true
   },
-  "concat": {
-    "inputName": "concat",
-    "namespace": "editors",
-    "repo": "https://github.com/jub0t/concat",
-    "systems": [ "aarch64-linux", "x86_64-linux" ],
-    "tags": true,
-    "build": true
-  },
   "maki": {
     "inputName": "maki",
     "namespace": "agents",

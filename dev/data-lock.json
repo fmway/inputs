@@ -14,8 +14,8 @@
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-lTlhCXs2XB0L7qiYw1I8QQp9Jr9xiH/kbWU9tlESf3U=",
     "direnv-instant-x86_64-linux": "sha256-KS20ZNw7ZfbLCjazoedVbeqnZUsGe/9yF+GrlqoySwc=",
-    "daeuniverse-aarch64-linux": "sha256-yqE7FraShSKMCXJXjrY4fudWrPbCB8rUS2CvIHpB6WQ=",
-    "daeuniverse-x86_64-linux": "sha256-sqCrnZxuWpB/nytVRphnTzu59KLl6H18YPkXb4P6/W4=",
+    "daeuniverse-aarch64-linux": "sha256-Fp3Go5l/98na1Fxeco6bGH6mQD1yU97fiF9hyl1Kde4=",
+    "daeuniverse-x86_64-linux": "sha256-BXn/RiQbD8oBuhYz8fYyZToJ4hcJwsfJM4CRkfrpqe4=",
     "iets-aarch64-darwin": "sha256-D3eRmKfrlYu8HOnZJ7E6PYoemFPsR4QsHBjiZJpCfMM=",
     "iets-aarch64-linux": "sha256-ZUUQMC8lA0LDtOn2GPajnp7txkKBDeRMm4t+BHxdGx0=",
     "iets-x86_64-linux": "sha256-8S0vbyM+aHMgiofTj0mDPRvGY42CMoQ9eS/MnbQJ6YI=",
@@ -29,9 +29,7 @@
     "agents-x86_64-linux": "sha256-PotSKsZvntoGJfnXDCol/uMQT3/BAiBpDUAzfGWPw+k=",
     "artcraft-aarch64-linux": "sha256-Q84Y6Q3jbP/29+7JXj4fXtDx+IMFWJTM0kVFiHxUHpU=",
     "artcraft-x86_64-linux": "sha256-OZucjns1IN0/JSaFOQ70ayiV6S10DUtaeHBSnqW1nPA=",
-    "editors-aarch64-linux": "sha256-VV2dkIotda3K6luNFcfVRWelLelcuNZMaPBjJcBCVnk=",
-    "editors-x86_64-linux": "sha256-7Zwtx08A2pJuG3oIxCBGUjuNXK5u/ZJWHx5NiiB0lrc=",
-    "noctalia-aarch64-linux": "sha256-8rjauHSCuVodsB83kdEIcKRkIXISQI7cgLfQ0XEfRtE=",
-    "noctalia-x86_64-linux": "sha256-oi2v6C81LPNuW2/xrkXk8RVCHDcQXoaavpwDtw79Kvg="
+    "noctalia-aarch64-linux": "sha256-E5YtD2C73eXNR9VVqwkw5HTVNUwmQz6d4WK/QjP/T5I=",
+    "noctalia-x86_64-linux": "sha256-n1tIbB51aABhgc1gkRMqXYaKgCJhK+hhJKHZWe83O5E="
   }
 }

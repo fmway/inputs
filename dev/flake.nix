@@ -19,8 +19,6 @@
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
-    concat.url = "github:jub0t/concat/v0.2.9";
-    concat.inputs.nixpkgs.follows = "nixpkgs";
     maki.url = "github:tontinton/maki/v0.7.1";
     maki.inputs.nixpkgs.follows = "nixpkgs";
     maki.inputs.crane.follows = "crane";
@@ -29,7 +27,7 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/750418a7d58825a90b077bce0efe5410f217ace8";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/e22102b137f35fa788e36bca432d0971dde6d7c4";
     umbriel.url = "github:noctalia-dev/umbriel/d3c85928dc05d7913a5aaaa094dec9db30c2f6f4";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
@@ -101,13 +99,13 @@
               # just want to add --features native-ui
               pkg.override (o: {
                 craneLib = o.craneLib // {
-                  overrideToolChain = x: let c = o.overrideToolChain x; in c // {
+                  overrideToolchain = x: let c = o.craneLib.overrideToolchain x; in c // {
                     buildPackage = { pname, ... } @ args:
                       if pname == "honk" then
                         c.buildPackage (args // {
                           cargoExtraArgs = args.cargoExtraArgs + " --features native-ui";
-                          HONK_DONA_DIR = "${lib.cleanSourceWith {
-                            src = "${nixpkgs.legacyPackages.${system}.callPackage pins.doona-package {}}/share/doona";
+                          HONK_DOONA_DIR = "${lib.cleanSourceWith {
+                            src = "${nixpkgs.legacyPackages.${system}.callPackage doona-package {}}/share/doona";
                             filter = p: t: t != "directory" || baseNameOf p != "fonts";
                           }}";
                         })
@@ -231,6 +229,15 @@
 
       pins = import "${inputs.fmway-lib}/sources/mkSource.nix" (builtins.fromJSON (builtins.readFile ./pin.json));
       patchedInput = builtins.mapAttrs parseInput inputs;
+
+      # TODO: autofetch by the latest release
+      doona-package = builtins.toFile "package.nix" (builtins.replaceStrings [
+        "sha256-jCfYFevZBqVFnFurGXcDFzivFoqAEw1H80TRr+pfNto="
+        "sha256-YHbu57umZzGT+RMV3uAO/AI9pvB/lV2jzE7UPM+gH/E="
+      ] [
+        "sha256-FOeFh4BxnuFUv+eiS3JBeFGUd71Z6E4rfVLvq6nSvCc="
+        "sha256-rj0n7xMEkbm+0hfjkuRhNkwXKFqQRHJFkYrZ/UAGpSc="
+      ] (builtins.readFile pins.doona-package));
     in {
       inherit collections namespaces;
       inputs =

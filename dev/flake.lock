@@ -71,27 +71,6 @@
         "type": "github"
       }
     },
-    "concat": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1793818471,
-        "narHash": "sha256-gAv6yXCiJIKggzKKzIaUTi/RknGKzh/huXxtuA7OU4w=",
-        "owner": "jub0t",
-        "repo": "concat",
-        "rev": "784021e7d9d7b03843ffe24e235dac79e63230f0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jub0t",
-        "ref": "v0.2.9",
-        "repo": "concat",
-        "type": "github"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1787326676,
@@ -812,17 +791,17 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1794400433,
-        "narHash": "sha256-eXrRtc3JmF6wT6bC34LTZXQ8In36NNR94xUWoW2dT9c=",
+        "lastModified": 1794408439,
+        "narHash": "sha256-CWqX2RYorrZl6zyMov9+/BOYjM6UEulwr4uu3sd+8v4=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "750418a7d58825a90b077bce0efe5410f217ace8",
+        "rev": "e22102b137f35fa788e36bca432d0971dde6d7c4",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "750418a7d58825a90b077bce0efe5410f217ace8",
+        "rev": "e22102b137f35fa788e36bca432d0971dde6d7c4",
         "type": "github"
       }
     },
@@ -886,7 +865,6 @@
       "inputs": {
         "cadcraft": "cadcraft",
         "chaotic": "chaotic",
-        "concat": "concat",
         "crane": "crane",
         "daeuniverse": "daeuniverse",
         "deckcraft": "deckcraft",

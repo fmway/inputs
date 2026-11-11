@@ -54,17 +54,13 @@ rm -rf data
 
 #### Collect
 while IFS=$'\t' read -r input systems; do
-  ref="$(jq -r --arg k "$input" '.[$k].url' <<<"$inputs")"
-  
   fetch=1
-  [ -n "$ref" ] || continue
   [ -z "$UPDATED" ] ||
     [[ "$(jq -r --arg input "$input" --argjson b "$BUILD_INPUTS" '. as $up | $input | IN($up[], $b[])' <<<"$UPDATED")" = "true" ]] ||
     [[ ",$namespaces," == *,$input,* ]] ||
     fetch=0
 
   echo "collecting $input"
-  echo "  flake: $ref"
   mkdir -pv "data/$input"
 
   if [ -z "${systems%% }" ]; then

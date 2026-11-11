@@ -144,15 +144,6 @@ nixpkgs closure into your own flake.
   - **Usage**: `nix shell github:fmway/inputs#artcraft.wordcraft.out -c [...]`
 </details>
 <details>
-  <summary><strong>editors.concat</strong> - Free and open source video editor</summary>
-
-  - **Version**: 0.2.9
-  - **Homepage**: https://github.com/jub0t/Concat
-  - **License**: AGPL-3.0-or-later
-  - **Supported Systems**: x86_64-linux, aarch64-linux
-  - **Usage**: `nix shell github:fmway/inputs#editors.concat.out -c [...]`
-</details>
-<details>
   <summary><strong>noctalia.shell</strong> - A sleek, customizable desktop shell crafted for Wayland</summary>
 
   - **Version**: 5.4.1

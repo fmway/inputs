@@ -18,28 +18,16 @@
   original,
 }:
 let
-  notCachedWarning = "no cached binary available — this package must be built locally from source";
-
   data =
     if builtins.pathExists dataFile then
       builtins.fromJSON (builtins.readFile dataFile)
-    else
-      { };
+    else { };
 
-  atPath =
-    path:
+  atPath = path:
     builtins.foldl' (acc: key: acc.${key}) original path;
 
-  realFor =
-    path:
-    let
-      drv = atPath path;
-    in
-    drv // {
-      meta = (drv.meta or { }) // {
-        warning = notCachedWarning;
-      };
-    };
+  realFor = path:
+    builtins.warn "no cached binary available — this package will be build locally from source" (atPath path);
 
   fakeFor =
     path: entry:
@@ -51,12 +39,11 @@ let
   project =
     path:
     builtins.mapAttrs (name: value:
-      if value ? isCached then
-        let
-          path' = path ++ [ name ];
-        in
-        if value.isCached then fakeFor path' value else realFor path'
-      else
-        project (path ++ [ name ]) value);
+      if ! value ? isCached then
+        project (path ++ [ name ]) value
+      else let path' = path ++ [ name ]; in if value.isCached then
+        fakeFor path' value
+      else realFor path'
+    );
 in
 project [ ] data

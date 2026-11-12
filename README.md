@@ -29,7 +29,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.cadcraft</strong> - Open-source computer-aided design and drafting: draft, dimension and plot 2D</summary>
 
-  - **Version**: 0.19.0
+  - **Version**: 0.20.1
   - **Homepage**: https://getartcraft.com/apps/cadcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -38,7 +38,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.deckcraft</strong> - Open-source, native presentation app that works the way PowerPoint users</summary>
 
-  - **Version**: 0.17.0
+  - **Version**: 0.18.1
   - **Homepage**: https://getartcraft.com/apps/deckcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -47,7 +47,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.designcraft</strong> - Open-source, native page layout and publishing that works the way InDesign users expect</summary>
 
-  - **Version**: 0.19.0
+  - **Version**: 0.20.1
   - **Homepage**: https://getartcraft.com/apps/designcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -56,7 +56,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.effectcraft</strong> - Open-source motion graphics and visual effects compositor</summary>
 
-  - **Version**: 0.23.1
+  - **Version**: 0.24.1
   - **Homepage**: https://getartcraft.com/apps/effectcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -65,7 +65,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.figcraft</strong> - Open-source, native interface design and prototyping tool</summary>
 
-  - **Version**: 0.17.0
+  - **Version**: 0.18.1
   - **Homepage**: https://getartcraft.com/apps/figcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -74,7 +74,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.filmcraft</strong> - Open-source, native video editor: edit video, color and sound</summary>
 
-  - **Version**: 0.19.0
+  - **Version**: 0.20.1
   - **Homepage**: https://getartcraft.com/apps/filmcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -83,7 +83,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.gridcraft</strong> - Open-source, native spreadsheet that works the way Excel users expect</summary>
 
-  - **Version**: 0.18.0
+  - **Version**: 0.19.1
   - **Homepage**: https://getartcraft.com/apps/gridcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -92,7 +92,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.lightcraft</strong> - Open-source, native photo library and raw developer that works the way</summary>
 
-  - **Version**: 0.20.0
+  - **Version**: 0.21.1
   - **Homepage**: https://getartcraft.com/apps/lightcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -101,7 +101,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.pdfcraft</strong> - Open-source, native PDF workbench: read, comment, fill and sign forms,</summary>
 
-  - **Version**: 0.20.0
+  - **Version**: 0.21.1
   - **Homepage**: https://getartcraft.com/apps/pdfcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -110,7 +110,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.photocraft</strong> - Open-source, native image editor with familiar, professional tools</summary>
 
-  - **Version**: 0.22.0
+  - **Version**: 0.23.1
   - **Homepage**: https://getartcraft.com/apps/photocraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -119,7 +119,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.soundcraft</strong> - Open-source, native digital audio workstation</summary>
 
-  - **Version**: 0.19.0
+  - **Version**: 0.20.1
   - **Homepage**: https://getartcraft.com/apps/soundcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -128,7 +128,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.vectorcraft</strong> - Open-source, native vector illustration app</summary>
 
-  - **Version**: 0.23.0
+  - **Version**: 0.24.1
   - **Homepage**: https://getartcraft.com/apps/vectorcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -137,7 +137,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.wordcraft</strong> - Open-source, native word processor that works the way Word users expect</summary>
 
-  - **Version**: 0.17.0
+  - **Version**: 0.18.1
   - **Homepage**: https://getartcraft.com/apps/wordcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -146,7 +146,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>noctalia.shell</strong> - A sleek, customizable desktop shell crafted for Wayland</summary>
 
-  - **Version**: 5.4.1
+  - **Version**: 5.5.0
   - **Homepage**: https://github.com/noctalia-dev/noctalia
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux

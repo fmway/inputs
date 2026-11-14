@@ -22,7 +22,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>agents.maki</strong></summary>
 
-  - **Version**: 0.7.1
+  - **Version**: 0.7.2
   - **Supported Systems**: x86_64-linux, aarch64-linux, aarch64-darwin
   - **Usage**: `nix shell github:fmway/inputs#agents.maki.out -c [...]`
 </details>

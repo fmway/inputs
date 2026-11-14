@@ -19,7 +19,7 @@
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
-    maki.url = "github:tontinton/maki/v0.7.1";
+    maki.url = "github:tontinton/maki/v0.7.2";
     maki.inputs.nixpkgs.follows = "nixpkgs";
     maki.inputs.crane.follows = "crane";
     maki.inputs.rust-overlay.follows = "rust-overlay";
@@ -27,8 +27,8 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/12d96bd9d9c15a5488a9985336ca65d8eaddddf5";
-    umbriel.url = "github:noctalia-dev/umbriel/88ba829c6152ee55cd2ffa9d80e7f9dee543605b";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/6bcea5968d17b7750e27f19f1827dce1a31bbc98";
+    umbriel.url = "github:noctalia-dev/umbriel/e63d943a67279f1c88b9212d0f69cee0fc3034bd";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
 

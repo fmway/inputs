@@ -7,9 +7,9 @@
     "selector4nix-aarch64-darwin": "sha256-0e4HWkF0DgKP1C4XQjk6j84wODG4TIcg4ydyw75oHg0=",
     "selector4nix-aarch64-linux": "sha256-vmq9SwH0r/vo0y9BGyzs83sGgs5EbDO6vKbv0pJThmE=",
     "selector4nix-x86_64-linux": "sha256-q9sqZhHswybTQW0bemJG6mHGMKplofhW5VCY2/QnS58=",
-    "chaotic-aarch64-darwin": "sha256-rn89bp9omOggI3rk5viForRsaQUMhFJDvnh5pOUNPTA=",
-    "chaotic-aarch64-linux": "sha256-pwEEj7MWUhjQRZNUDCMxmDA+t71+VifBCaSIyafzXdY=",
-    "chaotic-x86_64-linux": "sha256-vGKlZcBXhISzdBSJwxtfDeRF+wqeq8XgXzhJkCDdeaQ=",
+    "chaotic-aarch64-darwin": "sha256-8/W9t9/PmMwEOLnRxfM9xC+yljpr7XTisxAvMQmuoYg=",
+    "chaotic-aarch64-linux": "sha256-I2JSYDWK0vrjPMNnzFBVjXd8VFnkNF4/Vq4Q7/fCs6Q=",
+    "chaotic-x86_64-linux": "sha256-/Vla4EFcjEuFQDzfAwXkfAMxhthA4UX/bEuVyo2ILUE=",
     "lanzaboote-aarch64-linux": "sha256-0zAUg82JJVW6kgwrw2PlhWs5BybsibqnZfEMbbMaJak=",
     "lanzaboote-x86_64-linux": "sha256-FjYOCpCOiuS6aPAkitDB4kyp/nUB+eH965/Hanw35s8=",
     "direnv-instant-aarch64-linux": "sha256-pO3tuy7Saq0Wc4UsQJGalLt+WLJjtcpfhhQn51lktKs=",
@@ -28,8 +28,8 @@
     "agents-x86_64-linux": "sha256-eAWOJmni/v6/7PVjmOT725553Ng5UWbrPF2fBPVWHHY=",
     "artcraft-aarch64-linux": "sha256-x12TdL5MalSFYr0bMD3gJN0UAo2+mLJ16Ga8v8kuJ7E=",
     "artcraft-x86_64-linux": "sha256-Ioc927bUgprCWzOdUsJHpXCcDIwdcKzo3y6KRUMpKiA=",
-    "noctalia-aarch64-linux": "sha256-vQG7gNxnvALw4mndbV46uWkUkK8y1YrM+4JNAt1xBys=",
-    "noctalia-x86_64-linux": "sha256-Mzy2xZIXSWZhh4RdwfbOOJC0GT7rmmFPEikuHKpEGnw=",
+    "noctalia-aarch64-linux": "sha256-1uFTumER17LKd7mRbSaY4fA7l04auVf1R/F+bsiWVrk=",
+    "noctalia-x86_64-linux": "sha256-6rlp+kLcEmY0KVd5NuiRmt1b7G4fzLcwZpDY8MmWgMA=",
     "virtualisation-x86_64-linux": "sha256-yTBdvPUt3JWPDKMg0ndCuRkyyRqnd/3QMygEbnOVpWQ="
   }
 }

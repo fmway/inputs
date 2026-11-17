@@ -81,7 +81,11 @@ if [ "$(git log -1 --format=%s)" = "$COMMIT_MESSAGE" ]; then
   # Squash into the previous identical bot commit instead of
   # stacking another one on top.
   echo "Amending previous identical commit"
-  git commit --amend --no-edit
+  if [ "$(git log -1 --format="%an")" = "fmway[bot]" ]; then
+    git commit --amend --no-edit
+  else
+    git commit --amend --no-edit --trailer "Co-authored-by: fmway[bot] <fm18lv@gmail.com>"
+  fi
   git push --force-with-lease
 else
   git commit -m "$COMMIT_MESSAGE"

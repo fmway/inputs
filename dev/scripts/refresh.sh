@@ -52,6 +52,9 @@ jq -r 'to_entries | [
 
 rm -rf data
 
+prev_data_dir="$(mktemp -d)"
+gh release download -D "$prev_data_dir" -p '*-linux.json' -p '*-darwin.json'
+
 #### Collect
 while IFS=$'\t' read -r input systems; do
   fetch=1
@@ -79,15 +82,16 @@ while IFS=$'\t' read -r input systems; do
       --workers "$WORKERS"
       --gc-roots-dir "$GCROOTS"
       --check-cache-status
-      --meta
-      --apply 'builtins.intersectAttrs { providedSessions = null; }'
+      --apply 'let b = builtins; get = vs: b.intersectAttrs (b.listToAttrs (map (n: { name = n; value = null; }) vs)); in
+        drv: get [ "providedSessions" ] drv // {
+          meta = get [ "broken" "insecure" "unfree" "unsupported" "changelog" "description" "homepage" "mainProgram" ] drv.meta;
+        }'
       --option accept-flake-config true
       --flake "./dev#inputs.$input.packages.$system"
     )
     if [ "$fetch" -eq 0 ]; then
-      echo "skip: detected same resource, download the previous data"
-      # TODO: auto url
-      cp -vf "$(nix store prefetch-file --json "https://github.com/fmway/inputs/releases/latest/download/$input-$system.json" | jq -r .storePath)" "data/$input/$system.json"
+      echo "skip: detected same resource, use the previous data"
+      cp -vf "$prev_data_dir/$input-$system.json" "data/$input/$system.json"
     elif nix-eval-jobs "${opts[@]}" >"$tmp" 2>"$errs"; then
       # nix-eval-jobs can report warnings but still exit 0; an empty snapshot
       # usually means the attribute does not exist upstream.
@@ -125,7 +129,6 @@ refine_leaves='
         system: $r.system,
         outputs: ($r.outputs // {}),
         drvPath: $r.drvPath,
-        meta: ($r.meta | with_entries(select(.key | in({broken:1,insecure:1,unfree:1,unsupported:1,changelog:1,description:1,homepage:1,mainProgram:1})))),
         extraValue: ($r.extraValue // {})
       })
     end)'

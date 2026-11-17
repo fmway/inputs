@@ -162,7 +162,7 @@
     "inputName": "maki",
     "namespace": "agents",
     "repo": "https://github.com/tontinton/maki",
-    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build": true
   },
@@ -186,7 +186,7 @@
     "inputName": "fix",
     "aliases": [ "fix" ],
     "repo": "https://github.com/psyclyx/fix",
-    "systems": [ "aarch64-darwin", "aarch64-linux", "x86_64-linux" ],
+    "systems": [ "aarch64-linux", "x86_64-linux" ],
     "build_group": "runtime"
   },
   "noctalia": {
@@ -238,5 +238,13 @@
       "substituters": [ "https://denial.cachix.org" ],
       "trusted-public-keys": [ "denial.cachix.org-1:wd8YTnvPmugFrtdMJWtR1XdVknR3/g2nmBJkT+vAruo=" ]
     }
+  },
+  "droidloom": {
+    "inputName": "droidloom",
+    "namespace": "virtualisation",
+    "repo": "https://github.com/denialwm/droidloom",
+    "systems": [ "x86_64-linux" ],
+    "build": [ "droidloom" ],
+    "build_group": "single"
   }
 }

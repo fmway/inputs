@@ -32,6 +32,8 @@
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
     denial.url = "github:denialwm/denial/8508ad7ba3ec58824dc6c1075d978964a089c70e";
+    droidloom.url = "github:denialwm/droidloom";
+    droidloom.flake = false;
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.20.1";
@@ -127,18 +129,22 @@
         __functor = _: system: { inputName, ... }:
           removeAttrs patchedInput.${inputName}.packages.${system} [ "default" ];
 
-        artcraft = let
-          craneLibFor = system:
-            inputs.crane.mkLib nixpkgs.legacyPackages.${system};
+        virtualisation.droidloom = system: { inputName, ... }:
+          (pkgsFor system).callPackage ./builder/droidloom.nix {
+            inherit inputName;
+            craneLib = craneLibFor system;
+            source = inputs.droidloom;
+          };
 
+        artcraft = let
           mkArtcraft = craneLib: system: { inputName, ... }:
-            nixpkgs.legacyPackages.${system}.callPackage ./artcraft.nix {
+            (pkgsFor system).callPackage ./builder/artcraft.nix {
               inherit craneLib parseYaml;
               name = inputName;
               # temp fix: pin some deps until they update it
               source = let
                 src = inputs.${inputName};
-                patched = nixpkgs.legacyPackages.${system}.runCommand "${inputName}-patched-source" {} ''
+                patched = (pkgsFor system).runCommand "${inputName}-patched-source" {} ''
                   cp -r ${src} $out
                   chmod -R +w $out
                   find "$out" -type f \( -name Cargo.toml -o -name Cargo.lock \) -print0 |
@@ -155,7 +161,7 @@
             mkArtcraft (craneLibFor system) system;
 
           pdfcraft = system: { inputName, ... }: let
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = pkgsFor system;
             craneLib = # need latest rustc in x86_64-linux
               if system == "x86_64-linux" then
                 (inputs.crane.mkLib pkgs).overrideToolchain (p:
@@ -180,7 +186,7 @@
                 ./patches/no-ensure-desktop-filmcraft.patch
               ];
               runtimeDependencies = [
-                nixpkgs.legacyPackages.${system}.libva
+                (pkgsFor system).libva
               ];
              });
         };
@@ -239,6 +245,11 @@
         "sha256-FOeFh4BxnuFUv+eiS3JBeFGUd71Z6E4rfVLvq6nSvCc="
         "sha256-rj0n7xMEkbm+0hfjkuRhNkwXKFqQRHJFkYrZ/UAGpSc="
       ] (builtins.readFile pins.doona-package));
+
+      pkgsFor = system:
+        nixpkgs.legacyPackages.${system};
+      craneLibFor = system:
+        inputs.crane.mkLib (pkgsFor system);
     in {
       inherit collections namespaces;
       inputs =

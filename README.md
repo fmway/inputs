@@ -24,7 +24,7 @@ nixpkgs closure into your own flake.
   <summary><strong>agents.maki</strong></summary>
 
   - **Version**: 0.7.2
-  - **Supported Systems**: x86_64-linux, aarch64-linux, aarch64-darwin
+  - **Supported Systems**: x86_64-linux, aarch64-linux
   - **Usage**: `nix shell github:fmway/inputs#agents.maki.out -c [...]`
 </details>
 <details>
@@ -169,6 +169,15 @@ nixpkgs closure into your own flake.
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
   - **Usage**: `nix shell github:fmway/inputs#noctalia.xdg-desktop-portal-umbriel.out -c [...]`
+</details>
+<details>
+  <summary><strong>virtualisation.droidloom</strong> - Android applications in native Wayland windows</summary>
+
+  - **Version**: 0.1.0-42
+  - **Homepage**: https://github.com/denialwm/droidloom
+  - **License**: GPL-3.0-or-later
+  - **Supported Systems**: x86_64-linux
+  - **Usage**: `nix shell github:fmway/inputs#virtualisation.droidloom.out -c [...]`
 </details>
 
 <!--{% end %}-->

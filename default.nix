@@ -1,5 +1,17 @@
 let
   extraOutput = {
+    "virtualisation" = flake: rec {
+      nixosModules.droidloom = import ./modules/droidloom flake;
+      nixosModules.default.imports = [
+        nixosModules.droidloom
+      ];
+
+      overlays.droidloom = _: super: {
+        inherit (flake.packages.${super.stdenv.hostPlatform.system}) droidloom;
+      };
+      overlays.default = _: super:
+        flake.packages.${super.stdenv.hostPlatform.system};
+    };
     "denialwm/denial" = flake: rec {
       overlays.default = self: super: let p = flake.packages.${super.stdenv.hostPlatform.system}; in {
         denialFlutter = p.denial-flutter;

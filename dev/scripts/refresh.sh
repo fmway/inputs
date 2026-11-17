@@ -80,6 +80,7 @@ while IFS=$'\t' read -r input systems; do
       --gc-roots-dir "$GCROOTS"
       --check-cache-status
       --meta
+      --apply 'builtins.intersectAttrs { providedSessions = null; }'
       --option accept-flake-config true
       --flake "./dev#inputs.$input.packages.$system"
     )
@@ -124,7 +125,8 @@ refine_leaves='
         system: $r.system,
         outputs: ($r.outputs // {}),
         drvPath: $r.drvPath,
-        meta: ($r.meta | with_entries(select(.key | in({broken:1,insecure:1,unfree:1,unsupported:1,changelog:1,description:1,homepage:1,mainProgram:1}))))
+        meta: ($r.meta | with_entries(select(.key | in({broken:1,insecure:1,unfree:1,unsupported:1,changelog:1,description:1,homepage:1,mainProgram:1})))),
+        extraValue: ($r.extraValue // {})
       })
     end)'
 

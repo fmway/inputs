@@ -35,19 +35,12 @@ let
   # Bare store-path strings from the JSON snapshot need real context before
   # Nix will substitute them.
   withContext =
-    p:
-    builtins.appendContext p {
-      ${p} = {
-        path = true;
-      };
-    };
+    p: builtins.appendContext p { ${p}.path = true; };
 
-  outputsSet = builtins.listToAttrs (
-    map (o: {
-      name = o;
-      value = withContext outputs.${o};
-    }) outputNames
-  );
+  outputsSet = builtins.listToAttrs (map (o: {
+    name = o;
+    value = withContext outputs.${o};
+  }) outputNames);
 
   attrPath = builtins.concatStringsSep "." path;
   drvName = entry.name or "unnamed";
@@ -72,5 +65,4 @@ in
   '';
 
   orig = value;
-}
-// outputsSet
+} // entry.extraValue or {} // outputsSet

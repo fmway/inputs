@@ -1,5 +1,21 @@
 let
   extraOutput = {
+    "denialwm/denial" = flake: rec {
+      overlays.default = self: super: let p = flake.packages.${super.stdenv.hostPlatform.system}; in {
+        denialFlutter = p.denial-flutter;
+        denialFlutterSource = self.callPackage "${flake}/nix/flutter-engine.nix" { buildEngineFromSource = true; };
+        denial = p.denial;
+        denialPluginManager = p.denial-plugin-manager;
+      };
+
+      nixosModules.denial =
+        { config, lib, ... }:
+        {
+          imports = [ "${flake}/nix/module.nix" ];
+          nixpkgs.overlys = lib.mkIf config.programs.denial.enable [ overlays.default ];
+        };
+      nixosModules.default = nixosModules.denial;
+    };
     "manic-systems/evix" = flake: rec {
       nixosModules.evix = import "${flake}/nix/module.nix" flake;
       nixosModules.default = nixosModules.evix;
@@ -20,7 +36,6 @@ let
           }) ];
         };
     in {
-      packages = builtins.mapAttrs (_: v: v // { umbriel = v.umbriel // { providedSessions = [ "umbriel" ]; }; }) super.packages;
       overlays.default = _: super: let ps = flake.packages.${super.stdenv.hostPlatform.system}; in {
         inherit (ps) umbriel;
         noctalia = ps.shell;

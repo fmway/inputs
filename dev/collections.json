@@ -224,5 +224,19 @@
     "systems": [ "aarch64-linux", "x86_64-linux" ],
     "tags": true,
     "build_group": "runtime"
+  },
+  "denialwm/denial": {
+    "inputName": "denial",
+    "aliases": ["denial"],
+    "repo": "https://github.com/denialwm/denial",
+    "systems": [ "x86_64-linux" ],
+    "trigger_workflow": {
+      "id": "branch-validation.yml",
+      "job": "Build and test .+ candidates"
+    },
+    "extraCaches": {
+      "substituters": [ "https://denial.cachix.org" ],
+      "trusted-public-keys": [ "denial.cachix.org-1:wd8YTnvPmugFrtdMJWtR1XdVknR3/g2nmBJkT+vAruo=" ]
+    }
   }
 }

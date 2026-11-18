@@ -182,7 +182,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>virtualisation.droidloom</strong> - Android applications in native Wayland windows</summary>
 
-  - **Version**: 0.1.0-43
+  - **Version**: 0.1.0-47
   - **Homepage**: https://github.com/denialwm/droidloom
   - **License**: GPL-3.0-or-later
   - **Supported Systems**: x86_64-linux

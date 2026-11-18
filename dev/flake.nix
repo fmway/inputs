@@ -27,11 +27,11 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/f737e2da2e2991436977875725e88e2588d6e765";
-    umbriel.url = "github:noctalia-dev/umbriel/e59dbe333b6e91a650161e7d7586f291b38dbfb7";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/d456755d3bb09be68be67582c5766fb96cb4a1a8";
+    umbriel.url = "github:noctalia-dev/umbriel/56b6760421afebfbd2ceb4fe17a347db2e82ea41";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
-    denial.url = "github:denialwm/denial/0bb4db7e2608c0b63afb6f9d8f0f775dbca85f03";
+    denial.url = "github:denialwm/denial/f3481469f9a11ed22f7c6e2788bc7c9617f0cadc";
     droidloom.url = "github:denialwm/droidloom";
     droidloom.flake = false;
     nectarlink.url = "github:thtbee/nectarlink";

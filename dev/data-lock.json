@@ -1,9 +1,9 @@
 {
   "tag": "data-20261118",
   "sha256": {
-    "llm-agents-aarch64-darwin": "sha256-NWKHJ19rYWuU/aju+wxZexvmsjXTbxNuDmX6nbZ0S6E=",
-    "llm-agents-aarch64-linux": "sha256-zC0Ct299sOaEwgPE0fgGbYk/jKx4CD9Iwv9nkApo8zA=",
-    "llm-agents-x86_64-linux": "sha256-SFa3dRcE/90BZB6r2rvvMb50zE9VJnEP7LzqqWooPHM=",
+    "llm-agents-aarch64-darwin": "sha256-XBxoplIGnA7YzjfjsKV3QjZjW2MDpZhoInlOqZWJMtA=",
+    "llm-agents-aarch64-linux": "sha256-qMlcAKIO0hH8ufy9hyNUYayE+c2fgIkCB1Bh9A1vouo=",
+    "llm-agents-x86_64-linux": "sha256-hsooRfPxnZ3ZCN7duZnOVSu0ka82ixm4woxnnYUlAtA=",
     "selector4nix-aarch64-darwin": "sha256-yRaORgnOBPkF7WpzOei5jKdmJfN2Artia4SAValm1do=",
     "selector4nix-aarch64-linux": "sha256-0/riAfAtBIIa4Lqjq3OhQ5+COExvVgFj5Bx3I9T0Ui0=",
     "selector4nix-x86_64-linux": "sha256-viobWUsHfKVRNwGy9kToT+ucXi/L5P/j6zJXE9Ocbp0=",
@@ -31,6 +31,6 @@
     "noctalia-aarch64-linux": "sha256-P7sNUUJbyoAFk6NUoI7clGbfTBtGoxQLNxNNd5IeImY=",
     "noctalia-x86_64-linux": "sha256-ZNjuMrM+cw5RJr5W3sp6zpVys39NeDs64k4Zam7NEvQ=",
     "tools-x86_64-linux": "sha256-3O6JoP/+FIXKqkZ9gV4Oxd1aQ7wkUagdJOa+Z6790bk=",
-    "virtualisation-x86_64-linux": "sha256-VIKWFExAaAfyulR3ozbcEa/fA5dglGHcWOo7t4Hdel4="
+    "virtualisation-x86_64-linux": "sha256-wTSKKtTHTQq6d3oQKt4mN5tc3HL45p6eeCTEW3Gzw0U="
   }
 }

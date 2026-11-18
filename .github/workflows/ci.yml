@@ -224,6 +224,7 @@ jobs:
       env:
         BUILD_INPUTS: ${{ needs.init.outputs.build_inputs }}
         UPDATED: ${{ needs.init.outputs.updated }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update Readme
       run: nix run ./dev#readme README.md

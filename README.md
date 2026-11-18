@@ -171,9 +171,18 @@ nixpkgs closure into your own flake.
   - **Usage**: `nix shell github:fmway/inputs#noctalia.xdg-desktop-portal-umbriel.out -c [...]`
 </details>
 <details>
+  <summary><strong>tools.nectarlink</strong> - Your Android phone and your PC, working as one</summary>
+
+  - **Version**: 0.1.5
+  - **Homepage**: https://github.com/thtbee/nectarlink
+  - **License**: GPL-3.0-or-later
+  - **Supported Systems**: x86_64-linux
+  - **Usage**: `nix shell github:fmway/inputs#tools.nectarlink.out -c [...]`
+</details>
+<details>
   <summary><strong>virtualisation.droidloom</strong> - Android applications in native Wayland windows</summary>
 
-  - **Version**: 0.1.0-42
+  - **Version**: 0.1.0-43
   - **Homepage**: https://github.com/denialwm/droidloom
   - **License**: GPL-3.0-or-later
   - **Supported Systems**: x86_64-linux

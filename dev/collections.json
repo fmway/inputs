@@ -246,5 +246,12 @@
     "systems": [ "x86_64-linux" ],
     "build": [ "droidloom" ],
     "build_group": "single"
+  },
+  "nectarlink": {
+    "inputName": "nectarlink",
+    "repo": "https://github.comm/thtbee/nectarlink",
+    "namespace": "tools",
+    "build": true,
+    "systems": [ "x86_64-linux" ]
   }
 }

@@ -27,13 +27,15 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/b2a278271b2bbd4267ce4d16f3c38cc09a81029e";
-    umbriel.url = "github:noctalia-dev/umbriel/856291f5ce902c50c296fe7454210c95957fcf7a";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/f737e2da2e2991436977875725e88e2588d6e765";
+    umbriel.url = "github:noctalia-dev/umbriel/e59dbe333b6e91a650161e7d7586f291b38dbfb7";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
-    denial.url = "github:denialwm/denial/8508ad7ba3ec58824dc6c1075d978964a089c70e";
+    denial.url = "github:denialwm/denial/0bb4db7e2608c0b63afb6f9d8f0f775dbca85f03";
     droidloom.url = "github:denialwm/droidloom";
     droidloom.flake = false;
+    nectarlink.url = "github:thtbee/nectarlink";
+    nectarlink.inputs.nixpkgs.follows = "nixpkgs";
 
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.20.1";

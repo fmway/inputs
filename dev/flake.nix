@@ -27,11 +27,11 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/e56dee2cd4cd0b6b0b5600e50e02610365c9b165";
-    umbriel.url = "github:noctalia-dev/umbriel/bc10febde287a6430d6af9dd6bada478beeb0ae5";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/a5444b9a2c2bc7c1aed5c59298a268e45de14055";
+    umbriel.url = "github:noctalia-dev/umbriel/0760394b3a97702a95833d2fb6985f36464a9417";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
-    denial.url = "github:denialwm/denial/01b588ec50831bce9e57aed623901f49846ec791";
+    denial.url = "github:denialwm/denial/9bb2c22a5a191f8c90f47fd4d7907c0f425a6ebf";
     droidloom.url = "github:denialwm/droidloom";
     droidloom.flake = false;
     nectarlink.url = "github:thtbee/nectarlink";
@@ -40,11 +40,11 @@
     # artcraft
     cadcraft.url = "github:storytold/cadcraft/v0.20.1";
     cadcraft.flake = false;
-    deckcraft.url = "github:storytold/deckcraft/v0.18.1";
+    deckcraft.url = "github:storytold/deckcraft/v0.19.1";
     deckcraft.flake = false;
-    designcraft.url = "github:storytold/designcraft/v0.20.1";
+    designcraft.url = "github:storytold/designcraft/v0.21.1";
     designcraft.flake = false;
-    effectcraft.url = "github:storytold/effectcraft/v0.24.1";
+    effectcraft.url = "github:storytold/effectcraft/v0.25.1";
     effectcraft.flake = false;
     figcraft.url = "github:storytold/figcraft/v0.18.1";
     figcraft.flake = false;
@@ -54,7 +54,7 @@
     gridcraft.flake = false;
     lightcraft.url = "github:storytold/lightcraft/v0.21.1";
     lightcraft.flake = false;
-    pdfcraft.url = "github:storytold/pdfcraft/v0.21.1";
+    pdfcraft.url = "github:storytold/pdfcraft/v0.22.0";
     pdfcraft.flake = false;
     photocraft.url = "github:storytold/photocraft/v0.23.1";
     photocraft.flake = false;
@@ -62,7 +62,7 @@
     soundcraft.flake = false;
     vectorcraft.url = "github:storytold/vectorcraft/v0.24.1";
     vectorcraft.flake = false;
-    wordcraft.url = "github:storytold/wordcraft/v0.18.1";
+    wordcraft.url = "github:storytold/wordcraft/v0.19.1";
     wordcraft.flake = false;
   };
 

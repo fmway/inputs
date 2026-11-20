@@ -28,8 +28,8 @@
     "agents-x86_64-linux": "sha256-0JYyOa2O8Ec8jQn1nyYBafZWn9iMd9zS7LKUWCmPvL0=",
     "artcraft-aarch64-linux": "sha256-DjFfcIvqFWO2x+OCCbsmf+jGOQIaxVOQO68FUSyIEVI=",
     "artcraft-x86_64-linux": "sha256-W37VM+WRFtRnHeM1bOpmZS3IEN/mr+Qdqgo1nC9rFBE=",
-    "noctalia-aarch64-linux": "sha256-R9i3rzxHdTVEoYmZT4g58dxdJTjS8MkOWba805ZP+Bw=",
-    "noctalia-x86_64-linux": "sha256-etiBW0MLQaHmLNBRHF3MtU/sFL3BQP+9VewcnvXUu2A=",
+    "noctalia-aarch64-linux": "sha256-oU7yzT+5J2NjKoxxkekKZMblwf7vCzfM2TxolSA9vsc=",
+    "noctalia-x86_64-linux": "sha256-KMZN3KF2/0JzCD6ivfGmSZwHnkfSmH29XSEZsRLUMzs=",
     "tools-x86_64-linux": "sha256-/hAvG8W/nS5Pj041txPJFb8aunH08Xf5VMysuKo3s+U=",
     "virtualisation-x86_64-linux": "sha256-E1uu7+GMGvtBwRQcCieFc4ni1T+f+667SaBRP7OpKYs="
   }

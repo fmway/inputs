@@ -232,7 +232,8 @@
     "systems": [ "x86_64-linux" ],
     "trigger_workflow": {
       "id": "branch-validation.yml",
-      "job": "Build and test .+ candidates"
+      "job": "Build and test .+ candidates",
+      "branch": "main"
     },
     "extraCaches": {
       "substituters": [ "https://denial.cachix.org" ],

@@ -235,6 +235,7 @@
       "job": "Build and test .+ candidates",
       "branch": "main"
     },
+    "build": [ "denial-plugin-manager" ],
     "extraCaches": {
       "substituters": [ "https://denial.cachix.org" ],
       "trusted-public-keys": [ "denial.cachix.org-1:wd8YTnvPmugFrtdMJWtR1XdVknR3/g2nmBJkT+vAruo=" ]

@@ -28,7 +28,7 @@
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
     noctalia-shell.url = "github:noctalia-dev/noctalia/0e32beeeb3d3fedb6d1da720abcfe6fe4f4fad75";
-    umbriel.url = "github:noctalia-dev/umbriel/9404848672c935231c6d77f2ef4dab1a456b4eb4";
+    umbriel.url = "github:noctalia-dev/umbriel/bc10febde287a6430d6af9dd6bada478beeb0ae5";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
     denial.url = "github:denialwm/denial/01b588ec50831bce9e57aed623901f49846ec791";

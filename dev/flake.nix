@@ -27,7 +27,7 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/e56dee2cd4cd0b6b0b5600e50e02610365c9b165";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/230768446cd5073308de92f8f8e599be2ab2e629";
     umbriel.url = "github:noctalia-dev/umbriel/bc10febde287a6430d6af9dd6bada478beeb0ae5";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";

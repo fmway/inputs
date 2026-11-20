@@ -147,7 +147,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>noctalia.shell</strong> - A sleek, customizable desktop shell crafted for Wayland</summary>
 
-  - **Version**: 5.5.0
+  - **Version**: 5.6.0
   - **Homepage**: https://github.com/noctalia-dev/noctalia
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -182,7 +182,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>virtualisation.droidloom</strong> - Android applications in native Wayland windows</summary>
 
-  - **Version**: 0.1.0-47
+  - **Version**: 0.1.0-49
   - **Homepage**: https://github.com/denialwm/droidloom
   - **License**: GPL-3.0-or-later
   - **Supported Systems**: x86_64-linux

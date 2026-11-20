@@ -48,7 +48,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.designcraft</strong> - Open-source, native page layout and publishing that works the way InDesign users expect</summary>
 
-  - **Version**: 0.20.1
+  - **Version**: 0.21.1
   - **Homepage**: https://getartcraft.com/apps/designcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -57,7 +57,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.effectcraft</strong> - Open-source motion graphics and visual effects compositor</summary>
 
-  - **Version**: 0.24.1
+  - **Version**: 0.25.1
   - **Homepage**: https://getartcraft.com/apps/effectcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -102,7 +102,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>artcraft.pdfcraft</strong> - Open-source, native PDF workbench: read, comment, fill and sign forms,</summary>
 
-  - **Version**: 0.21.1
+  - **Version**: 0.22.0
   - **Homepage**: https://getartcraft.com/apps/pdfcraft
   - **License**: MIT, Apache-2.0
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -147,7 +147,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>noctalia.shell</strong> - A sleek, customizable desktop shell crafted for Wayland</summary>
 
-  - **Version**: 5.5.0
+  - **Version**: 5.6.0
   - **Homepage**: https://github.com/noctalia-dev/noctalia
   - **License**: MIT
   - **Supported Systems**: x86_64-linux, aarch64-linux
@@ -182,7 +182,7 @@ nixpkgs closure into your own flake.
 <details>
   <summary><strong>virtualisation.droidloom</strong> - Android applications in native Wayland windows</summary>
 
-  - **Version**: 0.1.0-47
+  - **Version**: 0.1.0-49
   - **Homepage**: https://github.com/denialwm/droidloom
   - **License**: GPL-3.0-or-later
   - **Supported Systems**: x86_64-linux

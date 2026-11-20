@@ -142,8 +142,8 @@ jq -r '([(.[] | .namespace // .inputName)] | unique)[]' "$collection_file" | whi
       tmp="$out.tmp"
       jq -s -S "$refine_leaves" "$jsonl" >"$tmp"
       mv "$tmp" "$out"
-      cached="$(jq -r '.. | objects | select(has("isCached")) | .isCached' "$out" | sort | uniq -c | tr '\n' ' ')"
-      echo "refined $input/$system: $cached"
+      echo "refined $input/$system:"
+      jq -r 'paths(type == "boolean") as $p | select($p[-1] == "isCached") | "  \($p[:-1] | join(".")) => \(if (getpath($p)) then "cached" else "uncached" end)"' "$out"
     fi
   done
 done

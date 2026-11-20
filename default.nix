@@ -24,7 +24,7 @@ let
         { config, lib, ... }:
         {
           imports = [ "${flake}/nix/module.nix" ];
-          nixpkgs.overlys = lib.mkIf config.programs.denial.enable [ overlays.default ];
+          nixpkgs.overlays = lib.mkIf config.programs.denial.enable [ overlays.default ];
         };
       nixosModules.default = nixosModules.denial;
     };

@@ -27,7 +27,7 @@ let
     builtins.foldl' (acc: key: acc.${key}) original path;
 
   realFor = path:
-    builtins.warn "no cached binary available — this package will be build locally from source" (atPath path);
+    builtins.warn "(fmway/input): ${builtins.concatStringsSep "." path} no cached binary available — this package will be build locally from source" (atPath path);
 
   fakeFor =
     path: entry:

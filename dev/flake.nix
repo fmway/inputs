@@ -19,7 +19,7 @@
     chaotic.url = "github:chaotic-cx/nyx";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.2.0";
     direnv-instant.url = "github:Mic92/direnv-instant/1.3.0";
-    maki.url = "github:tontinton/maki/v0.7.2";
+    maki.url = "github:tontinton/maki/v0.7.3";
     maki.inputs.nixpkgs.follows = "nixpkgs";
     maki.inputs.crane.follows = "crane";
     maki.inputs.rust-overlay.follows = "rust-overlay";
@@ -27,11 +27,11 @@
     iets.url = "github:numtide/iets";
     fix.url = "github:psyclyx/fix";
     fix.flake = false;
-    noctalia-shell.url = "github:noctalia-dev/noctalia/d456755d3bb09be68be67582c5766fb96cb4a1a8";
-    umbriel.url = "github:noctalia-dev/umbriel/56b6760421afebfbd2ceb4fe17a347db2e82ea41";
+    noctalia-shell.url = "github:noctalia-dev/noctalia/a81e34e7f4fdada43ac7c9fe911e224eb6ee5f0a";
+    umbriel.url = "github:noctalia-dev/umbriel/13332d406563a1bd9b58026c0483a6dc47244daf";
     evix.url = "github:manic-systems/evix/v3.0.2";
     evix.inputs.nixpkgs.follows = "nixpkgs";
-    denial.url = "github:denialwm/denial/f3481469f9a11ed22f7c6e2788bc7c9617f0cadc";
+    denial.url = "github:denialwm/denial/7159588f9327ebd6573260d8aec76b4a6bfbe60d";
     droidloom.url = "github:denialwm/droidloom";
     droidloom.flake = false;
     nectarlink.url = "github:thtbee/nectarlink";
